@@ -1,0 +1,15 @@
+<svg id="Icons_Photos_Copy" data-name="Icons/Photos Copy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Combined_Shape" data-name="Combined Shape" d="M40.468,44.964H24.73v-4.5H40.468V24.73h4.5V40.469A4.5,4.5,0,0,1,40.468,44.964Zm-20.234,0H4.5a4.5,4.5,0,0,1-4.5-4.5V24.73H4.5V40.469H20.234v4.5ZM37.5,37.5H7.5l10-15,7.425,11.131L30,25.5l7.5,12Zm7.463-17.267h-4.5V4.5H24.73V0H40.468a4.5,4.5,0,0,1,4.5,4.5V20.234Zm-40.468,0H0V4.5A4.5,4.5,0,0,1,4.5,0H20.234V4.5H4.5V20.234Zm26.483-3.492a4,4,0,1,1,4-4A4,4,0,0,1,30.978,16.742Z" fill="#231f20"/>
+    </clipPath>
+  </defs>
+  <g id="Group_46" data-name="Group 46" transform="translate(0 0)">
+    <path id="Combined_Shape-2" data-name="Combined Shape" d="M40.468,44.964H24.73v-4.5H40.468V24.73h4.5V40.469A4.5,4.5,0,0,1,40.468,44.964Zm-20.234,0H4.5a4.5,4.5,0,0,1-4.5-4.5V24.73H4.5V40.469H20.234v4.5ZM37.5,37.5H7.5l10-15,7.425,11.131L30,25.5l7.5,12Zm7.463-17.267h-4.5V4.5H24.73V0H40.468a4.5,4.5,0,0,1,4.5,4.5V20.234Zm-40.468,0H0V4.5A4.5,4.5,0,0,1,4.5,0H20.234V4.5H4.5V20.234Zm26.483-3.492a4,4,0,1,1,4-4A4,4,0,0,1,30.978,16.742Z" fill="#231f20"/>
+    <g id="Mask_Group_46" data-name="Mask Group 46" clip-path="url(#clip-path)">
+      <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud" transform="translate(0 0)">
+        <rect id="Color" width="45" height="45" fill="#d0d0d0"/>
+      </g>
+    </g>
+  </g>
+</svg>

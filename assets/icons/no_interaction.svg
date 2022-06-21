@@ -1,0 +1,27 @@
+<svg id="Done" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="228" height="183" viewBox="0 0 228 183">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.859" y1="0.092" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862" stop-opacity="0.094"/>
+      <stop offset="1" stop-color="#3c6" stop-opacity="0.106"/>
+    </linearGradient>
+  </defs>
+  <path id="BG" d="M184.224,57.645a6.384,6.384,0,1,1,6.384,6.405A6.395,6.395,0,0,1,184.224,57.645ZM41.952,64.05a6.405,6.405,0,0,1,0-12.81H6.384a6.4,6.4,0,0,1,0-12.81h36.48a6.405,6.405,0,0,0,0-12.81h-22.8a6.4,6.4,0,0,1,0-12.81h36.48a6.405,6.405,0,0,1,0-12.81h51.984a6.405,6.405,0,0,1,0,12.81H166.9a6.4,6.4,0,0,1,0,12.81H186.96a6.405,6.405,0,0,1,0,12.81H169.632a6.4,6.4,0,0,0,0,12.81H175.1a6.405,6.405,0,0,1,0,12.81Z" transform="translate(15.504 58.56)" fill="url(#linear-gradient)"/>
+  <path id="Shape" d="M42.782,88.058a35.412,35.412,0,0,1-6.776-.641l8.962.561C44.274,88.03,43.538,88.057,42.782,88.058Zm6.127-.437h0L32.336,86.462A43.241,43.241,0,0,1,16.4,78.4,44.058,44.058,0,0,1,54.721,1.275,43.358,43.358,0,0,1,65.856,5.836,43.842,43.842,0,0,1,86.368,33.311a44.24,44.24,0,0,1-19.16,47.742,43.585,43.585,0,0,1-18.3,6.568Z" transform="matrix(0.719, -0.695, 0.695, 0.719, 56.444, 92.168)" fill="#fff" stroke="#707070" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line" d="M0,1H13.224" transform="translate(111.264 108.8)" fill="none" stroke="#707070" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <g id="bling" transform="translate(151.848 41.175)">
+    <path id="Line-2" data-name="Line" d="M.5,0V5.49" transform="translate(8.62)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-3" data-name="Line" d="M.5,0V5.49" transform="translate(8.62 12.81)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-4" data-name="Line" d="M0,0V5.472" transform="translate(0 9.15) rotate(-90)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-5" data-name="Line" d="M0,0V5.472" transform="translate(12.768 9.15) rotate(-90)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  </g>
+  <g id="bling-2" data-name="bling" transform="translate(77.976 135.42)">
+    <path id="Line-6" data-name="Line" d="M.5,0V3.66" transform="translate(6.796)" fill="none" stroke="#72dd96" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-7" data-name="Line" d="M.5,0V3.66" transform="translate(6.796 10.98)" fill="none" stroke="#72dd96" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-8" data-name="Line" d="M0,0V3.648" transform="translate(0 7.32) rotate(-90)" fill="none" stroke="#72dd96" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+    <path id="Line-9" data-name="Line" d="M0,0V3.648" transform="translate(10.944 7.32) rotate(-90)" fill="none" stroke="#72dd96" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  </g>
+  <path id="Shape-2" data-name="Shape" d="M29.506,3.09,10.33.189a38.929,38.929,0,0,1,3.988-.212A38.05,38.05,0,0,1,29.507,3.089ZM0,2.773v0c.819-.332,1.656-.638,2.488-.908C3.632,1.486,4.815,1.162,6,.9Z" transform="matrix(0.719, -0.695, 0.695, 0.719, 81.668, 75.649)" fill="#fff" stroke="#72dd96" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line-10" data-name="Line" d="M0,12.81,8.208,6.247,0,0" transform="translate(99.408 83.265)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line-11" data-name="Line" d="M-.88,12.81-10,6.247-.88,0" transform="translate(138.592 83.265)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <ellipse id="Oval" cx="3.648" cy="4.117" rx="3.648" ry="4.117" transform="translate(197.904 33.855)" fill="rgba(51,204,102,0.38)"/>
+</svg>

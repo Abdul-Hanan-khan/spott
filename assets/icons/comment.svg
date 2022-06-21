@@ -1,0 +1,17 @@
+<svg id="Group_49" data-name="Group 49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.778" height="17.778" viewBox="0 0 17.778 17.778">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Shape" d="M17.778,17.778l0,0-3.332-3.332H5.278a.789.789,0,0,1-.834-.833V11.944H15.278v-7.5h1.666a.79.79,0,0,1,.834.834v12.5ZM0,13.333V.889A.842.842,0,0,1,.889,0H12.444a.842.842,0,0,1,.889.889v8a.842.842,0,0,1-.889.889H3.556L0,13.331Z" transform="translate(0 0)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.932" y1="0.059" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <path id="Shape-2" data-name="Shape" d="M17.778,17.778l0,0-3.332-3.332H5.278a.789.789,0,0,1-.834-.833V11.944H15.278v-7.5h1.666a.79.79,0,0,1,.834.834v12.5ZM0,13.333V.889A.842.842,0,0,1,.889,0H12.444a.842.842,0,0,1,.889.889v8a.842.842,0,0,1-.889.889H3.556L0,13.331Z" transform="translate(0 0)"/>
+  <g id="Mask_Group_49" data-name="Mask Group 49" clip-path="url(#clip-path)">
+    <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud" transform="translate(-1.111 -1.111)">
+      <rect id="Color" width="20" height="20" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg id="EmptyState" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="200" viewBox="0 0 250 200">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.859" y1="0.092" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862" stop-opacity="0.094"/>
+      <stop offset="1" stop-color="#3c6" stop-opacity="0.106"/>
+    </linearGradient>
+  </defs>
+  <path id="Background" d="M202,63a7,7,0,1,1,7,7A7,7,0,0,1,202,63ZM46,70a7,7,0,1,1,0-14H7A7,7,0,1,1,7,42H47a7,7,0,0,0,0-14H22a7,7,0,0,1,0-14H62A7,7,0,1,1,62,0h57a7,7,0,0,1,0,14h64a7,7,0,1,1,0,14h22a7,7,0,1,1,0,14H186a7,7,0,1,0,0,14h6a7,7,0,0,1,0,14Z" transform="translate(17 64)" fill="url(#linear-gradient)"/>
+  <path id="Shape" d="M95,83H22A22.116,22.116,0,0,1,6.444,76.7a21.157,21.157,0,0,1,0-30.406A22.115,22.115,0,0,1,22,40c.506,0,1.023.018,1.537.052A34.319,34.319,0,0,1,23,34,34,34,0,0,1,77.045,6.534,34.077,34.077,0,0,1,89.239,23.17,31.377,31.377,0,0,1,92.5,23a30.747,30.747,0,0,1,11.872,2.357,30.432,30.432,0,0,1,9.695,6.429,29.877,29.877,0,0,1,6.537,9.536A29.39,29.39,0,0,1,123,53a29.758,29.758,0,0,1-8.122,20.422A30.536,30.536,0,0,1,95,82.978V83Z" transform="translate(70 57)" fill="#fff" stroke="#707070" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <circle id="Oval" cx="5.5" cy="5.5" r="5.5" transform="translate(122 115)" fill="none" stroke="#3c6" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line" d="M0,10.722,7,5.229,0,0" transform="translate(112 98.278)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line-2" data-name="Line" d="M0,10.722-7,5.229,0,0" transform="translate(143 98.278)" fill="none" stroke="#707070" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Oval-2" data-name="Oval" d="M-13.44,0A19.036,19.036,0,0,1,0,13.293" transform="translate(150.44 67)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <circle id="Oval-3" data-name="Oval" cx="3" cy="3" r="3" transform="translate(155 44)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-miterlimit="10" stroke-width="2"/>
+  <circle id="Oval-4" data-name="Oval" cx="3" cy="3" r="3" transform="translate(186 60)" fill="rgba(51,204,102,0.38)"/>
+  <path id="Line_5" data-name="Line 5" d="M4.6,4.6.481,8.712,4.6,4.6.354.354,4.6,4.6,8.839.354,4.6,4.6,8.712,8.712Z" transform="translate(165.404 57.404)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line_4" data-name="Line 4" d="M3,3,0,6,3,3,0,0,3,3,6,0,3,3,6,6Z" transform="translate(71.404 75.596)" fill="none" stroke="#72dd96" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <circle id="Oval-5" data-name="Oval" cx="3" cy="3" r="3" transform="translate(82 63)" fill="#72dd96"/>
+</svg>

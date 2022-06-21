@@ -1,0 +1,19 @@
+<svg id="Icons_photos" data-name="Icons/photos" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.841" height="20" viewBox="0 0 19.841 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Combined_Shape" data-name="Combined Shape" d="M17.843,19.984H10.9v-2h6.939v-7h1.982v7A1.992,1.992,0,0,1,17.843,19.984Zm-8.922,0H1.982a1.992,1.992,0,0,1-1.982-2v-7H1.982v7H8.922v2Zm7.613-3.317H3.307L7.716,10l3.274,4.947,2.237-3.614,3.306,5.332Zm3.291-7.674H17.843V2H10.9V0h6.939a1.992,1.992,0,0,1,1.982,2V8.992Zm-17.843,0H0V2A1.992,1.992,0,0,1,1.982,0H8.922V2H1.982V8.992ZM13.659,7.441a1.778,1.778,0,1,1,1.764-1.778A1.773,1.773,0,0,1,13.659,7.441Z" transform="translate(0 0)" fill="#231f20"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.859" y1="0.092" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_55" data-name="Group 55" transform="translate(0 0)">
+    <path id="Combined_Shape-2" data-name="Combined Shape" d="M17.843,19.984H10.9v-2h6.939v-7h1.982v7A1.992,1.992,0,0,1,17.843,19.984Zm-8.922,0H1.982a1.992,1.992,0,0,1-1.982-2v-7H1.982v7H8.922v2Zm7.613-3.317H3.307L7.716,10l3.274,4.947,2.237-3.614,3.306,5.332Zm3.291-7.674H17.843V2H10.9V0h6.939a1.992,1.992,0,0,1,1.982,2V8.992Zm-17.843,0H0V2A1.992,1.992,0,0,1,1.982,0H8.922V2H1.982V8.992ZM13.659,7.441a1.778,1.778,0,1,1,1.764-1.778A1.773,1.773,0,0,1,13.659,7.441Z" transform="translate(0 0)" fill="#231f20"/>
+    <g id="Mask_Group_55" data-name="Mask Group 55" clip-path="url(#clip-path)">
+      <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud" transform="translate(0 0)">
+        <rect id="Color" width="19.841" height="20" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

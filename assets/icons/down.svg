@@ -1,0 +1,19 @@
+<svg id="Like_Copy_2" data-name="Like Copy 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Back_icon_2" data-name="Back icon 2" d="M.623,0H19.377a.623.623,0,0,1,.487,1.011L10.487,12.766a.622.622,0,0,1-.973,0L.136,1.011A.623.623,0,0,1,.623,0Z" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.859" y1="0.092" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_53" data-name="Group 53" transform="translate(0 3.333)">
+    <path id="Back_icon_2-2" data-name="Back icon 2" d="M.623,0H19.377a.623.623,0,0,1,.487,1.011L10.487,12.766a.622.622,0,0,1-.973,0L.136,1.011A.623.623,0,0,1,.623,0Z" transform="translate(0 0)" fill="none"/>
+    <g id="Mask_Group_53" data-name="Mask Group 53" clip-path="url(#clip-path)">
+      <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud" transform="translate(0 -3.333)">
+        <rect id="Color" width="20" height="20" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

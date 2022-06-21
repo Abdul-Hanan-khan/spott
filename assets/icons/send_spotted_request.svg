@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="193px" height="103px" viewBox="0 0 193 103" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>EmptyState</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M42.624,14.16 C23.2494545,14.16 6.58734545,25.8656 0,42.48 C6.58734545,59.0944 23.2494545,70.8 42.624,70.8 C61.9985455,70.8 78.6606545,59.0944 85.248,42.48 C78.6606545,25.8656 61.9985455,14.16 42.624,14.16 L42.624,14.16 Z M42.624,61.36 C32.01536,61.36 23.68,53.0528 23.68,42.48 C23.68,31.9072 32.01536,23.6 42.624,23.6 C53.23264,23.6 61.568,31.9072 61.568,42.48 C61.568,53.0528 53.23264,61.36 42.624,61.36 L42.624,61.36 Z M42.624,33.04 C37.2565333,33.04 33.152,37.1306667 33.152,42.48 C33.152,47.8293333 37.2565333,51.92 42.624,51.92 C47.9914667,51.92 52.096,47.8293333 52.096,42.48 C52.096,37.1306667 47.9914667,33.04 42.624,33.04 L42.624,33.04 Z" id="path-1"></path>
+        <linearGradient x1="1.11022302e-14%" y1="100%" x2="100%" y2="1.11022302e-14%" id="linearGradient-3">
+            <stop stop-color="#5A52F2" offset="0%"></stop>
+            <stop stop-color="#9648F2" offset="45.3506876%"></stop>
+            <stop stop-color="#FF61A3" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="85.8682264%" y1="31.9841115%" x2="16.7514288%" y2="63.9406663%" id="linearGradient-4">
+            <stop stop-color="#D9E862" offset="0%"></stop>
+            <stop stop-color="#33CC66" offset="100%"></stop>
+        </linearGradient>
+        <path d="M0,42.48 C6.58734545,59.0944 23.2494545,70.8 42.624,70.8 C61.9985455,70.8 78.6606545,59.0944 85.248,42.48 C78.6606545,25.8656 61.9985455,14.16 42.624,14.16 C23.2494545,14.16 6.58734545,25.8656 0,42.48 Z M23.68,42.48 C23.68,31.9072 32.01536,23.6 42.624,23.6 C53.23264,23.6 61.568,31.9072 61.568,42.48 C61.568,53.0528 53.23264,61.36 42.624,61.36 C32.01536,61.36 23.68,53.0528 23.68,42.48 Z M42.624,33.04 C37.2565333,33.04 33.152,37.1306667 33.152,42.48 C33.152,47.8293333 37.2565333,51.92 42.624,51.92 C47.9914667,51.92 52.096,47.8293333 52.096,42.48 C52.096,37.1306667 47.9914667,33.04 42.624,33.04 L42.624,33.04 Z" id="path-5"></path>
+        <path d="M5.78868742,3.18506126 C5.78868742,0.57094617 9.63251861,-0.932523263 12.3308372,0.641597929 L95.4550503,48.961749 C98.0660917,50.4793488 98.0660917,53.5258526 95.4550503,55.0434524 L12.3272006,103.363603 C9.63251861,104.929246 5.78505087,103.434255 5.78505087,100.817314 L5.78505087,91.3584566 C5.78505087,88.8178193 7.32694721,86.4269638 9.94526173,84.9037119 L62.2860964,54.4810644 C64.413477,53.2432456 64.413477,50.7591297 62.2860964,49.524137 L9.94526173,19.0930113 C7.32694721,17.5754115 5.78868742,15.184556 5.78868742,12.6467448 L5.78868742,3.18506126 Z M12.3235641,38.0163785 L31.1499728,48.961749 C33.7610143,50.4793488 33.7610143,53.5258526 31.1499728,55.0434524 L12.3272006,65.9831708 C9.62888206,67.5516398 5.78505087,66.0538225 5.78505087,63.4340553 L5.77777778,40.5654939 C5.77777778,37.9429006 9.62524551,36.4479094 12.3235641,38.0163785 Z" id="path-7"></path>
+    </defs>
+    <g id="OK____-Walkthrough" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OK_POPUP_SPOTTED_1" transform="translate(-91.000000, -302.000000)">
+            <g id="Card---Inbox" transform="translate(10.000000, 234.000000)">
+                <g id="Eye1" transform="translate(66.211765, 32.611765)">
+                    <path d="M55.944,118.59 C52.510998,118.59 49.728,115.816404 49.728,112.395 C49.728,108.973596 52.510998,106.2 55.944,106.2 L21.312,106.2 C17.878998,106.2 15.096,103.426404 15.096,100.005 C15.096,96.583596 17.878998,93.81 21.312,93.81 L56.832,93.81 C60.265002,93.81 63.048,91.036404 63.048,87.615 C63.048,84.193596 60.265002,81.42 56.832,81.42 L34.632,81.42 C31.198998,81.42 28.416,78.646404 28.416,75.225 C28.416,71.803596 31.198998,69.03 34.632,69.03 L70.152,69.03 C66.718998,69.03 63.936,66.256404 63.936,62.835 C63.936,59.413596 66.718998,56.64 70.152,56.64 L120.768,56.64 C124.201002,56.64 126.984,59.413596 126.984,62.835 C126.984,66.256404 124.201002,69.03 120.768,69.03 L177.6,69.03 C181.033002,69.03 183.816,71.803596 183.816,75.225 C183.816,78.646404 181.033002,81.42 177.6,81.42 L197.136,81.42 C200.569002,81.42 203.352,84.193596 203.352,87.615 C203.352,91.036404 200.569002,93.81 197.136,93.81 L180.264,93.81 C176.830998,93.81 174.048,96.583596 174.048,100.005 C174.048,103.426404 176.830998,106.2 180.264,106.2 L185.592,106.2 C189.025002,106.2 191.808,108.973596 191.808,112.395 C191.808,115.816404 189.025002,118.59 185.592,118.59 L55.944,118.59 Z M200.688,118.59 C197.254998,118.59 194.472,115.816404 194.472,112.395 C194.472,108.973596 197.254998,106.2 200.688,106.2 C204.121002,106.2 206.904,108.973596 206.904,112.395 C206.904,115.816404 204.121002,118.59 200.688,118.59 Z" id="BG" fill-opacity="0.159818" fill="#C8C8C8"></path>
+                    <path d="M92.056,88.5 C92.056,77.9272 100.39136,69.62 111,69.62 C121.60864,69.62 129.944,77.9272 129.944,88.5 C129.944,99.0728 121.60864,107.38 111,107.38 C100.39136,107.38 92.056,99.0728 92.056,88.5 Z" id="Path" fill="#FFFFFF"></path>
+                    <g id="bling" stroke-width="1" transform="translate(153.624000, 47.790000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.324,0 L9.324,5.31" id="Line" stroke-width="2.5"></path>
+                        <path d="M9.324,12.39 L9.324,17.7" id="Line" stroke-width="2.5"></path>
+                        <path d="M3.108,6.186 L3.108,11.514" id="Line" stroke-width="2.5" transform="translate(3.108000, 8.850000) rotate(-90.000000) translate(-3.108000, -8.850000) "></path>
+                        <path d="M15.54,6.186 L15.54,11.514" id="Line" stroke-width="2.5" transform="translate(15.540000, 8.850000) rotate(-90.000000) translate(-15.540000, -8.850000) "></path>
+                    </g>
+                    <g id="bling" stroke-width="1" transform="translate(50.616000, 126.555000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5.1282,0 L5.1282,2.9205" id="Line" stroke-width="2.5"></path>
+                        <path d="M5.1282,6.8145 L5.1282,9.735" id="Line" stroke-width="2.5"></path>
+                        <path d="M1.7094,3.4023 L1.7094,6.3327" id="Line" stroke-width="2.5" transform="translate(1.709400, 4.867500) rotate(-90.000000) translate(-1.709400, -4.867500) "></path>
+                        <path d="M8.547,3.4023 L8.547,6.3327" id="Line" stroke-width="2.5" transform="translate(8.547000, 4.867500) rotate(-90.000000) translate(-8.547000, -4.867500) "></path>
+                    </g>
+                    <g id="bling" stroke-width="1" transform="translate(142.968000, 121.245000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5.1282,0 L5.1282,2.9205" id="Line" stroke-width="2.5"></path>
+                        <path d="M5.1282,6.8145 L5.1282,9.735" id="Line" stroke-width="2.5"></path>
+                        <path d="M1.7094,3.4023 L1.7094,6.3327" id="Line" stroke-width="2.5" transform="translate(1.709400, 4.867500) rotate(-90.000000) translate(-1.709400, -4.867500) "></path>
+                        <path d="M8.547,3.4023 L8.547,6.3327" id="Line" stroke-width="2.5" transform="translate(8.547000, 4.867500) rotate(-90.000000) translate(-8.547000, -4.867500) "></path>
+                    </g>
+                    <g id="bling" stroke-width="1" transform="translate(61.272000, 37.170000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7.548,0 L7.548,3.54" id="Line" stroke-width="2.5"></path>
+                        <path d="M7.548,10.62 L7.548,14.16" id="Line" stroke-width="2.5"></path>
+                        <path d="M2.22,5.304 L2.22,8.856" id="Line" stroke-width="2.5" transform="translate(2.220000, 7.080000) rotate(-90.000000) translate(-2.220000, -7.080000) "></path>
+                        <path d="M12.876,5.304 L12.876,8.856" id="Line" stroke-width="2.5" transform="translate(12.876000, 7.080000) rotate(-90.000000) translate(-12.876000, -7.080000) "></path>
+                    </g>
+                    <g id="add" stroke-width="1" transform="translate(68.376000, 46.020000)">
+                        <g id="Icons/Views">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Shape" fill="#000000" xlink:href="#path-1"></use>
+                            <g id="↳Tint/Spotted" mask="url(#mask-2)" fill="url(#linearGradient-3)">
+                                <rect id="Color" x="0" y="0" width="85" height="85"></rect>
+                            </g>
+                        </g>
+                        <mask id="mask-6" fill="white">
+                            <use xlink:href="#path-5"></use>
+                        </mask>
+                        <use id="Shape" fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
+                        <polygon id="Rectangle-89" stroke="#E3E3E3" fill="#FFFFFF" mask="url(#mask-6)" points="-194.176 2265.6 1635.34534 2265.6 1610.19392 2539.36 -169.06569 2539.36"></polygon>
+                        <g id="Icons/Play" mask="url(#mask-6)">
+                            <g transform="translate(1430.272000, 2350.560000)">
+                                <mask id="mask-8" fill="white">
+                                    <use xlink:href="#path-7"></use>
+                                </mask>
+                                <use id="Fill-1" stroke="none" fill="#231F20" fill-rule="evenodd" xlink:href="#path-7"></use>
+                                <g id="↳Tint/Backgroud" stroke="none" fill="none" mask="url(#mask-8)" fill-rule="evenodd">
+                                    <rect id="Color" fill="#262628" x="0" y="0" width="104" height="104"></rect>
+                                </g>
+                            </g>
+                        </g>
+                        <text id="Type-a-comment-here" mask="url(#mask-6)" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300" line-spacing="18" fill="#C2C4CA">
+                            <tspan x="-66.304" y="2399.04">Type a comment here ...</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

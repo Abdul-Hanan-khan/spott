@@ -1,0 +1,7 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    invalid_assignment: false
+    argument_type_not_assignable: false
+    sort_pub_dependencies: false

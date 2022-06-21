@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="20" viewBox="0 0 18 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Notifications" d="M9,20a2,2,0,0,1-2-2h4A2,2,0,0,1,9,20Zm9-3H0V16l2.118-2V8.5a6.157,6.157,0,0,1,1.5-4.05,7.072,7.072,0,0,1,3.8-2.25V1.5a1.591,1.591,0,0,1,3.177,0v.7a7.073,7.073,0,0,1,3.8,2.25,6.157,6.157,0,0,1,1.5,4.05V14L18,16v1Z" transform="translate(1 -1)" fill="#c2c4ca"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.932" y1="0.059" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_39" data-name="Group 39" transform="translate(-1 1)">
+    <path id="Notifications-2" data-name="Notifications" d="M9,20a2,2,0,0,1-2-2h4A2,2,0,0,1,9,20Zm9-3H0V16l2.118-2V8.5a6.157,6.157,0,0,1,1.5-4.05,7.072,7.072,0,0,1,3.8-2.25V1.5a1.591,1.591,0,0,1,3.177,0v.7a7.073,7.073,0,0,1,3.8,2.25,6.157,6.157,0,0,1,1.5,4.05V14L18,16v1Z" transform="translate(1 -1)" fill="#c2c4ca"/>
+    <g id="Mask_Group_39" data-name="Mask Group 39" clip-path="url(#clip-path)">
+      <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud">
+        <rect id="Color" width="20" height="20" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

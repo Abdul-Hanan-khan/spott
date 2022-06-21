@@ -1,0 +1,13 @@
+<svg id="EmptyState" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="200" viewBox="0 0 250 200">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.859" y1="0.092" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862" stop-opacity="0.094"/>
+      <stop offset="1" stop-color="#3c6" stop-opacity="0.106"/>
+    </linearGradient>
+  </defs>
+  <path id="Background" d="M202,63a7,7,0,1,1,7,7A7,7,0,0,1,202,63Zm-62,7a7.037,7.037,0,0,1-1.5-.161A7.043,7.043,0,0,1,137,70H46a7,7,0,1,1,0-14H7A7,7,0,1,1,7,42H47a7,7,0,0,0,0-14H22a7,7,0,0,1,0-14H62A7,7,0,1,1,62,0h57a7,7,0,0,1,0,14h64a7,7,0,1,1,0,14h22a7,7,0,1,1,0,14H186a7,7,0,1,0,0,14h6a7,7,0,0,1,0,14Z" transform="translate(17 64)" fill="url(#linear-gradient)"/>
+  <path id="Shape" d="M83.812,98.481a2.015,2.015,0,0,1-1.223-.415L69.926,88.323A66.637,66.637,0,0,1,55,90a65.3,65.3,0,0,1-21.409-3.536A56.787,56.787,0,0,1,16.109,76.82a45.543,45.543,0,0,1-11.787-14.3,37.654,37.654,0,0,1,0-35.032,45.543,45.543,0,0,1,11.787-14.3A56.787,56.787,0,0,1,33.591,3.536a66.571,66.571,0,0,1,42.817,0A56.786,56.786,0,0,1,93.891,13.18a45.543,45.543,0,0,1,11.787,14.3,37.72,37.72,0,0,1-.937,36.744c-.612,1.058-1.29,2.119-2.015,3.154l-9.149,9.694a54.662,54.662,0,0,1-7.933,5.3l.165,14.083a2,2,0,0,1-1.976,2.024ZM97.32,73.744h0l2.874-3.088C99.288,71.719,98.321,72.758,97.32,73.744Z" transform="translate(75 49)" fill="#fff" stroke="#707070" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Shape-2" data-name="Shape" d="M38,6a6,6,0,1,1,6,6A6,6,0,0,1,38,6ZM19,6a6,6,0,1,1,6,6A6,6,0,0,1,19,6ZM0,6a6,6,0,1,1,6,6A6,6,0,0,1,0,6Z" transform="translate(104 88)" fill="rgba(51,204,102,0.21)" stroke="#707070" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line" d="M2.35,0A34.355,34.355,0,0,0,0,4.761" transform="translate(87.312 79.311)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+  <path id="Line-2" data-name="Line" d="M16.083,0A43.536,43.536,0,0,0,0,12.847" transform="translate(91.939 63.073)" fill="none" stroke="rgba(51,204,102,0.38)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.5"/>
+</svg>

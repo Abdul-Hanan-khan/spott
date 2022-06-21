@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="216px" height="116px" viewBox="0 0 216 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>EmptyStateprivatwe account</title>
+    <defs>
+        <linearGradient x1="85.8682264%" y1="45.7138618%" x2="16.7514288%" y2="53.316607%" id="linearGradient-1">
+            <stop stop-color="#D9E862" stop-opacity="0.448890953" offset="0%"></stop>
+            <stop stop-color="#33CC66" stop-opacity="0.507266171" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="71.6980629%" y1="9.18896635%" x2="29.8866668%" y2="81.5795139%" id="linearGradient-2">
+            <stop stop-color="#D9E862" offset="0%"></stop>
+            <stop stop-color="#33CC66" offset="100%"></stop>
+        </linearGradient>
+        <path d="M153.333333,79 L148.666667,79 L148.666667,69.8571429 C148.666667,57.0571429 138.4,47 125.333333,47 C112.266667,47 102,57.0571429 102,69.8571429 L102,79 L97.3333333,79 C92.2,79 88,83.1142857 88,88.1428571 L88,133.857143 C88,138.885714 92.2,143 97.3333333,143 L153.333333,143 C158.466667,143 162.666667,138.885714 162.666667,133.857143 L162.666667,88.1428571 C162.666667,83.1142857 158.466667,79 153.333333,79 L153.333333,79 Z M125.333333,121.666667 C119.466667,121.666667 114.666667,116.866667 114.666667,111 C114.666667,105.133333 119.466667,100.333333 125.333333,100.333333 C131.2,100.333333 136,105.133333 136,111 C136,116.866667 131.2,121.666667 125.333333,121.666667 L125.333333,121.666667 Z M141.333333,79 L109.333333,79 L109.333333,68.5424837 C109.333333,59.6535948 116.55914,52.3333333 125.333333,52.3333333 C134.107527,52.3333333 141.333333,59.6535948 141.333333,68.5424837 L141.333333,79 L141.333333,79 Z" id="path-3"></path>
+    </defs>
+    <g id="OK____-Walkthrough" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="USER_PROFILE_NO_ABOUT-Copy" transform="translate(-80.000000, -668.000000)">
+            <g id="Group" transform="translate(63.000000, 628.000000)">
+                <path d="M136,64 C139.865993,64 143,67.1340068 143,71 C143,74.8659932 139.865993,78 136,78 L200,78 C203.865993,78 207,81.1340068 207,85 C207,88.8659932 203.865993,92 200,92 L222,92 C225.865993,92 229,95.1340068 229,99 C229,102.865993 225.865993,106 222,106 L203,106 C199.134007,106 196,109.134007 196,113 C196,116.865993 199.134007,120 203,120 L209,120 C212.865993,120 216,123.134007 216,127 C216,130.865993 212.865993,134 209,134 L63,134 C59.1340068,134 56,130.865993 56,127 C56,123.134007 59.1340068,120 63,120 L24,120 C20.1340068,120 17,116.865993 17,113 C17,109.134007 20.1340068,106 24,106 L64,106 C67.8659932,106 71,102.865993 71,99 C71,95.1340068 67.8659932,92 64,92 L39,92 C35.1340068,92 32,88.8659932 32,85 C32,81.1340068 35.1340068,78 39,78 L79,78 C75.1340068,78 72,74.8659932 72,71 C72,67.1340068 75.1340068,64 79,64 L136,64 Z M226,120 C229.865993,120 233,123.134007 233,127 C233,130.865993 229.865993,134 226,134 C222.134007,134 219,130.865993 219,127 C219,123.134007 222.134007,120 226,120 Z" id="BG" fill-opacity="0.21" fill="url(#linearGradient-1)"></path>
+                <g id="bling" transform="translate(173.000000, 50.000000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.383413462" stroke-width="2.5">
+                    <line x1="10.5" y1="0" x2="10.5" y2="6" id="Line"></line>
+                    <line x1="10.5" y1="14" x2="10.5" y2="20" id="Line"></line>
+                    <line x1="3.5" y1="7" x2="3.5" y2="13" id="Line" transform="translate(3.500000, 10.000000) rotate(-90.000000) translate(-3.500000, -10.000000) "></line>
+                    <line x1="17.5" y1="7" x2="17.5" y2="13" id="Line" transform="translate(17.500000, 10.000000) rotate(-90.000000) translate(-17.500000, -10.000000) "></line>
+                </g>
+                <g id="bling" transform="translate(57.000000, 143.000000)" stroke="#33CC66" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.383413462" stroke-width="2.5">
+                    <line x1="5.775" y1="0" x2="5.775" y2="3.3" id="Line"></line>
+                    <line x1="5.775" y1="7.7" x2="5.775" y2="11" id="Line"></line>
+                    <line x1="1.925" y1="3.85" x2="1.925" y2="7.15" id="Line" transform="translate(1.925000, 5.500000) rotate(-90.000000) translate(-1.925000, -5.500000) "></line>
+                    <line x1="9.625" y1="3.85" x2="9.625" y2="7.15" id="Line" transform="translate(9.625000, 5.500000) rotate(-90.000000) translate(-9.625000, -5.500000) "></line>
+                </g>
+                <g id="bling" transform="translate(69.000000, 42.000000)" stroke="#72DD96" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                    <line x1="8.5" y1="0" x2="8.5" y2="4" id="Line"></line>
+                    <line x1="8.5" y1="12" x2="8.5" y2="16" id="Line"></line>
+                    <line x1="2.5" y1="6" x2="2.5" y2="10" id="Line" transform="translate(2.500000, 8.000000) rotate(-90.000000) translate(-2.500000, -8.000000) "></line>
+                    <line x1="14.5" y1="6" x2="14.5" y2="10" id="Line" transform="translate(14.500000, 8.000000) rotate(-90.000000) translate(-14.500000, -8.000000) "></line>
+                </g>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Shape" stroke="url(#linearGradient-2)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

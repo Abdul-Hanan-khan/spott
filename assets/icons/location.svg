@@ -1,0 +1,17 @@
+<svg id="Group_82" data-name="Group 82" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.5" height="25" viewBox="0 0 17.5 25">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Places" d="M8.75,25h0a57.847,57.847,0,0,1-4.374-5.686C2.379,16.347,0,12.108,0,8.75A8.7,8.7,0,0,1,8.75,0,8.7,8.7,0,0,1,17.5,8.75c0,3.358-2.379,7.6-4.375,10.562A57.848,57.848,0,0,1,8.751,25Zm0-19.444A3.384,3.384,0,0,0,5.384,9.028a3.367,3.367,0,1,0,6.731,0A3.384,3.384,0,0,0,8.75,5.555Z" transform="translate(0)" fill="#c2c4ca"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.932" y1="0.059" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <path id="Places-2" data-name="Places" d="M8.75,25h0a57.847,57.847,0,0,1-4.374-5.686C2.379,16.347,0,12.108,0,8.75A8.7,8.7,0,0,1,8.75,0,8.7,8.7,0,0,1,17.5,8.75c0,3.358-2.379,7.6-4.375,10.562A57.848,57.848,0,0,1,8.751,25Zm0-19.444A3.384,3.384,0,0,0,5.384,9.028a3.367,3.367,0,1,0,6.731,0A3.384,3.384,0,0,0,8.75,5.555Z" transform="translate(0)" fill="#c2c4ca"/>
+  <g id="Mask_Group_82" data-name="Mask Group 82" clip-path="url(#clip-path)">
+    <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud" transform="translate(-3.75 0)">
+      <rect id="Color" width="25" height="25" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

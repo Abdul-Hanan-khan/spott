@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Shape" d="M10,20A9.988,9.988,0,0,1,2.937,2.937,9.988,9.988,0,1,1,17.062,17.062,9.929,9.929,0,0,1,10,20Zm0-9a13.017,13.017,0,0,0-4.375.889C3.455,12.757,3,13.757,3,14.444a8.668,8.668,0,0,0,14,0c0-.686-.455-1.688-2.625-2.555A13.017,13.017,0,0,0,10,11Zm0-9a3.929,3.929,0,1,0,2.85,1.15A3.99,3.99,0,0,0,10,2Z"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.932" y1="0.059" x2="0.168" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9e862"/>
+      <stop offset="1" stop-color="#3c6"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_41" data-name="Group 41" transform="translate(0 0)">
+    <path id="Shape-2" data-name="Shape" d="M10,20A9.988,9.988,0,0,1,2.937,2.937,9.988,9.988,0,1,1,17.062,17.062,9.929,9.929,0,0,1,10,20Zm0-9a13.017,13.017,0,0,0-4.375.889C3.455,12.757,3,13.757,3,14.444a8.668,8.668,0,0,0,14,0c0-.686-.455-1.688-2.625-2.555A13.017,13.017,0,0,0,10,11Zm0-9a3.929,3.929,0,1,0,2.85,1.15A3.99,3.99,0,0,0,10,2Z"/>
+    <g id="Mask_Group_41" data-name="Mask Group 41" clip-path="url(#clip-path)">
+      <g id="_Tint_Backgroud" data-name="↳Tint/Backgroud">
+        <rect id="Color" width="20" height="20" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

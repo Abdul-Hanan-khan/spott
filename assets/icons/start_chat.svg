@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Buttons/Add Friendschat</title>
+    <defs>
+        <linearGradient x1="85.8682264%" y1="9.18896635%" x2="16.7514288%" y2="81.5795139%" id="linearGradient-1">
+            <stop stop-color="#D9E862" offset="0%"></stop>
+            <stop stop-color="#33CC66" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="4.64852608%" x2="29.8779765%" y2="83.6938957%" id="linearGradient-2">
+            <stop stop-color="#D9E862" offset="0%"></stop>
+            <stop stop-color="#33CC66" offset="100%"></stop>
+        </linearGradient>
+        <path d="M28.1875,13.8375 C28.8356417,13.8375 29.3833333,14.4243125 29.3833333,15.11875 L29.3833333,24.0875 C29.3833333,24.7819375 28.8356417,25.36875 28.1875,25.36875 L18.6208333,25.36875 L17.6294875,25.36875 L17.425,25.5878437 L17.425,25.36875 L15.0333333,25.36875 L13.8375,25.36875 C13.1893583,25.36875 12.6416667,24.7819375 12.6416667,24.0875 L12.6416667,15.11875 C12.6416667,14.4243125 13.1893583,13.8375 13.8375,13.8375 L28.1875,13.8375 L28.1875,13.8375 Z M28.1875,11.275 L13.8375,11.275 C11.864375,11.275 10.25,13.0046875 10.25,15.11875 L10.25,24.0875 C10.25,26.2015625 11.864375,27.93125 13.8375,27.93125 L15.0333333,27.93125 L15.0333333,31.775 L18.6208333,27.93125 L28.1875,27.93125 C30.160625,27.93125 31.775,26.2015625 31.775,24.0875 L31.775,15.11875 C31.775,13.0046875 30.160625,11.275 28.1875,11.275 Z" id="path-3"></path>
+    </defs>
+    <g id="OK____-Walkthrough" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="USER_PROFILE_PLACES_FAV-Copy" transform="translate(-258.000000, -291.000000)">
+            <g id="Account-Infor" transform="translate(0.000000, 287.000000)">
+                <g id="Buttons/Add-Friends" transform="translate(258.000000, 4.000000)">
+                    <rect id="Rectangle" stroke="url(#linearGradient-1)" stroke-width="2" x="1" y="1" width="39" height="39" rx="19.5"></rect>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="ChatMail" fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

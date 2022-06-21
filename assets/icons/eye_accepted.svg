@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Likeeye_confirmed</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10,3.33333333 C5.45454545,3.33333333 1.54545455,6.08888889 0,10 C1.54545455,13.9111111 5.45454545,16.6666667 10,16.6666667 C14.5454545,16.6666667 18.4545455,13.9111111 20,10 C18.4545455,6.08888889 14.5454545,3.33333333 10,3.33333333 L10,3.33333333 Z M10,14.4444444 C7.51111111,14.4444444 5.55555556,12.4888889 5.55555556,10 C5.55555556,7.51111111 7.51111111,5.55555556 10,5.55555556 C12.4888889,5.55555556 14.4444444,7.51111111 14.4444444,10 C14.4444444,12.4888889 12.4888889,14.4444444 10,14.4444444 L10,14.4444444 Z M10,7.77777778 C8.74074074,7.77777778 7.77777778,8.74074074 7.77777778,10 C7.77777778,11.2592593 8.74074074,12.2222222 10,12.2222222 C11.2592593,12.2222222 12.2222222,11.2592593 12.2222222,10 C12.2222222,8.74074074 11.2592593,7.77777778 10,7.77777778 L10,7.77777778 Z" id="path-1"></path>
+        <linearGradient x1="1.11022302e-14%" y1="100%" x2="100%" y2="1.11022302e-14%" id="linearGradient-3">
+            <stop stop-color="#5A52F2" offset="0%"></stop>
+            <stop stop-color="#9648F2" offset="45.3506876%"></stop>
+            <stop stop-color="#FF61A3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Card/Card-Only-Text-Copy" transform="translate(-20.000000, -170.000000)">
+            <g id="Card-1-Copy" transform="translate(-1.000000, -1.000000)">
+                <g id="Like-share" transform="translate(21.000000, 168.000000)">
+                    <g id="Icons/Views">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Shape" fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <g id="↳Tint/Spotted" mask="url(#mask-2)" fill="url(#linearGradient-3)" fill-rule="evenodd">
+                            <rect id="Color" x="0" y="0" width="20" height="20"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

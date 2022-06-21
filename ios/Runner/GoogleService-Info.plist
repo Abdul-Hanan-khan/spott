@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>26433550252-k5064gbahdbh3l20q31hlfjehnvvo543.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.26433550252-k5064gbahdbh3l20q31hlfjehnvvo543</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>26433550252-a2jfkgn0kcbckcnfhosmuibbg89ti4fd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyApAupc0QvrvEtN2-t57s3_0BimkNMFpYM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>26433550252</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>live.alliancetech.spottat</string>
+	<key>PROJECT_ID</key>
+	<string>spotat-app-d4493</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spotat-app-d4493.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:26433550252:ios:37b3bdc52ecd55b1b3ac09</string>
+</dict>
+</plist>

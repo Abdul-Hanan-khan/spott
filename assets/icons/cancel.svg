@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 15 15">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Close" d="M.3,14.7a1.036,1.036,0,0,0,1.464,0L7.5,8.964,13.233,14.7A1.035,1.035,0,0,0,14.7,13.233L8.964,7.5,14.7,1.767A1.035,1.035,0,0,0,13.233.3L7.5,6.036,1.767.3A1.035,1.035,0,0,0,.3,1.767L6.036,7.5.3,13.233A1.036,1.036,0,0,0,.3,14.7Z" transform="translate(11 11)"/>
+    </clipPath>
+  </defs>
+  <g id="Group_7" data-name="Group 7" transform="translate(-11 -11)">
+    <path id="Close-2" data-name="Close" d="M.3,14.7a1.036,1.036,0,0,0,1.464,0L7.5,8.964,13.233,14.7A1.035,1.035,0,0,0,14.7,13.233L8.964,7.5,14.7,1.767A1.035,1.035,0,0,0,13.233.3L7.5,6.036,1.767.3A1.035,1.035,0,0,0,.3,1.767L6.036,7.5.3,13.233A1.036,1.036,0,0,0,.3,14.7Z" transform="translate(11 11)"/>
+    <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path)">
+      <g id="Tint_Dark" data-name="Tint/Dark" transform="translate(-316 -70)">
+        <rect id="Color" width="600" height="600" fill="#262628"/>
+      </g>
+    </g>
+  </g>
+</svg>

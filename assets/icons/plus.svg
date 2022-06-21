@@ -1,0 +1,18 @@
+<svg id="Group_2" data-name="Group 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Plus" d="M.1,4.9a.345.345,0,0,0,.488,0L2.5,2.988,4.411,4.9A.345.345,0,0,0,4.9,4.411L2.988,2.5,4.9.589A.345.345,0,0,0,4.411.1L2.5,2.012.589.1A.345.345,0,0,0,.1.589L2.012,2.5.1,4.411A.345.345,0,0,0,.1,4.9Z" transform="translate(3.536 0) rotate(45)"/>
+    </clipPath>
+  </defs>
+  <circle id="Oval_2" data-name="Oval 2" cx="5.4" cy="5.4" r="5.4" transform="translate(0.6 0.6)" fill="#3c6"/>
+  <g id="Icons_Plus" data-name="Icons/Plus">
+    <g id="Group_8" data-name="Group 8" transform="translate(2.631 2.631)">
+      <path id="Plus-2" data-name="Plus" d="M.1,4.9a.345.345,0,0,0,.488,0L2.5,2.988,4.411,4.9A.345.345,0,0,0,4.9,4.411L2.988,2.5,4.9.589A.345.345,0,0,0,4.411.1L2.5,2.012.589.1A.345.345,0,0,0,.1.589L2.012,2.5.1,4.411A.345.345,0,0,0,.1,4.9Z" transform="translate(3.536 0) rotate(45)"/>
+      <g id="Mask_Group_8" data-name="Mask Group 8" clip-path="url(#clip-path)">
+        <g id="Tint_Dark" data-name="Tint/Dark" transform="translate(-107.964 -25.964)">
+          <rect id="Color" width="200" height="200" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

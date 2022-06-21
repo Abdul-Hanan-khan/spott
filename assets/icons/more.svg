@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3px" height="10px" viewBox="0 0 3 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/More</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.5,6 C8.91703276,6 8.44444444,5.55228475 8.44444444,5 C8.44444444,4.44771525 8.91703276,4 9.5,4 C10.0829672,4 10.5555556,4.44771525 10.5555556,5 C10.5555556,5.55228475 10.0829672,6 9.5,6 Z M9.5,14 C8.91703276,14 8.44444444,13.5522847 8.44444444,13 C8.44444444,12.4477153 8.91703276,12 9.5,12 C10.0829672,12 10.5555556,12.4477153 10.5555556,13 C10.5555556,13.5522847 10.0829672,14 9.5,14 Z M9.5,10 C8.91703276,10 8.44444444,9.55228475 8.44444444,9 C8.44444444,8.44771525 8.91703276,8 9.5,8 C10.0829672,8 10.5555556,8.44771525 10.5555556,9 C10.5555556,9.55228475 10.0829672,10 9.5,10 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Card/Card-Only-Text-Copy" transform="translate(-357.000000, -26.000000)">
+            <g id="Card-1-Copy">
+                <g id="Icons/More" transform="translate(349.431818, 22.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Combined-Shape" fill="#262628" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <g id="↳Tint/Dark-Gray-Copy" mask="url(#mask-2)" fill="#C6C5C6" fill-rule="evenodd">
+                        <rect id="Color" x="0" y="0" width="19" height="18"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
