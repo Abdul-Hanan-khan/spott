@@ -26,10 +26,10 @@ import 'components/spotted_list_view_screen.dart';
 
 class PlaceDetailScreen extends StatefulWidget {
   final Place _place;
-  final int index;
+
 
   const PlaceDetailScreen(
-this.index,
+
     this._place, {
     Key? key,
   }) : super(key: key);
@@ -181,7 +181,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> with SingleTicker
               },
               body: Container(
                 color: AppColors.secondaryBackGroundColor,
-                child: _buildUserPostsListView(widget.index),
+                child: _buildUserPostsListView(),
               ),
             ),
           );
@@ -392,13 +392,13 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> with SingleTicker
         : Container();
   }
 
-  Widget _buildUserPostsListView(int myIndex) {
+  Widget _buildUserPostsListView() {
     return (_place?.posts != null)
         ? ListView.separated(
             padding: const EdgeInsets.only(top: 10),
             itemCount: _place!.posts!.length,
             itemBuilder: (context, index) =>
-                PostCardView(myIndex),
+                PostCardView(index),
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),

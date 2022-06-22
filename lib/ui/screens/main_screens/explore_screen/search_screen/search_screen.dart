@@ -100,7 +100,7 @@ class _SearchScreenState extends State<SearchScreen>
       ? ListTile(
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => PlaceDetailScreen(0,_place),
+              builder: (context) => PlaceDetailScreen(_place),
             ),
           ),
           leading: PlaceImageView(_place.images?.firstOrNull),

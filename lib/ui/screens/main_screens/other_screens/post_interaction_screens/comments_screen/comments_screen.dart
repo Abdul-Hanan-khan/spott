@@ -26,7 +26,7 @@ import 'package:spott/utils/show_snack_bar.dart';
 class CommentsScreen extends StatefulWidget {
   final int index;
 
-   CommentsScreen(this.index ,{Key? key}) : super(key: key);
+  CommentsScreen(this.index, {Key? key}) : super(key: key);
 
   @override
   _CommentsScreenState createState() => _CommentsScreenState();
@@ -42,10 +42,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('post id => ${context.read<FeedCubit>().posts[widget.index].id.toString()}');
+    print(
+        'post id => ${context.read<FeedCubit>().posts[widget.index].id.toString()}');
     return BlocProvider<CommentsCubit>(
       create: (context) => CommentsCubit()
-        ..getAllComments(int.parse(context.read<FeedCubit>().posts[widget.index].id.toString())),
+        ..getAllComments(int.parse(
+            context.read<FeedCubit>().posts[widget.index].id.toString())),
       child: BlocConsumer<CommentsCubit, CommentsCubitState>(
         listener: (context, state) {
           if (state is FailedState) {
@@ -56,11 +58,11 @@ class _CommentsScreenState extends State<CommentsScreen> {
             _comments.addAll(state.comments);
             _stopPullToRefreshLoader();
           } else if (state is CommentAddedSuccessfully) {
-            if (state.postId == context.read<FeedCubit>().posts[widget.index].id) {
+            if (state.postId ==
+                context.read<FeedCubit>().posts[widget.index].id) {
               _comments.insert(0, state.comment);
-              context
-                  .read<PostCardViewCubit>()
-                  .commentAdd(int.parse(context.read<FeedCubit>().posts[widget.index].id.toString()));
+              context.read<PostCardViewCubit>().commentAdd(int.parse(
+                  context.read<FeedCubit>().posts[widget.index].id.toString()));
             }
           }
         },
@@ -85,10 +87,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       child: ListView(
                         padding: const EdgeInsets.only(top: 20, bottom: 100),
                         children: [
-                          PostCardView(
-                            widget.index,
-                            addNavigationToComments: false,
-                          ),
+                          PostCardView(widget.index,
+                              addNavigationToComments: false),
+                          // PostCardView(
+                          //   widget.index,
+                          //   addNavigationToComments: false,
+                          // ),
                           if (_comments.isEmpty) _buildNoCommentsView(context),
                           const SizedBox(
                             height: 20,
@@ -103,7 +107,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                               height: 20,
                             ),
                             itemBuilder: (context, index) =>
-                                _CommentView(_comments[index],index),
+                                _CommentView(_comments[index], index),
                           ),
                         ],
                       ),
@@ -166,7 +170,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
   void _onAddNewCommentPressed(BuildContext context) {
     if (_commentTextEditingController.text.isNotEmpty) {
       context.read<CommentsCubit>().addNewComment(
-          int.parse(context.read<FeedCubit>().posts[widget.index].id.toString()),
+          int.parse(
+              context.read<FeedCubit>().posts[widget.index].id.toString()),
           _commentTextEditingController.text);
       _commentTextEditingController.clear();
     }
@@ -190,7 +195,7 @@ class _CommentView extends StatefulWidget {
 
   final int index;
 
-  const _CommentView(this._comment, this.index,{Key? key}) : super(key: key);
+  const _CommentView(this._comment, this.index, {Key? key}) : super(key: key);
 
   @override
   State<_CommentView> createState() => _CommentViewState();
@@ -204,7 +209,11 @@ class _CommentViewState extends State<_CommentView> {
         .deleteComment(commentId: commentId, isRefreshing: true)
         .then((value) => {
               context.read<CommentsCubit>().getAllComments(
-                  int.parse(context.read<FeedCubit>().posts[widget.index].id.toString()),
+                  int.parse(context
+                      .read<FeedCubit>()
+                      .posts[widget.index]
+                      .id
+                      .toString()),
                   isRefreshing: true)
             });
   }

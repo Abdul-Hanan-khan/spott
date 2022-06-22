@@ -21,7 +21,7 @@ final int index;
 
   void _openDetailScreen(BuildContext context) {
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => PlaceDetailScreen(index,_place)));
+        MaterialPageRoute(builder: (context) => PlaceDetailScreen(_place)));
   }
 
   @override

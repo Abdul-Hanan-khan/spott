@@ -34,11 +34,11 @@ class PostCardView extends StatefulWidget {
   final int index;
 
 
-   PostCardView(
-     this.index, {
+  PostCardView(
+      this.index, {
 
-    this.addNavigationToComments = true,
-  }) ;
+        this.addNavigationToComments = true,
+      }) ;
 
   @override
   State<PostCardView> createState() => _PostCardViewState();
@@ -58,61 +58,60 @@ class _PostCardViewState extends State<PostCardView> {
     Post _post=context.read<FeedCubit>().posts[widget.index];
     return postIsVisible
         ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _PostHeaderView(
-                    index: widget.index,
-                    post: _post,
-                    onVisibilityChange: changePostVisibility,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _PostHeaderView(
+              post: _post,
+              onVisibilityChange: changePostVisibility,
+            ),
+            if (_post.type == PostType.image && _post.media?.first != null)
+              InkWell(
+                onTap: () {
+                  openDetailViewScreen(context);
+                },
+                child: Container(
+                  constraints: const BoxConstraints(
+                    maxHeight: 600,
                   ),
-                  if (_post.type == PostType.image && _post.media?.first != null)
-                    InkWell(
-                      onTap: () {
-                        openDetailViewScreen(context);
-                      },
-                      child: Container(
-                        constraints: const BoxConstraints(
-                          maxHeight: 600,
-                        ),
-                        child: CachedNetworkImage(
-                          imageUrl: _post.media?.first ?? '',
-                          fit: BoxFit.fitWidth,
-                          placeholder: (context, url) => const SizedBox(
-                            height: 150,
-                            child: LoadingAnimation(),
-                          ),
-                          errorWidget: (context, url, error) => const SizedBox(
-                            height: 150,
-                            child: Icon(Icons.error),
-                          ),
-                        ),
-                      ),
+                  child: CachedNetworkImage(
+                    imageUrl: _post.media?.first ?? '',
+                    fit: BoxFit.fitWidth,
+                    placeholder: (context, url) => const SizedBox(
+                      height: 150,
+                      child: LoadingAnimation(),
                     ),
-                  if (_post.type == PostType.video && _post.media?.first != null) VideoWidget(videoUrl: _post.media?.first),
-                  InkWell(
-                    onTap: () {
-                      openDetailViewScreen(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      alignment: Alignment.centerLeft,
-                      child: Text(_post.content ?? ''),
+                    errorWidget: (context, url, error) => const SizedBox(
+                      height: 150,
+                      child: Icon(Icons.error),
                     ),
                   ),
-                  _buildUserProfile(context),
-                  const Divider(),
-                  _PostFooterView(
-                    widget.index,
-                    addNavigationToComments: widget.addNavigationToComments,
-                  ),
-                ],
+                ),
+              ),
+            if (_post.type == PostType.video && _post.media?.first != null) VideoWidget(videoUrl: _post.media?.first),
+            InkWell(
+              onTap: () {
+                openDetailViewScreen(context);
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                alignment: Alignment.centerLeft,
+                child: Text(_post.content ?? ''),
               ),
             ),
-          )
+            _buildUserProfile(context),
+            const Divider(),
+            _PostFooterView(
+              widget.index,
+              addNavigationToComments: widget.addNavigationToComments,
+            ),
+          ],
+        ),
+      ),
+    )
         : Container();
   }
 
@@ -120,7 +119,7 @@ class _PostCardViewState extends State<PostCardView> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CommentsScreen(
-          widget.index
+            widget.index
         ),
       ),
     );
@@ -132,12 +131,12 @@ class _PostCardViewState extends State<PostCardView> {
     return ListTile(
       onTap: context.read<FeedCubit>().posts[widget.index].user != null
           ? () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ViewProfileScreen(_post.user),
-                ),
-              );
-            }
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ViewProfileScreen(_post.user),
+          ),
+        );
+      }
           : null,
       leading: InkWell(
           onTap: () {
@@ -153,16 +152,16 @@ class _PostCardViewState extends State<PostCardView> {
               decoration: BoxDecoration(
                   border: (_post.user?.storyAvailable == true)
                       ? _post.isSeen == false
-                          ? Border.all(
-                              color: Colors.green,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
-                          : Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
+                      ? Border.all(
+                    color: Colors.green,
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  )
+                      : Border.all(
+                    color: Colors.grey,
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  )
                       : null,
                   borderRadius: BorderRadius.circular(25)),
               child: UserProfileImageView(_post.user))),
@@ -176,9 +175,9 @@ class _PostCardViewState extends State<PostCardView> {
       ),
       trailing: (_post.createdAt != null)
           ? Text(
-              getStringFromTime(_post.createdAt),
-              style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
-            )
+        getStringFromTime(_post.createdAt),
+        style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
+      )
           : null,
     );
   }
@@ -189,11 +188,11 @@ class _PostFooterView extends StatefulWidget {
   final bool addNavigationToComments;
   final int index;
 
-   _PostFooterView(
-    this.index,{
-    Key? key,
-    required this.addNavigationToComments,
-  }) : super(key: key);
+  _PostFooterView(
+      this.index,{
+        Key? key,
+        required this.addNavigationToComments,
+      }) : super(key: key);
 
   @override
   _PostFooterViewState createState() => _PostFooterViewState();
@@ -742,13 +741,13 @@ class _PostFooterViewState extends State<_PostFooterView> {
 }
 
 class _PostHeaderView extends StatelessWidget {
-  final int index;
+
   final Function(bool onTap) onVisibilityChange;
   final Post _post;
 
   const _PostHeaderView({
     Key? key,
-    required this.index,
+
     required Post post,
     required this.onVisibilityChange,
   })  : _post = post,
@@ -760,12 +759,12 @@ class _PostHeaderView extends StatelessWidget {
     return ListTile(
         onTap: _post.place != null
             ? () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PlaceDetailScreen(index,_post.place!),
-                  ),
-                );
-              }
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => PlaceDetailScreen(_post.place!),
+            ),
+          );
+        }
             : null,
         contentPadding: const EdgeInsets.only(left: 10),
         leading: InkWell(
@@ -783,16 +782,16 @@ class _PostHeaderView extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: _post.place?.placeStoryAvailable == true
                         ? _post.seen == false
-                            ? Border.all(
-                                color: Colors.green,
-                                style: BorderStyle.solid,
-                                width: 2.0,
-                              )
-                            : Border.all(
-                                color: Colors.grey,
-                                style: BorderStyle.solid,
-                                width: 2.0,
-                              )
+                        ? Border.all(
+                      color: Colors.green,
+                      style: BorderStyle.solid,
+                      width: 2.0,
+                    )
+                        : Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                      width: 2.0,
+                    )
                         : null,
                     borderRadius: BorderRadius.circular(8)),
                 child: PlaceImageView(_post.place?.images?.firstOrNull))),
@@ -811,53 +810,53 @@ class _PostHeaderView extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: (_post.myPost != null && _post.myPost == true)
               ? PopupMenuButton(
-                  onSelected: (PopMenuOption value) => _onPopDeleteSelected(context, value),
-                  itemBuilder: (context) {
-                    return [
-                      const PopupMenuItem(
-                        value: PopMenuOption.deletePost,
-                        child: Text(
-                          'delete Post',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ];
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 15),
-                    child: SvgPicture.asset(
-                      'assets/icons/more.svg',
-                      width: size.width * 0.015,
-                    ),
+            onSelected: (PopMenuOption value) => _onPopDeleteSelected(context, value),
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem(
+                  value: PopMenuOption.deletePost,
+                  child: Text(
+                    'delete Post',
+                    style: TextStyle(color: Colors.red),
                   ),
-                )
+                ),
+              ];
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 15),
+              child: SvgPicture.asset(
+                'assets/icons/more.svg',
+                width: size.width * 0.015,
+              ),
+            ),
+          )
               : isNotCurrentUser(_post.user?.id)
-                  ? PopupMenuButton(
-                      onSelected: (PopMenuOption value) => _onPopupMenuSelection(context, value),
-                      itemBuilder: (context) {
-                        return [
-                          PopupMenuItem(
-                            value: PopMenuOption.reportPost,
-                            child: Text(LocaleKeys.reportThisPost.tr()),
-                          ),
-                          PopupMenuItem(
-                            value: PopMenuOption.blockUser,
-                            child: Text(
-                              LocaleKeys.blockUser.tr(),
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ];
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 15),
-                        child: SvgPicture.asset(
-                          'assets/icons/more.svg',
-                          width: size.width * 0.015,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
+              ? PopupMenuButton(
+            onSelected: (PopMenuOption value) => _onPopupMenuSelection(context, value),
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  value: PopMenuOption.reportPost,
+                  child: Text(LocaleKeys.reportThisPost.tr()),
+                ),
+                PopupMenuItem(
+                  value: PopMenuOption.blockUser,
+                  child: Text(
+                    LocaleKeys.blockUser.tr(),
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ];
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 15),
+              child: SvgPicture.asset(
+                'assets/icons/more.svg',
+                width: size.width * 0.015,
+              ),
+            ),
+          )
+              : const SizedBox(),
         ));
   }
 
@@ -870,7 +869,7 @@ class _PostHeaderView extends StatelessWidget {
         context.read<PostCardViewCubit>().blockUser(int.parse(_post.id.toString()), _post.user?.id);
         break;
       case PopMenuOption.deletePost:
-        // TODO: Handle this case.
+      // TODO: Handle this case.
         break;
     }
   }
@@ -881,10 +880,10 @@ class _PostHeaderView extends StatelessWidget {
         deletePost(context);
         break;
       case PopMenuOption.reportPost:
-        // TODO: Handle this case.
+      // TODO: Handle this case.
         break;
       case PopMenuOption.blockUser:
-        // TODO: Handle this case.
+      // TODO: Handle this case.
         break;
     }
   }

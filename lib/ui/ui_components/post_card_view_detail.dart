@@ -42,7 +42,7 @@ class PostCardViewDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[index];
+    Post _post = context.read<FeedCubit>().posts[index];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Card(
@@ -50,16 +50,16 @@ class PostCardViewDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _PostHeaderView(index,),
-            if (_post.type == PostType.image &&
-                _post.media?.first != null)
+            _PostHeaderView(
+              index,
+            ),
+            if (_post.type == PostType.image && _post.media?.first != null)
               Container(
                 constraints: const BoxConstraints(
                   maxHeight: 600,
                 ),
                 child: CachedNetworkImage(
-                  imageUrl:
-                      _post.media?.first ?? '',
+                  imageUrl: _post.media?.first ?? '',
                   fit: BoxFit.fitWidth,
                   placeholder: (context, url) => const SizedBox(
                     height: 150,
@@ -71,11 +71,8 @@ class PostCardViewDetail extends StatelessWidget {
                   ),
                 ),
               ),
-            if (_post.type == PostType.video &&
-                _post.media?.first != null)
-              VideoWidget(
-                  videoUrl:
-                      _post.media?.first),
+            if (_post.type == PostType.video && _post.media?.first != null)
+              VideoWidget(videoUrl: _post.media?.first),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               alignment: Alignment.centerLeft,
@@ -94,20 +91,18 @@ class PostCardViewDetail extends StatelessWidget {
   }
 
   Widget _buildUserProfile(BuildContext context) {
-    Post _post= context.read<FeedCubit>().posts[index];
+    Post _post = context.read<FeedCubit>().posts[index];
     return ListTile(
       onTap: _post.user != null
           ? () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ViewProfileScreen(
-                      _post.user),
+                  builder: (context) => ViewProfileScreen(_post.user),
                 ),
               );
             }
           : null,
-      leading:
-          UserProfileImageView(_post.user),
+      leading: UserProfileImageView(_post.user),
       title: Text(
         _post.user?.username ?? '',
         style: TextStyle(
@@ -118,8 +113,7 @@ class PostCardViewDetail extends StatelessWidget {
       ),
       trailing: (_post.createdAt != null)
           ? Text(
-              getStringFromTime(
-                  _post.createdAt),
+              getStringFromTime(_post.createdAt),
               style:
                   TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
             )
@@ -292,19 +286,17 @@ class _PostFooterViewState extends State<_PostFooterView> {
 
   @override
   Widget build(BuildContext context) {
+    Post _post = context.read<FeedCubit>().posts[widget.index];
     final Size size = MediaQuery.of(context).size;
     return BlocConsumer<PostCardViewCubit, PostCardViewState>(
       listenWhen: (oldState, currentState) {
-        if (oldState.postId ==
-                context.read<FeedCubit>().posts[widget.index].id ||
-            currentState.postId ==
-                context.read<FeedCubit>().posts[widget.index].id) {
+        if (oldState.postId == _post.id || currentState.postId == _post.id) {
           return true;
         }
         return false;
       },
       listener: (context, state) {
-        if (state.postId == context.read<FeedCubit>().posts[widget.index].id) {
+        if (state.postId == _post.id) {
           if (widget.addNavigationToComments) {
             if (state is SpottRequestStatusUpdated) {
               context
@@ -337,24 +329,15 @@ class _PostFooterViewState extends State<_PostFooterView> {
         }
       },
       buildWhen: (oldState, currentState) {
-        if (oldState.postId ==
-                context.read<FeedCubit>().posts[widget.index].id ||
-            currentState.postId ==
-                context.read<FeedCubit>().posts[widget.index].id) {
+        if (oldState.postId == _post.id || currentState.postId == _post.id) {
           return true;
         }
         return false;
       },
       builder: (context, state) {
         print("\n\n\n\n");
-        reactIsRemoved =
-            context.read<FeedCubit>().posts[widget.index].isReacted == null
-                ? true
-                : false;
-        reacted =
-            context.read<FeedCubit>().posts[widget.index].isReacted == null
-                ? false
-                : true;
+        reactIsRemoved = _post.isReacted == null ? true : false;
+        reacted = _post.isReacted == null ? false : true;
         print("\n\n\n\n");
         print(reactIsRemoved);
         print(reacted);
@@ -363,12 +346,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
         //   value = 0;
         if (reacted == true) {
           _reaction = selectedReactionWidget(
-            int.parse(context
-                .read<FeedCubit>()
-                .posts[widget.index]
-                .isReacted!
-                .reactKey!
-                .toString()),
+            int.parse(_post.isReacted!.reactKey!.toString()),
             size,
           );
         } else {
@@ -391,26 +369,11 @@ class _PostFooterViewState extends State<_PostFooterView> {
                           print("react is removed");
                           setState(() {
                             reactIsRemoved = true;
-                            if (context
-                                    .read<FeedCubit>()
-                                    .posts[widget.index]
-                                    .reactsCountt ==
-                                null) {
-                              context
-                                  .read<FeedCubit>()
-                                  .posts[widget.index]
-                                  .reactsCountt = 0;
+                            if (_post.reactsCountt == null) {
+                              _post.reactsCountt = 0;
                             }
-                            if (context
-                                        .read<FeedCubit>()
-                                        .posts[widget.index]
-                                        .reactsCountt !=
-                                    null &&
-                                context
-                                        .read<FeedCubit>()
-                                        .posts[widget.index]
-                                        .reactsCountt! >
-                                    0) {
+                            if (_post.reactsCountt != null &&
+                                _post.reactsCountt! > 0) {
                               setState(() {
                                 reacted = false;
                               });
@@ -441,8 +404,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
                                   "assets/reactions/double_up_arrow_grey.png"),
                             ),
                           );
-                          _onReactButtonPressed(context, 10,
-                              context.read<FeedCubit>().posts[widget.index]);
+                          _onReactButtonPressed(context, 10, _post);
                         } else {
                           print("reactIsNotRemoved");
 
@@ -477,8 +439,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
                             }
                           }
 
-                          _onReactButtonPressed(context, index,
-                              context.read<FeedCubit>().posts[widget.index]);
+                          _onReactButtonPressed(context, index, _post);
                           _reaction = selectedReactionWidget(index, size);
                         }
                       });
@@ -595,8 +556,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
                     },
                     child: SizedBox(
                       width: size.width * 0.07,
-                      child: Text(
-                          '${context.read<FeedCubit>().posts[widget.index].reactsCount ?? '0'}'),
+                      child: Text('${_post.reactsCount ?? '0'}'),
                     ),
                   ),
                 ],
@@ -717,6 +677,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   void _onReactButtonPressed(BuildContext context, int reactKey, Post post) {
+    Post _post = context.read<FeedCubit>().posts[widget.index];
     print("sending react key => $reactKey");
     if (!isLiked && post.isReacted == null) {
       setState(() {
@@ -728,17 +689,14 @@ class _PostFooterViewState extends State<_PostFooterView> {
     if (reactKey == -1) {
       context
           .read<PostCardViewCubit>()
-          .likePost(
-              int.parse(
-                  context.read<FeedCubit>().posts[widget.index].id.toString()),
-              0)
+          .likePost(int.parse(_post.id.toString()), 0)
           .then((value) => {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => PostViewScreen(
                       widget.index,
                       post: Post(
-                        id: context.read<FeedCubit>().posts[widget.index].id,
+                        id: _post.id,
                       ),
                     ),
                   ),
@@ -747,17 +705,14 @@ class _PostFooterViewState extends State<_PostFooterView> {
     } else {
       context
           .read<PostCardViewCubit>()
-          .likePost(
-              int.parse(
-                  context.read<FeedCubit>().posts[widget.index].id.toString()),
-              reactKey)
+          .likePost(int.parse(_post.id.toString()), reactKey)
           .then((value) => {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => PostViewScreen(
                       widget.index,
                       post: Post(
-                        id: context.read<FeedCubit>().posts[widget.index].id,
+                        id: _post.id,
                       ),
                     ),
                   ),
@@ -775,20 +730,20 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   Future<void> _onSpotButtonPressed(BuildContext context) async {
-    if (context.read<FeedCubit>().posts[widget.index].id != null) {
+    Post _post = context.read<FeedCubit>().posts[widget.index];
+    if (_post.id != null) {
       if (PreferencesController.isUserSentFirstSpottRequest()) {
         print("kashif 1");
         context
             .read<PostCardViewCubit>()
-            .requestSpot(int.parse(
-                context.read<FeedCubit>().posts[widget.index].id.toString()))
+            .requestSpot(int.parse(_post.id.toString()))
             .then((value) => {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => PostViewScreen(
                         widget.index,
                         post: Post(
-                          id: context.read<FeedCubit>().posts[widget.index].id,
+                          id: _post.id,
                         ),
                       ),
                     ),
@@ -798,19 +753,18 @@ class _PostFooterViewState extends State<_PostFooterView> {
         print("kashif sheikh");
         PreferencesController.rememberUserHaveSentFirstSpott();
         showSendSpottRequestDialogBox(context,
-            postId: int.parse(
-                context.read<FeedCubit>().posts[widget.index].id.toString()));
+            postId: int.parse(_post.id.toString()));
       }
     }
   }
 
   void _openSpottedScreen(BuildContext context) {
+    Post _post = context.read<FeedCubit>().posts[widget.index];
     print("Kashif");
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SpottedRequestsScreen(
-          postId: int.parse(
-              context.read<FeedCubit>().posts[widget.index].id.toString()),
+          postId: int.parse(_post.id.toString()),
         ),
       ),
     );
@@ -818,8 +772,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
 }
 
 class _PostHeaderView extends StatelessWidget {
-
   final int index;
+
   _PostHeaderView(
     this.index, {
     Key? key,
@@ -827,25 +781,21 @@ class _PostHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Post _post =context.read<FeedCubit>().posts[index];
+    Post _post = context.read<FeedCubit>().posts[index];
     final Size size = MediaQuery.of(context).size;
     return ListTile(
         onTap: _post.place != null
             ? () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => PlaceDetailScreen(index,
-                        _post.place!),
+                    builder: (context) => PlaceDetailScreen(_post.place!),
                   ),
                 );
               }
             : null,
         contentPadding: const EdgeInsets.only(left: 10),
-        leading: PlaceImageView(
-            _post.place?.images?.firstOrNull),
-        title: Text(
-            _post.place?.name.toString() ??
-                ''),
+        leading: PlaceImageView(_post.place?.images?.firstOrNull),
+        title: Text(_post.place?.name.toString() ?? ''),
         subtitle: Text(
           _post.place?.fullAddress ?? '',
           style: const TextStyle(
@@ -853,50 +803,50 @@ class _PostHeaderView extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
         ),
-        trailing:
-            isNotCurrentUser(_post.user?.id)
-                ? PopupMenuButton(
-                    onSelected: (PopMenuOption value) =>
-                        _onPopupMenuSelection(context, value),
-                    itemBuilder: (context) {
-                      return [
-                        PopupMenuItem(
-                          value: PopMenuOption.reportPost,
-                          child: Text(
-                            LocaleKeys.reportThisPost.tr(),
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: PopMenuOption.blockUser,
-                          child: Text(
-                            LocaleKeys.blockUser.tr(),
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ];
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 15),
-                      child: SvgPicture.asset(
-                        'assets/icons/more.svg',
-                        width: size.width * 0.015,
+        trailing: isNotCurrentUser(_post.user?.id)
+            ? PopupMenuButton(
+                onSelected: (PopMenuOption value) =>
+                    _onPopupMenuSelection(context, value),
+                itemBuilder: (context) {
+                  return [
+                    PopupMenuItem(
+                      value: PopMenuOption.reportPost,
+                      child: Text(
+                        LocaleKeys.reportThisPost.tr(),
                       ),
                     ),
-                  )
-                : const SizedBox());
+                    PopupMenuItem(
+                      value: PopMenuOption.blockUser,
+                      child: Text(
+                        LocaleKeys.blockUser.tr(),
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ];
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15),
+                  child: SvgPicture.asset(
+                    'assets/icons/more.svg',
+                    width: size.width * 0.015,
+                  ),
+                ),
+              )
+            : const SizedBox());
   }
 
   void _onPopupMenuSelection(BuildContext context, PopMenuOption value) {
-    Post _post=context.read<FeedCubit>().posts[index];
+    Post _post = context.read<FeedCubit>().posts[index];
     switch (value) {
       case PopMenuOption.reportPost:
-        context.read<PostCardViewCubit>().reportPost(
-            int.parse(_post.id.toString()));
+        context
+            .read<PostCardViewCubit>()
+            .reportPost(int.parse(_post.id.toString()));
         break;
       case PopMenuOption.blockUser:
-        context.read<PostCardViewCubit>().blockUser(
-            int.parse(_post.id.toString()),
-            _post.user?.id);
+        context
+            .read<PostCardViewCubit>()
+            .blockUser(int.parse(_post.id.toString()), _post.user?.id);
         break;
     }
   }

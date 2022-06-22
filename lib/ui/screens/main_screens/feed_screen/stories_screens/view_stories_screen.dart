@@ -213,7 +213,7 @@ class _HeaderView extends StatelessWidget {
                   ? () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              PlaceDetailScreen(index,story.place!)));
+                              PlaceDetailScreen(story.place!)));
                     }
                   : null,
               child: Row(

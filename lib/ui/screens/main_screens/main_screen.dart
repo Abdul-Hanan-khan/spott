@@ -297,7 +297,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   void _openPlaceDetailScreen(String? _id) {
     if (_id != null) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PlaceDetailScreen(0,Place(id: _id))));
+          builder: (context) => PlaceDetailScreen(Place(id: _id))));
     }
   }
 
