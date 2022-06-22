@@ -34,7 +34,12 @@ class Post {
   Place? _place;
   Spot? _spot;
   List<Reacts>? _reacts;
+
   Is_reacted? isReactedd;
+  bool? isReactRemovedd;
+  bool? reactedd;
+
+
   bool? _isSeen;
   dynamic? _userCommentCount;
 
@@ -63,6 +68,13 @@ class Post {
   int? get reactsCount => reactsCountt;
 
   Is_reacted? get isReacted => isReactedd;
+
+
+  dynamic? get isReactRemoved => isReactRemovedd;
+  dynamic get reacted => reactedd;
+
+
+
 
   dynamic? get privacy => _privacy;
 
@@ -173,8 +185,13 @@ class Post {
       bool? myPost,
       dynamic totalDynamicReactionsCount,
       List<Reacts>? reacts,
+
       Is_reacted? isReacted,
-      dynamic reactsCount,
+
+        dynamic isReactRemoved,
+        dynamic reacted,
+
+        dynamic reactsCount,
       User? user,
       Place? place,
       Spot? spot,
@@ -204,6 +221,11 @@ class Post {
     reactsCountt = reactsCount;
     _reacts = reacts;
     isReactedd = isReacted;
+
+    isReactRemovedd=isReactRemoved;
+    reactedd= reacted;
+
+
     _spot = spot;
     _seen = seen;
     _isSeen = isSeen;

@@ -16,7 +16,7 @@ class ChatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
         (_) => _checkForNavigationToMessagesScreen(context));
     return Scaffold(
       appBar: AppBar(

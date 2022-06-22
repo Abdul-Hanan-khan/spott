@@ -45,10 +45,10 @@ class _PostViewScreenState extends State<PostViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('post id => ${context.read<FeedCubit>().posts[widget.index!].id.toString()}');
+    print('post id => ${context.read<FeedCubit>().posts[widget.index].id.toString()}');
     return BlocProvider<PostViewCubit>(
       create: (context) =>
-      PostViewCubit()..getPostView(int.parse(context.read<FeedCubit>().posts[widget.index!].id.toString())),
+      PostViewCubit()..getPostView(int.parse(context.read<FeedCubit>().posts[widget.index].id.toString())),
       child: BlocConsumer<PostViewCubit, PostViewState>(
         listener: (context, state) {
           if (state is PostViewFailedState) {
@@ -57,7 +57,7 @@ class _PostViewScreenState extends State<PostViewScreen> {
                 context: context,
                 message: state.viewPostApiModel.message.toString());
           } else if (state is PostViewSuccessState) {
-            context.read<FeedCubit>().posts[widget.index!] = state.viewPostApiModel.data!;
+            context.read<FeedCubit>().posts[widget.index] = state.viewPostApiModel.data!;
             stopPullToRefreshLoader();
           } else if (state is PostCommentsFetched) {
             stopPullToRefreshLoader();

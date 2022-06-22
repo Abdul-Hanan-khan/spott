@@ -94,7 +94,7 @@ class _PostInteractionScreenState extends State<PostInteractionScreen>
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
         create: (context) =>
-            PostReactsCubit()..getAllReacts(context.read<FeedCubit>().posts[widget.index!].id.toString()),
+            PostReactsCubit()..getAllReacts(context.read<FeedCubit>().posts[widget.index].id.toString()),
         child: BlocConsumer<PostReactsCubit, PostReactsState>(
           listener: (context, state) {
             if (state is PostReactsSuccessState) {

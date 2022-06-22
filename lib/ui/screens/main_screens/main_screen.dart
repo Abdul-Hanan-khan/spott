@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   void dispose() {
     _sub?.cancel();
     super.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     FireStoreDatabase().changeState(AppData.currentUser!.id.toString(), 0);
   }
 
@@ -71,11 +71,11 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     _handleInitialUri();
     _fetchUserNotifications(context);
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((_) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       /// set state here online
       FireStoreDatabase().changeState(AppData.currentUser!.id.toString(), 1);
     });
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override

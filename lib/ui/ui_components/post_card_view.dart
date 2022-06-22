@@ -333,16 +333,16 @@ class _PostFooterViewState extends State<_PostFooterView> {
   bool isSet = false;
   int value = 0;
   bool isLiked = false;
-  bool reactIsRemoved = false;
-  bool reacted = false;
+  // bool reactIsRemoved = false;
+  // bool reacted = false;
 
   @override
   void initState() {
     Post _post=context.read<FeedCubit>().posts[widget.index];
 
     super.initState();
-    reactIsRemoved = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? true : false;
-    reacted = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? false : true;
+    _post.isReactRemovedd = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? true : false;
+    _post.reactedd = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? false : true;
     setState(() {});
   }
 
@@ -351,7 +351,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
     Post _post=context.read<FeedCubit>().posts[widget.index];
 
     final Size size = MediaQuery.of(context).size;
-    if (reactIsRemoved) {
+    if (_post.isReactRemovedd!) {
       _post.isReactedd=Is_reacted(id: 0,refId: 0,reactKey: 10,);
       print(_post.isReactedd);
       _reaction = selectedReactionWidget(10, size);
@@ -433,17 +433,17 @@ class _PostFooterViewState extends State<_PostFooterView> {
                   FlutterReactionButtonCheck(
                     onReactionChanged: (reaction, index, isChecked) {
                       setState(() {
-                        if (index == -1 && reactIsRemoved == false) {
+                        if (index == -1 && _post.isReactRemovedd! == false) {
                           print("react is removed");
 
                           setState(() {
-                            reactIsRemoved = true;
+                            _post.isReactRemovedd = true;
                             if (_post.reactsCountt == null) {
                               _post.reactsCountt = 0;
                             }
                             if (_post.reactsCountt != null && _post.reactsCountt! > 0) {
                               setState(() {
-                                reacted = false;
+                                _post.reactedd = false;
                               });
                               int myIndex=context.read<FeedCubit>().posts.indexWhere((element) => element.id == _post.id);
                               context.read<FeedCubit>().posts[myIndex].reactsCountt= context.read<FeedCubit>().posts[myIndex].reactsCount! - 1;
@@ -471,13 +471,13 @@ class _PostFooterViewState extends State<_PostFooterView> {
 
                         } else {
                           setState(() {
-                            reactIsRemoved = false;
+                            _post.isReactRemovedd = false;
                           });
-                          if (!reactIsRemoved) {
+                          if (!_post.isReactRemovedd!) {
                             if (_post.reactsCount == null) {
                               _post.reactsCountt = 0;
                             }
-                            if (!reacted) {
+                            if (!_post.reactedd!) {
                               int myIndex=context.read<FeedCubit>().posts.indexWhere((element) => element.id == _post.id);
                               context.read<FeedCubit>().posts[myIndex].reactsCountt= context.read<FeedCubit>().posts[myIndex].reactsCount! + 1;
 
@@ -485,7 +485,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
 
 
                               setState(() {
-                                reacted = true;
+                                _post.reactedd = true;
                               });
                             }
                           }

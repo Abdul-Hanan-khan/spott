@@ -65,12 +65,12 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
 
     super.initState();
 
-    SchedulerBinding.instance!.addPostFrameCallback((_) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       /// set state here online
       FireStoreDatabase().changeState(AppData.currentUser!.id.toString(), 1);
     });
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -79,7 +79,7 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
     _ampTimer?.cancel();
     _audioRecorder.closeAudioSession();
     super.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
