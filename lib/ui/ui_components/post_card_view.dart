@@ -341,8 +341,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
     Post _post=context.read<FeedCubit>().posts[widget.index];
 
     super.initState();
-    reactIsRemoved = _post.isReacted == null ? true : false;
-    reacted = _post.isReacted == null ? false : true;
+    reactIsRemoved = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? true : false;
+    reacted = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? false : true;
     setState(() {});
   }
 
