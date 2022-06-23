@@ -27,18 +27,17 @@ import 'package:spott/utils/helper_functions.dart';
 import 'package:spott/utils/preferences_controller.dart';
 import 'package:spott/utils/show_snack_bar.dart';
 
-import '../../blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart' hide PostLiked, PostDisliked, ErrorState, CommentCountUpdated;
+import '../../blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart'
+    hide PostLiked, PostDisliked, ErrorState, CommentCountUpdated;
 
 class PostCardView extends StatefulWidget {
   final bool addNavigationToComments;
   final int index;
 
-
   PostCardView(
-      this.index, {
-
-        this.addNavigationToComments = true,
-      }) ;
+    this.index, {
+    this.addNavigationToComments = true,
+  });
 
   @override
   State<PostCardView> createState() => _PostCardViewState();
@@ -55,88 +54,91 @@ class _PostCardViewState extends State<PostCardView> {
 
   @override
   Widget build(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
     return postIsVisible
         ? Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _PostHeaderView(
-              post: _post,
-              onVisibilityChange: changePostVisibility,
-            ),
-            if (_post.type == PostType.image && _post.media?.first != null)
-              InkWell(
-                onTap: () {
-                  openDetailViewScreen(context);
-                },
-                child: Container(
-                  constraints: const BoxConstraints(
-                    maxHeight: 600,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _PostHeaderView(
+                    post: _post,
+                    onVisibilityChange: changePostVisibility,
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: _post.media?.first ?? '',
-                    fit: BoxFit.fitWidth,
-                    placeholder: (context, url) => const SizedBox(
-                      height: 150,
-                      child: LoadingAnimation(),
+                  if (_post.type == PostType.image &&
+                      _post.media?.first != null)
+                    InkWell(
+                      onTap: () {
+                        openDetailViewScreen(context);
+                      },
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxHeight: 600,
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: _post.media?.first ?? '',
+                          fit: BoxFit.fitWidth,
+                          placeholder: (context, url) => const SizedBox(
+                            height: 150,
+                            child: LoadingAnimation(),
+                          ),
+                          errorWidget: (context, url, error) => const SizedBox(
+                            height: 150,
+                            child: Icon(Icons.error),
+                          ),
+                        ),
+                      ),
                     ),
-                    errorWidget: (context, url, error) => const SizedBox(
-                      height: 150,
-                      child: Icon(Icons.error),
+                  if (_post.type == PostType.video &&
+                      _post.media?.first != null)
+                    VideoWidget(videoUrl: _post.media?.first),
+                  InkWell(
+                    onTap: () {
+                      openDetailViewScreen(context);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
+                      alignment: Alignment.centerLeft,
+                      child: Text(_post.content ?? ''),
                     ),
                   ),
-                ),
-              ),
-            if (_post.type == PostType.video && _post.media?.first != null) VideoWidget(videoUrl: _post.media?.first),
-            InkWell(
-              onTap: () {
-                openDetailViewScreen(context);
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                alignment: Alignment.centerLeft,
-                child: Text(_post.content ?? ''),
+                  _buildUserProfile(context),
+                  const Divider(),
+                  _PostFooterView(
+                    widget.index,
+                    addNavigationToComments: widget.addNavigationToComments,
+                  ),
+                ],
               ),
             ),
-            _buildUserProfile(context),
-            const Divider(),
-            _PostFooterView(
-              widget.index,
-              addNavigationToComments: widget.addNavigationToComments,
-            ),
-          ],
-        ),
-      ),
-    )
+          )
         : Container();
   }
 
   void openDetailViewScreen(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CommentsScreen(
-            widget.index
-        ),
+        builder: (context) => CommentsScreen(widget.index),
       ),
     );
   }
 
   Widget _buildUserProfile(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     return ListTile(
       onTap: context.read<FeedCubit>().posts[widget.index].user != null
           ? () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => ViewProfileScreen(_post.user),
-          ),
-        );
-      }
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ViewProfileScreen(_post.user),
+                ),
+              );
+            }
           : null,
       leading: InkWell(
           onTap: () {
@@ -144,7 +146,8 @@ class _PostCardViewState extends State<PostCardView> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
+                    builder: (context) => UserViewStoriesScreen(
+                        _post.placeId, _post.place!.name!, _post.id),
                   ));
             }
           },
@@ -152,16 +155,16 @@ class _PostCardViewState extends State<PostCardView> {
               decoration: BoxDecoration(
                   border: (_post.user?.storyAvailable == true)
                       ? _post.isSeen == false
-                      ? Border.all(
-                    color: Colors.green,
-                    style: BorderStyle.solid,
-                    width: 2.0,
-                  )
-                      : Border.all(
-                    color: Colors.grey,
-                    style: BorderStyle.solid,
-                    width: 2.0,
-                  )
+                          ? Border.all(
+                              color: Colors.green,
+                              style: BorderStyle.solid,
+                              width: 2.0,
+                            )
+                          : Border.all(
+                              color: Colors.grey,
+                              style: BorderStyle.solid,
+                              width: 2.0,
+                            )
                       : null,
                   borderRadius: BorderRadius.circular(25)),
               child: UserProfileImageView(_post.user))),
@@ -175,24 +178,24 @@ class _PostCardViewState extends State<PostCardView> {
       ),
       trailing: (_post.createdAt != null)
           ? Text(
-        getStringFromTime(_post.createdAt),
-        style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
-      )
+              getStringFromTime(_post.createdAt),
+              style:
+                  TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
+            )
           : null,
     );
   }
 }
 
 class _PostFooterView extends StatefulWidget {
-
   final bool addNavigationToComments;
   final int index;
 
   _PostFooterView(
-      this.index,{
-        Key? key,
-        required this.addNavigationToComments,
-      }) : super(key: key);
+    this.index, {
+    Key? key,
+    required this.addNavigationToComments,
+  }) : super(key: key);
 
   @override
   _PostFooterViewState createState() => _PostFooterViewState();
@@ -222,7 +225,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
               width: size.width * 0.1,
               height: size.height * 0.03,
               margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-              child: Image.asset('assets/reactions/double_arrow_down_icon.gif')),
+              child:
+                  Image.asset('assets/reactions/double_arrow_down_icon.gif')),
           previewIcon: Container(
             width: size.width * 0.12,
             margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
@@ -333,34 +337,44 @@ class _PostFooterViewState extends State<_PostFooterView> {
   bool isSet = false;
   int value = 0;
   bool isLiked = false;
+
   // bool reactIsRemoved = false;
   // bool reacted = false;
 
   @override
   void initState() {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     super.initState();
-    _post.isReactRemovedd = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? true : false;
-    _post.reactedd = _post.isReacted == null ||_post.isReactedd!.reactKeyy==10? false : true;
-    setState(() {});
+    _post.isReactRemovedd =
+        _post.isReacted == null || _post.isReactedd!.reactKeyy == 10
+            ? true
+            : false;
+    _post.reactedd =
+        _post.isReacted == null || _post.isReactedd!.reactKeyy == 10
+            ? false
+            : true;
+    // setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     final Size size = MediaQuery.of(context).size;
     if (_post.isReactRemovedd!) {
-      _post.isReactedd=Is_reacted(id: 0,refId: 0,reactKey: 10,);
+      _post.isReactedd = Is_reacted(
+        id: 0,
+        refId: 0,
+        reactKey: 10,
+      );
       print(_post.isReactedd);
       _reaction = selectedReactionWidget(10, size);
       // _post.isReactedd!.reactKeyy!=10;
 
-      setState(() {});
-    }else{
+      // setState(() {});
+    } else {
       _reaction = selectedReactionWidget(_post.isReactedd!.reactKeyy, size);
-
     }
 
     return BlocConsumer<PostCardViewCubit, PostCardViewState>(
@@ -391,12 +405,14 @@ class _PostFooterViewState extends State<_PostFooterView> {
           }
           if (state is UserBlocked) {
             if (state.apiResponse.message != null) {
-              showSnackBar(context: context, message: state.apiResponse.message!);
+              showSnackBar(
+                  context: context, message: state.apiResponse.message!);
             }
           }
           if (state is PostReported) {
             if (state.apiResponse.message != null) {
-              showSnackBar(context: context, message: state.apiResponse.message!);
+              showSnackBar(
+                  context: context, message: state.apiResponse.message!);
             }
           }
         }
@@ -408,7 +424,6 @@ class _PostFooterViewState extends State<_PostFooterView> {
         return false;
       },
       builder: (context, state) {
-
         if (_post.isReactedd != null) {
           _reaction = selectedReactionWidget(
             int.parse(_post.isReactedd!.reactKeyy!.toString()),
@@ -416,9 +431,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
           );
         } else {
           _reaction = selectedReactionWidget(10, size);
-          _post.isReactedd!.reactKeyy!=10;
+          _post.isReactedd!.reactKeyy != 10;
         }
-
 
         //   isSet = true;
         // }
@@ -436,72 +450,93 @@ class _PostFooterViewState extends State<_PostFooterView> {
                         if (index == -1 && _post.isReactRemovedd! == false) {
                           print("react is removed");
 
-                          setState(() {
-                            _post.isReactRemovedd = true;
-                            if (_post.reactsCountt == null) {
-                              _post.reactsCountt = 0;
-                            }
-                            if (_post.reactsCountt != null && _post.reactsCountt! > 0) {
-                              setState(() {
-                                _post.reactedd = false;
-                              });
-                              int myIndex=context.read<FeedCubit>().posts.indexWhere((element) => element.id == _post.id);
-                              context.read<FeedCubit>().posts[myIndex].reactsCountt= context.read<FeedCubit>().posts[myIndex].reactsCount! - 1;
-                              // _post.reactsCountt = _post.reactsCount! - 1;
-                            }
-                          });
+                          // setState(() {
+                          _post.isReactRemovedd = true;
+                          if (_post.reactsCountt == null) {
+                            _post.reactsCountt = 0;
+                          }
+                          if (_post.reactsCountt != null &&
+                              _post.reactsCountt! > 0) {
+                            // setState(() {
+                            _post.reactedd = false;
+                            // });
+                            int myIndex = context
+                                .read<FeedCubit>()
+                                .posts
+                                .indexWhere(
+                                    (element) => element.id == _post.id);
+                            context
+                                .read<FeedCubit>()
+                                .posts[myIndex]
+                                .reactsCountt = context
+                                    .read<FeedCubit>()
+                                    .posts[myIndex]
+                                    .reactsCount! -
+                                1;
+                            // _post.reactsCountt = _post.reactsCount! - 1;
+                          }
+                          // });
                           _reaction = Reaction(
                             icon: Container(
                               width: size.width * 0.1,
                               height: size.height * 0.03,
-                              margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-                              child: Image.asset("assets/reactions/double_up_arrow_grey.png"),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.01),
+                              child: Image.asset(
+                                  "assets/reactions/double_up_arrow_grey.png"),
                             ),
                             previewIcon: Container(
                               width: size.width * 0.12,
-                              margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-                              child: Image.asset("assets/reactions/double_up_arrow_grey.png"),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.01),
+                              child: Image.asset(
+                                  "assets/reactions/double_up_arrow_grey.png"),
                             ),
                           );
-                          int myIndex=context.read<FeedCubit>().posts.indexWhere((element) => element.id == _post.id);
-                          context.read<FeedCubit>().posts[myIndex].isReactedd!.reactKeyy=10;
+                          int myIndex = context
+                              .read<FeedCubit>()
+                              .posts
+                              .indexWhere((element) => element.id == _post.id);
+                          context
+                              .read<FeedCubit>()
+                              .posts[myIndex]
+                              .isReactedd!
+                              .reactKeyy = 10;
                           // _post.isReactedd!.reactKey!=10;
                           _onReactButtonPressed(context, 10, _post);
-
-
                         } else {
-                          setState(() {
-                            _post.isReactRemovedd = false;
-                          });
+                          _post.isReactRemovedd = false;
+                          // });
                           if (!_post.isReactRemovedd!) {
                             if (_post.reactsCount == null) {
                               _post.reactsCountt = 0;
                             }
                             if (!_post.reactedd!) {
-                              int myIndex=context.read<FeedCubit>().posts.indexWhere((element) => element.id == _post.id);
-                              context.read<FeedCubit>().posts[myIndex].reactsCountt= context.read<FeedCubit>().posts[myIndex].reactsCount! + 1;
-
-                              // _post.reactsCountt = _post.reactsCount! + 1;
-
-
-                              setState(() {
-                                _post.reactedd = true;
-                              });
+                              int myIndex = context
+                                  .read<FeedCubit>()
+                                  .posts
+                                  .indexWhere(
+                                      (element) => element.id == _post.id);
+                              context
+                                  .read<FeedCubit>()
+                                  .posts[myIndex]
+                                  .reactsCountt = context
+                                      .read<FeedCubit>()
+                                      .posts[myIndex]
+                                      .reactsCount! +
+                                  1;
+                              _post.reactedd = true;
                             }
                           }
-                          // context.read<FeedCubit>().posts[widget.index].isReacted!.reactKey=index;
                           _onReactButtonPressed(context, index, _post);
-                          setState((){
-                            context.read<FeedCubit>().posts[widget.index].isReactedd!.reactKeyy=index;
-
-                            // _post.isReactedd!.reactKeyy=index;
-                          });
+                          context
+                              .read<FeedCubit>()
+                              .posts[widget.index]
+                              .isReactedd!
+                              .reactKeyy = index;
 
                           print(_post.isReactedd);
                           _reaction = selectedReactionWidget(index, size);
-                          // context.read<FeedCubit>().posts[widget.index].isReacted!.reactKey=index;
-
-
                         }
                       });
                     },
@@ -529,7 +564,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
                       Reaction(
                         icon: Container(
                           width: size.width * 0.12,
-                          margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.01),
                           child: Image.asset(
                             'assets/reactions/double_arrow_down_icon.gif',
                           ),
@@ -586,7 +622,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
                         ),
                         previewIcon: Container(
                           width: size.width * 0.12,
-                          margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.01),
                           child: Image.asset('assets/reactions/sad.gif'),
                         ),
                       ),
@@ -600,7 +637,8 @@ class _PostFooterViewState extends State<_PostFooterView> {
                         ),
                         previewIcon: Container(
                           width: size.width * 0.12,
-                          margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.01),
                           child: Image.asset('assets/reactions/angry.gif'),
                         ),
                       ),
@@ -625,14 +663,21 @@ class _PostFooterViewState extends State<_PostFooterView> {
                   children: [
                     IconButton(
                       padding: EdgeInsets.zero,
-                      onPressed: state is LoadingState ? null : () => _onSpotButtonPressed(context),
+                      onPressed: state is LoadingState
+                          ? null
+                          : () => _onSpotButtonPressed(context),
                       icon: SvgPicture.asset(
-                        _post.spot?.status == SpotStatus.accept ? 'assets/icons/eye_accepted.svg' : 'assets/icons/eye.svg',
+                        _post.spot?.status == SpotStatus.accept
+                            ? 'assets/icons/eye_accepted.svg'
+                            : 'assets/icons/eye.svg',
                         color: _post.spot == null ? Colors.grey : null,
                       ),
                     ),
                     if (_post.spotsCount != null)
-                      GestureDetector(onTap: () => _openSpottedScreen(context), child: CountTextView(int.parse(_post.spotsCount.toString()))),
+                      GestureDetector(
+                          onTap: () => _openSpottedScreen(context),
+                          child: CountTextView(
+                              int.parse(_post.spotsCount.toString()))),
                     if (_post.spotsCount == null)
                       GestureDetector(
                         onTap: () => _openSpottedScreen(context),
@@ -643,12 +688,17 @@ class _PostFooterViewState extends State<_PostFooterView> {
               ),
               IconButton(
                 padding: EdgeInsets.zero,
-                onPressed: widget.addNavigationToComments ? () => _onCommentsPressed(context) : null,
+                onPressed: widget.addNavigationToComments
+                    ? () => _onCommentsPressed(context)
+                    : null,
                 icon: Row(
                   children: [
                     SvgPicture.asset(
                       'assets/icons/comment.svg',
-                      color: (_post.userCommentCount != null && int.parse(_post.userCommentCount.toString()) > 0) ? null : Colors.grey,
+                      color: (_post.userCommentCount != null &&
+                              int.parse(_post.userCommentCount.toString()) > 0)
+                          ? null
+                          : Colors.grey,
                     ),
                     const SizedBox(
                       width: 10,
@@ -672,7 +722,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   void _onCommentsPressed(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -685,7 +735,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   void _onReactButtonPressed(BuildContext context, int reactKey, Post post) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     print("sending react key => $reactKey");
     if (!isLiked && post.isReacted == null) {
@@ -696,9 +746,13 @@ class _PostFooterViewState extends State<_PostFooterView> {
     }
 
     if (reactKey == -1) {
-      context.read<PostCardViewCubit>().likePost(int.parse(_post.id.toString()), 0);
+      context
+          .read<PostCardViewCubit>()
+          .likePost(int.parse(_post.id.toString()), 0);
     } else {
-      context.read<PostCardViewCubit>().likePost(int.parse(_post.id.toString()), reactKey);
+      context
+          .read<PostCardViewCubit>()
+          .likePost(int.parse(_post.id.toString()), reactKey);
     }
   }
 
@@ -711,7 +765,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   Future<void> _onSpotButtonPressed(BuildContext context) async {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
 
     if (_post.id != null) {
       if (PreferencesController.isUserSentFirstSpottRequest()) {
@@ -719,17 +773,19 @@ class _PostFooterViewState extends State<_PostFooterView> {
         context
             .read<PostCardViewCubit>()
             .requestSpot(int.parse(_post.id.toString()))
-            .then((value) => {context.read<FeedCubit>().refreshAllData(context)});
+            .then(
+                (value) => {context.read<FeedCubit>().refreshAllData(context)});
       } else {
         print("kashif sheikh");
         PreferencesController.rememberUserHaveSentFirstSpott();
-        showSendSpottRequestDialogBox(context, postId: int.parse(_post.id.toString()));
+        showSendSpottRequestDialogBox(context,
+            postId: int.parse(_post.id.toString()));
       }
     }
   }
 
   void _openSpottedScreen(BuildContext context) {
-    Post _post=context.read<FeedCubit>().posts[widget.index];
+    Post _post = context.read<FeedCubit>().posts[widget.index];
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SpottedRequestsScreen(
@@ -741,13 +797,11 @@ class _PostFooterViewState extends State<_PostFooterView> {
 }
 
 class _PostHeaderView extends StatelessWidget {
-
   final Function(bool onTap) onVisibilityChange;
   final Post _post;
 
   const _PostHeaderView({
     Key? key,
-
     required Post post,
     required this.onVisibilityChange,
   })  : _post = post,
@@ -759,12 +813,12 @@ class _PostHeaderView extends StatelessWidget {
     return ListTile(
         onTap: _post.place != null
             ? () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => PlaceDetailScreen(_post.place!),
-            ),
-          );
-        }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PlaceDetailScreen(_post.place!),
+                  ),
+                );
+              }
             : null,
         contentPadding: const EdgeInsets.only(left: 10),
         leading: InkWell(
@@ -774,7 +828,8 @@ class _PostHeaderView extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
+                      builder: (context) => UserViewStoriesScreen(
+                          _post.placeId, _post.place!.name!, _post.id),
                     ));
               }
             },
@@ -782,16 +837,16 @@ class _PostHeaderView extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: _post.place?.placeStoryAvailable == true
                         ? _post.seen == false
-                        ? Border.all(
-                      color: Colors.green,
-                      style: BorderStyle.solid,
-                      width: 2.0,
-                    )
-                        : Border.all(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 2.0,
-                    )
+                            ? Border.all(
+                                color: Colors.green,
+                                style: BorderStyle.solid,
+                                width: 2.0,
+                              )
+                            : Border.all(
+                                color: Colors.grey,
+                                style: BorderStyle.solid,
+                                width: 2.0,
+                              )
                         : null,
                     borderRadius: BorderRadius.circular(8)),
                 child: PlaceImageView(_post.place?.images?.firstOrNull))),
@@ -810,66 +865,72 @@ class _PostHeaderView extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: (_post.myPost != null && _post.myPost == true)
               ? PopupMenuButton(
-            onSelected: (PopMenuOption value) => _onPopDeleteSelected(context, value),
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem(
-                  value: PopMenuOption.deletePost,
-                  child: Text(
-                    'delete Post',
-                    style: TextStyle(color: Colors.red),
+                  onSelected: (PopMenuOption value) =>
+                      _onPopDeleteSelected(context, value),
+                  itemBuilder: (context) {
+                    return [
+                      const PopupMenuItem(
+                        value: PopMenuOption.deletePost,
+                        child: Text(
+                          'delete Post',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ];
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 15),
+                    child: SvgPicture.asset(
+                      'assets/icons/more.svg',
+                      width: size.width * 0.015,
+                    ),
                   ),
-                ),
-              ];
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: SvgPicture.asset(
-                'assets/icons/more.svg',
-                width: size.width * 0.015,
-              ),
-            ),
-          )
+                )
               : isNotCurrentUser(_post.user?.id)
-              ? PopupMenuButton(
-            onSelected: (PopMenuOption value) => _onPopupMenuSelection(context, value),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  value: PopMenuOption.reportPost,
-                  child: Text(LocaleKeys.reportThisPost.tr()),
-                ),
-                PopupMenuItem(
-                  value: PopMenuOption.blockUser,
-                  child: Text(
-                    LocaleKeys.blockUser.tr(),
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-              ];
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: SvgPicture.asset(
-                'assets/icons/more.svg',
-                width: size.width * 0.015,
-              ),
-            ),
-          )
-              : const SizedBox(),
+                  ? PopupMenuButton(
+                      onSelected: (PopMenuOption value) =>
+                          _onPopupMenuSelection(context, value),
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            value: PopMenuOption.reportPost,
+                            child: Text(LocaleKeys.reportThisPost.tr()),
+                          ),
+                          PopupMenuItem(
+                            value: PopMenuOption.blockUser,
+                            child: Text(
+                              LocaleKeys.blockUser.tr(),
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ];
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 15),
+                        child: SvgPicture.asset(
+                          'assets/icons/more.svg',
+                          width: size.width * 0.015,
+                        ),
+                      ),
+                    )
+                  : const SizedBox(),
         ));
   }
 
   void _onPopupMenuSelection(BuildContext context, PopMenuOption value) {
     switch (value) {
       case PopMenuOption.reportPost:
-        context.read<PostCardViewCubit>().reportPost(int.parse(_post.id.toString()));
+        context
+            .read<PostCardViewCubit>()
+            .reportPost(int.parse(_post.id.toString()));
         break;
       case PopMenuOption.blockUser:
-        context.read<PostCardViewCubit>().blockUser(int.parse(_post.id.toString()), _post.user?.id);
+        context
+            .read<PostCardViewCubit>()
+            .blockUser(int.parse(_post.id.toString()), _post.user?.id);
         break;
       case PopMenuOption.deletePost:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         break;
     }
   }
@@ -880,16 +941,19 @@ class _PostHeaderView extends StatelessWidget {
         deletePost(context);
         break;
       case PopMenuOption.reportPost:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         break;
       case PopMenuOption.blockUser:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         break;
     }
   }
 
   deletePost(BuildContext context) async {
-    context.read<PostCardViewCubit>().deletePost(int.parse(_post.id.toString()), context).then((value) {
+    context
+        .read<PostCardViewCubit>()
+        .deletePost(int.parse(_post.id.toString()), context)
+        .then((value) {
       print("Deleted");
       onVisibilityChange(value);
     });
