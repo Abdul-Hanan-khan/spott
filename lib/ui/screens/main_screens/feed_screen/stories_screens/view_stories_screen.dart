@@ -391,7 +391,7 @@ class _ViewStoriesScreenState extends State<ViewStoriesScreen> {
   }
 
   void _markStoryAsSeen(Post story) {
-    if (!(story.isSeen ?? false)) {
+    if (!(story.seenn ?? false)) {
       context
           .read<ViewStoriesCubit>()
           .markStoryAsSeen(int.parse(story.id.toString()));

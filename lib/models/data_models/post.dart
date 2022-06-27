@@ -9,26 +9,26 @@ enum PostType { text, image, video }
 
 
 class Post {
-  dynamic? _id;
+  dynamic _id;
   dynamic _userId;
   PostType? _type;
   String? _content;
-  dynamic? _lat;
-  dynamic? _lng;
-  dynamic? _address;
-  dynamic? _placeId;
-  dynamic? _placeType;
+  dynamic _lat;
+  dynamic _lng;
+  dynamic _address;
+  dynamic _placeId;
+  dynamic _placeType;
   dynamic _status;
-  dynamic? _privacy;
+  dynamic _privacy;
   List<String>? _media;
   dynamic _views;
   DateTime? _createdAt;
   DateTime? _updatedAt;
-  dynamic? _commentsCount;
+  dynamic _commentsCount;
   int? reactsCountt;
-  dynamic? _spotsCount;
+  dynamic _spotsCount;
   bool? _myPost;
-  bool? _seen;
+  bool? seenn;
   dynamic _totaldynamiceractionsCount;
   User? _user;
   Place? _place;
@@ -39,13 +39,11 @@ class Post {
   bool? isReactRemovedd;
   bool? reactedd;
 
-
-  bool? _isSeen;
-  dynamic? _userCommentCount;
+  dynamic _userCommentCount;
 
   List<Reacts>? get reacts => _reacts;
 
-  dynamic? get id => _id;
+  dynamic get id => _id;
 
   dynamic get userId => _userId;
 
@@ -53,15 +51,15 @@ class Post {
 
   String? get content => _content;
 
-  dynamic? get lat => _lat;
+  dynamic get lat => _lat;
 
-  dynamic? get lng => _lng;
+  dynamic get lng => _lng;
 
-  dynamic? get address => _address;
+  dynamic get address => _address;
 
-  dynamic? get placeId => _placeId;
+  dynamic get placeId => _placeId;
 
-  dynamic? get placeType => _placeType;
+  dynamic get placeType => _placeType;
 
   dynamic get status => _status;
 
@@ -70,13 +68,13 @@ class Post {
   Is_reacted? get isReacted => isReactedd;
 
 
-  dynamic? get isReactRemoved => isReactRemovedd;
+  dynamic get isReactRemoved => isReactRemovedd;
   dynamic get reacted => reactedd;
 
 
 
 
-  dynamic? get privacy => _privacy;
+  dynamic get privacy => _privacy;
 
   List<String>? get media => _media;
 
@@ -86,13 +84,13 @@ class Post {
 
   DateTime? get updatedAt => _updatedAt;
 
-  dynamic? get commentsCount => _commentsCount;
+  dynamic get commentsCount => _commentsCount;
 
-  dynamic? get spotsCount => _spotsCount;
+  dynamic get spotsCount => _spotsCount;
 
   bool? get myPost => _myPost;
 
-  bool? get seen => _seen;
+  bool? get seen => seenn;
 
   dynamic get totaldynamiceractionsCount => _totaldynamiceractionsCount;
 
@@ -102,9 +100,8 @@ class Post {
 
   Spot? get spot => _spot;
 
-  bool? get isSeen => _isSeen;
 
-  dynamic? get userCommentCount => _userCommentCount;
+  dynamic get userCommentCount => _userCommentCount;
 
 
   void postLiked() {
@@ -227,8 +224,7 @@ class Post {
 
 
     _spot = spot;
-    _seen = seen;
-    _isSeen = isSeen;
+    seenn = seen;
     _userCommentCount = userCommentCount;
   }
 
@@ -271,12 +267,11 @@ class Post {
       _commentsCount = json["comments_count"];
       _spotsCount = json['spots_count'];
       _myPost = json['my_post'];
-      _seen = json['seen'];
+      seenn = json['seen'];
       _totaldynamiceractionsCount = json['total_count'];
       _user = json["user"] != null ? User.fromJson(json["user"]) : null;
       _place = json["place_type"] != null ? Place.fromJson(json["place"]) : null;
       _spot = json['spot'] != null ? Spot.fromJson(json['spot']) : null;
-      _isSeen = json['seen_count'] == 1;
       _userCommentCount = json['user_comment_count'];
     }
   }
@@ -286,10 +281,10 @@ class Is_reacted {
   dynamic _id;
   dynamic _userId;
   dynamic _refId;
-  dynamic? _type;
-  dynamic? reactKeyy;
-  dynamic? _createdAt;
-  dynamic? _updatedAt;
+  dynamic _type;
+  dynamic reactKeyy;
+  dynamic _createdAt;
+  dynamic _updatedAt;
   User? _user;
 
   dynamic get id => _id;
@@ -298,13 +293,13 @@ class Is_reacted {
 
   dynamic get refId => _refId;
 
-  dynamic? get type => _type;
+  dynamic get type => _type;
 
-  dynamic? get reactKey => reactKeyy;
+  dynamic get reactKey => reactKeyy;
 
-  dynamic? get createdAt => _createdAt;
+  dynamic get createdAt => _createdAt;
 
-  dynamic? get updatedAt => _updatedAt;
+  dynamic get updatedAt => _updatedAt;
 
   User? get user => _user;
 
@@ -312,10 +307,10 @@ class Is_reacted {
     dynamic id,
     dynamic userId,
     dynamic refId,
-    dynamic? type,
+    dynamic type,
     dynamic reactKey,
-    dynamic? createdAt,
-    dynamic? updatedAt,
+    dynamic createdAt,
+    dynamic updatedAt,
     User? user,
   }) {
     _id = id;
@@ -359,9 +354,9 @@ class Is_liked {
   dynamic _id;
   dynamic _userId;
   dynamic _postId;
-  dynamic? _type;
-  dynamic? _createdAt;
-  dynamic? _updatedAt;
+  dynamic _type;
+  dynamic _createdAt;
+  dynamic _updatedAt;
 
   dynamic get id => _id;
 
@@ -369,13 +364,13 @@ class Is_liked {
 
   dynamic get postId => _postId;
 
-  dynamic? get type => _type;
+  dynamic get type => _type;
 
-  dynamic? get createdAt => _createdAt;
+  dynamic get createdAt => _createdAt;
 
-  dynamic? get updatedAt => _updatedAt;
+  dynamic get updatedAt => _updatedAt;
 
-  Is_liked({dynamic id, dynamic userId, dynamic postId, dynamic? type, dynamic? createdAt, dynamic? updatedAt}) {
+  Is_liked({dynamic id, dynamic userId, dynamic postId, dynamic type, dynamic createdAt, dynamic updatedAt}) {
     _id = id;
     _userId = userId;
     _postId = postId;
@@ -409,10 +404,10 @@ class Reacts {
   dynamic _id;
   dynamic _userId;
   dynamic _refId;
-  dynamic? _type;
+  dynamic _type;
   dynamic _reactKey;
-  dynamic? _createdAt;
-  dynamic? _updatedAt;
+  dynamic _createdAt;
+  dynamic _updatedAt;
   User? _user;
 
   dynamic get id => _id;
@@ -421,17 +416,17 @@ class Reacts {
 
   dynamic get refId => _refId;
 
-  dynamic? get type => _type;
+  dynamic get type => _type;
 
   dynamic get reactKey => _reactKey;
 
-  dynamic? get createdAt => _createdAt;
+  dynamic get createdAt => _createdAt;
 
-  dynamic? get updatedAt => _updatedAt;
+  dynamic get updatedAt => _updatedAt;
 
   User? get user => _user;
 
-  Reacts({dynamic id, dynamic userId, dynamic refId, dynamic? type, dynamic reactKey, dynamic? createdAt, dynamic? updatedAt, User? user}) {
+  Reacts({dynamic id, dynamic userId, dynamic refId, dynamic type, dynamic reactKey, dynamic createdAt, dynamic updatedAt, User? user}) {
     _id = id;
     _userId = userId;
     _refId = refId;

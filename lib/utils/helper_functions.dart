@@ -24,7 +24,7 @@ String getStringFromTime(DateTime? time) {
 Future<Position?> getUserLatLng(BuildContext context) async {
   bool serviceEnabled;
   LocationPermission permission;
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();// error occurs like firebase
   if (!serviceEnabled) {
     // Location services are disabled.
     showSnackBar(

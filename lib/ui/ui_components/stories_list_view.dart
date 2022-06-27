@@ -19,7 +19,8 @@ class StoriesListView extends StatelessWidget {
   final bool showAddStoryButton;
   final List<List<Post>> _stories;
 
-  const StoriesListView(this._stories,
+  const StoriesListView(
+      this._stories,
       {Key? key, this.showAddStoryButton = true, this.isFeedScreen = true})
       : super(key: key);
 
@@ -46,8 +47,7 @@ class StoriesListView extends StatelessWidget {
                 return _buildAddYourStoryButton(context);
               } else {
                 return _StoryCardView(
-                  story: _stories
-                      .elementAt(showAddStoryButton ? index - 1 : index)
+                  story: _stories.elementAt(showAddStoryButton ? index - 1 : index)
                       .first,
                   onStoryTap: (Post story) => _onStoryTab(
                     context,
@@ -151,6 +151,8 @@ class _StoryCardView extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               onStoryTap.call(story);
+              story.seenn=true;
+
             },
             child: Container(
               width: MediaQuery.of(context).size.width / 3,
@@ -158,7 +160,7 @@ class _StoryCardView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                    color: (story.isSeen ?? false)
+                    color: (story.seenn ?? false)
                         ? Colors.grey
                         : Theme.of(context).primaryColor,
                     width: 3),

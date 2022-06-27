@@ -410,10 +410,8 @@ class Repository {
         _token, _oneSignalToken);
   }
 
-  Future<UserPreferencesApiResponse> updateUserPreferences(
-      String _token, UserPreferences _preferences) {
-    return _userPreferencesApiProvider.updateUserPreferences(
-        _token, _preferences);
+  Future<UserPreferencesApiResponse> updateUserPreferences(String _token, UserPreferences _preferences) {
+    return _userPreferencesApiProvider.updateUserPreferences(_token, _preferences);
   }
 
   Future<ViewProfileApiResponse> viewProfileApiProvider(

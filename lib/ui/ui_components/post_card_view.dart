@@ -152,9 +152,10 @@ class _PostCardViewState extends State<PostCardView> {
             }
           },
           child: Container(
+            padding: EdgeInsets.all(1.5),
               decoration: BoxDecoration(
                   border: (_post.user?.storyAvailable == true)
-                      ? _post.isSeen == false
+                      ? _post.seenn == false
                           ? Border.all(
                               color: Colors.green,
                               style: BorderStyle.solid,
@@ -834,22 +835,26 @@ class _PostHeaderView extends StatelessWidget {
               }
             },
             child: Container(
+              margin: EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                    border: _post.place?.placeStoryAvailable == true
-                        ? _post.seen == false
-                            ? Border.all(
-                                color: Colors.green,
-                                style: BorderStyle.solid,
-                                width: 2.0,
-                              )
-                            : Border.all(
-                                color: Colors.grey,
-                                style: BorderStyle.solid,
-                                width: 2.0,
-                              )
-                        : null,
-                    borderRadius: BorderRadius.circular(8)),
-                child: PlaceImageView(_post.place?.images?.firstOrNull))),
+                  border: _post.place?.placeStoryAvailable == true
+                      ? _post.seenn == false
+                          ? Border.all(
+                              color: Colors.green,
+                              style: BorderStyle.solid,
+                              width: 2.0,
+                            )
+                          : Border.all(
+                              color: Colors.grey,
+                              style: BorderStyle.solid,
+                              width: 2.0,
+                            )
+                      : null,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: PlaceImageView(_post.place?.images?.firstOrNull),
+            ),
+        ),
         title: Text(_post.place?.name.toString() ?? ''),
         subtitle: Text(
           _post.place?.fullAddress ?? '',

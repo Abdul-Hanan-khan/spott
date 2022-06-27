@@ -64,6 +64,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
 
   @override
   Widget build(BuildContext context) {
+    print('feed screen ////////////////////////////////////////////////');
     super.build(context);
     return BlocConsumer<FeedCubit, FeedCubitState>(
       listener: (context, state) {
@@ -181,8 +182,11 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
     print("User id => ${AppData.currentUser!.id}");
     _refreshCompleter = Completer<void>();
     _getInitialData(context);
+    Future.delayed(Duration(seconds: 7),(){
+      loadMorePost(context);
+    });
     setupScrollController(context);
-    checkUser();
+    // checkUser();
   }
 
   void checkUser() async {
@@ -285,6 +289,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
       setState(() {
         locationIsOn = true;
       });
+
       await getUserLatLng(context).then((value) {
         if (value != null && value.longitude != null) {
           context.read<FeedCubit>().getAllData(position: position);

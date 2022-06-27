@@ -93,7 +93,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   final ValueNotifier<double> notifier = ValueNotifier(0);
   late List<Widget> _pages;
 
-  final Duration _pageAnimationDuration = const Duration(milliseconds: 300);
+  final Duration _pageAnimationDuration = const Duration(milliseconds: 10);
 
   int _currentPage = 0;
 
@@ -121,6 +121,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                     onTap: _onBackButtonPressed,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.height / 50,
                           vertical: MediaQuery.of(context).size.height / 50),
                       child: Center(
                         child: Text(
@@ -141,6 +142,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                     onTap: _onNextButtonPressed,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.height / 50,
                           vertical: MediaQuery.of(context).size.height / 50),
                       child: Center(
                         child: Text(
