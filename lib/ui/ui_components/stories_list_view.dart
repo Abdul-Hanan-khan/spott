@@ -26,43 +26,33 @@ class StoriesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FeedCubit, FeedCubitState>(
-      buildWhen: (oldState, currentState) {
-        if (oldState is LoadingStories || currentState is LoadingStories) {
-          return true;
-        }
-        return false;
-      },
-      builder: (context, state) {
-        return SizedBox(
-          height: 200,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.all(20),
-            itemCount: showAddStoryButton
-                ? (_stories.isNotEmpty ? _stories.length + 1 : 1)
-                : _stories.length,
-            itemBuilder: (context, index) {
-              if (index == 0 && showAddStoryButton) {
-                return _buildAddYourStoryButton(context);
-              } else {
-                return _StoryCardView(
-                  story: _stories.elementAt(showAddStoryButton ? index - 1 : index)
-                      .first,
-                  onStoryTap: (Post story) => _onStoryTab(
-                    context,
-                    story,
-                    _stories.elementAt(showAddStoryButton ? index - 1 : index),
-                  ),
-                );
-              }
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 5,
-            ),
-          ),
-        );
-      },
+    return SizedBox(
+      height: 200,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(20),
+        itemCount: showAddStoryButton
+            ? (_stories.isNotEmpty ? _stories.length + 1 : 1)
+            : _stories.length,
+        itemBuilder: (context, index) {
+          if (index == 0 && showAddStoryButton) {
+            return _buildAddYourStoryButton(context);
+          } else {
+            return _StoryCardView(
+              story: _stories.elementAt(showAddStoryButton ? index - 1 : index)
+                  .first,
+              onStoryTap: (Post story) => _onStoryTab(
+                context,
+                story,
+                _stories.elementAt(showAddStoryButton ? index - 1 : index),
+              ),
+            );
+          }
+        },
+        separatorBuilder: (context, index) => const SizedBox(
+          width: 5,
+        ),
+      ),
     );
   }
 
@@ -160,7 +150,7 @@ class _StoryCardView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                    color: (story.seenn ?? false)
+                    color: (story.seenn ?? false) // story card view
                         ? Colors.grey
                         : Theme.of(context).primaryColor,
                     width: 3),

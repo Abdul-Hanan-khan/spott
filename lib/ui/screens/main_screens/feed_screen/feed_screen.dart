@@ -24,10 +24,11 @@ import '../../../ui_components/post_card_view_detail.dart';
 import 'chat_screen/list_of_chat_users.dart';
 
 class FeedScreen extends StatefulWidget {
+  final bool isSplash;
   final Function _openNewSpot;
   final bool isFirstTimeLoading;
 
-  const FeedScreen(this._openNewSpot, {Key? key, this.isFirstTimeLoading = true}) : super(key: key);
+  const FeedScreen(this.isSplash, this._openNewSpot, {Key? key, this.isFirstTimeLoading = true}) : super(key: key);
 
   @override
   _FeedScreenState createState() => _FeedScreenState();
@@ -78,6 +79,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
           if (state.apiResponse.data != null) {
             _stories.clear();
             _stories.addAll(state.apiResponse.data as List<List<Post>>);
+
           }
         }
       },
@@ -181,8 +183,11 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
     super.initState();
     print("User id => ${AppData.currentUser!.id}");
     _refreshCompleter = Completer<void>();
-    _getInitialData(context);
-    Future.delayed(Duration(seconds: 7),(){
+
+    if(!widget.isSplash){
+      _getInitialData(context);
+    }
+    Future.delayed(Duration(seconds: 3),(){
       loadMorePost(context);
     });
     setupScrollController(context);

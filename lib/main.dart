@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:spott/blocs/activity_screen_cubit/activity_screen_cubit.dart';
+import 'package:spott/blocs/spotted_list_view_cubit/spotted_list_view_cubit.dart';
 import 'package:spott/resources/services/push_notification_service.dart';
 import 'package:spott/ui/screens/walk_through_screens/splash_screen.dart';
 import 'package:spott/ui/screens/walk_through_screens/start_walk_through_screen.dart';
@@ -103,6 +104,9 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider<ViewUserProfileCubit>(
           create: (context) => ViewUserProfileCubit(),
+        ),
+        BlocProvider<SpottedListViewCubit>(
+          create: (context) => SpottedListViewCubit(),
         ),
       ],
       child: MaterialApp(

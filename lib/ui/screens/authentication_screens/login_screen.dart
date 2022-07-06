@@ -3,8 +3,8 @@ import 'dart:io' show Platform;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:spott/blocs/authentication_cubits/login_cubit/login_cubit.dart';
+import 'package:spott/blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/screens/authentication_screens/reset_password_screens.dart/forgot_password_screen.dart';
 import 'package:spott/ui/screens/main_screens/main_screen.dart';
@@ -18,6 +18,11 @@ import 'package:spott/utils/show_snack_bar.dart';
 import '../../../variables.dart';
 import 'sign_up_screen.dart';
 import 'term_and_conditions_check_box_view.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
+
+import '../../../utils/show_snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -43,6 +48,55 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
+  bool locationIsOn = true;
+
+  void _getInitialData(BuildContext context) async {
+    final bool isAccepted = await checkLocationPermission();
+
+    if (isAccepted) {
+      setState(() {
+        locationIsOn = true;
+      });
+
+      await getUserLatLng(context).then((value) {
+        if (value != null && value.longitude != null) {
+          context.read<FeedCubit>().getAllData(position: position);
+        } else {
+          showSnackBar(context: context, message: LocaleKeys.pleaseTurnOnYourLocation.tr());
+        }
+      }).whenComplete(() {});
+    } else {
+      setState(() {
+        locationIsOn = false;
+      });
+    }
+  }
+
+  Future<bool> checkLocationPermission() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+    _serviceEnabled = await location.serviceEnabled();
+
+    if (_serviceEnabled) {
+      return true;
+    } else {
+      _permissionGranted = await location.hasPermission();
+      if (_permissionGranted == PermissionStatus.denied) {
+        _permissionGranted = await location.requestPermission();
+        if (_permissionGranted != PermissionStatus.granted) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        return true;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
@@ -53,9 +107,11 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is LoginFailedState) {
             showSnackBar(context: context, message: state.message);
           } else if (state is LoginSuccessFull) {
+
+            _getInitialData(context);
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const MainScreen(),
+                builder: (context) =>  MainScreen(false),
               ),
             );
           }

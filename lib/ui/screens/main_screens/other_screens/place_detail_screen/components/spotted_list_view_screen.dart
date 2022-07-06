@@ -20,17 +20,25 @@ class SpottedListViewScreen extends StatefulWidget {
 class _SpottedListViewScreenState extends State<SpottedListViewScreen> {
   ScrollController scrollController = ScrollController();
 
+  // @override
+  // void initState() {
+  //   context.read<SpottedListViewCubit>().getSpottedListView(widget.placeId);
+  //
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
   @override
   Widget build(BuildContext context) {
+
     print("PLACE Id .......... ${widget.placeId.toString()}");
     final Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => SpottedListViewCubit()
-        ..getSpottedListView(
+      create: (context) => SpottedListViewCubit()..getSpottedListView(
           widget.placeId.toString(),
         ),
       child: BlocConsumer<SpottedListViewCubit, SpottedListViewState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+        },
         builder: (context, state) {
           return SafeArea(
             child: Scaffold(
@@ -47,28 +55,51 @@ class _SpottedListViewScreenState extends State<SpottedListViewScreen> {
                 elevation: 1,
               ),
               body: state is SpottedListViewSuccessState
-                  ? Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      child: ListView.separated(
-                        controller: scrollController,
-                        itemCount: state.placeSpottedListModel.data!.length,
-                        itemBuilder: (context, index) {
-                          return PostCardView(
-                              index);
-                        },
-                        separatorBuilder: (context, index) => const SizedBox(
-                          height: 20,
-                        ),
-                      ),
-                    )
+                  ?  Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          child: ListView.separated(
+                            controller: scrollController,
+                            itemCount: state.placeSpottedListModel.data!.length,
+                            itemBuilder: (context, index) {
+                              print(state.placeSpottedListModel.data!.length);
+                              return PostCardView(index);
+                            },
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                              height: 20,
+                            ),
+                          ),
+                        )
                   : state is SpottedListViewLoading
                       ? const Center(
                           child: CircularProgressIndicator(),
                         )
-                      : Container(),
+                      : notSpottedWidget(),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget notSpottedWidget(){
+    final Size size = MediaQuery.of(context).size;
+    return Container(
+      height: size.height *0.9,
+      width: size.width,
+      decoration: BoxDecoration(
+        color: Color(0xf0f4fa),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/wth_4.gif',width: 200,height: 200,),
+          SizedBox(height: 10,),
+          Text("This place is not spotted yet",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+          SizedBox(height: size.height *0.2,),
+
+        ],
       ),
     );
   }

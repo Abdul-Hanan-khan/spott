@@ -27,7 +27,10 @@ import 'package:spott/models/api_responses/get_app_notifications_model.dart'
 as notifcation;
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  bool isSplash;
+
+
+  MainScreen(this.isSplash);
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -59,6 +62,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     isFirstTimeLoading = true;
     _screens = [
       FeedScreen(
+        widget.isSplash,
         _openNewSpotScreen,
         isFirstTimeLoading: isFirstTimeLoading ?? true,
       ),

@@ -27,7 +27,10 @@ class FeedCubit extends Cubit<FeedCubitState> {
 
   List<Post> get posts => _posts;
 
-  void getAllData({Position? position, bool isFirstTimeLoading = true, BuildContext? context}) {
+  void getAllData(
+      {Position? position,
+      bool isFirstTimeLoading = true,
+      BuildContext? context}) {
     if (isFirstTimeLoading) {
       _posts = [];
     }
@@ -183,7 +186,24 @@ class FeedCubit extends Cubit<FeedCubitState> {
 
   addData(AllPostsPaginationModel apiResponse) {
     if (apiResponse.data != null) {
-      _posts.addAll(apiResponse.data!.data!);
+      int prevPostLength = _posts.length;
+   if(_posts == null || _posts.length==0){
+     _posts.addAll(apiResponse.data!.data!);
+
+   }else{
+     for (int i = 0; i < apiResponse.data!.data!.length; i++) {
+       if (i >= prevPostLength) {
+         _posts.add(apiResponse.data!.data![i]);
+       } else {
+         if (_posts[i].id == apiResponse.data!.data![i].id) {
+         } else {
+           _posts.add(apiResponse.data!.data![i]);
+         }
+       }
+     }
+   }
+
+      // _posts.clear();
       emit(PostsFetchedSuccessfully());
     } else if (apiResponse.status == 204) {
       emit(NoPostState());
