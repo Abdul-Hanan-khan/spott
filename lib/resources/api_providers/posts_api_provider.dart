@@ -21,8 +21,7 @@ class PostsApiProvider {
       final Dio dio = Dio();
       print("Data ${data.fields}");
       dio.options.headers["Authorization"] = "Bearer $token";
-      final Response response = await dio
-          .post(ApiConstants.baseUrl + ApiConstants.addPostUrl, data: data);
+      final Response response = await dio.post(ApiConstants.baseUrl + ApiConstants.addPostUrl, data: data);
       if (response.statusCode == 200) {
         print("status code ${response.statusCode}");
         debugPrint('add post data ${response.data}');

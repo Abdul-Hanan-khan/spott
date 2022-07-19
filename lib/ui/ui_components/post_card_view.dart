@@ -466,14 +466,7 @@ class _PostFooterViewState extends State<_PostFooterView> {
                                 .posts
                                 .indexWhere(
                                     (element) => element.id == _post.id);
-                            context
-                                .read<FeedCubit>()
-                                .posts[myIndex]
-                                .reactsCountt = context
-                                    .read<FeedCubit>()
-                                    .posts[myIndex]
-                                    .reactsCount! -
-                                1;
+                            context.read<FeedCubit>().posts[myIndex].reactsCountt = context.read<FeedCubit>().posts[myIndex].reactsCount! - 1;
                             // _post.reactsCountt = _post.reactsCount! - 1;
                           }
                           // });

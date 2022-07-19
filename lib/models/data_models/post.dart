@@ -243,7 +243,7 @@ class Post {
       _placeType = json["place_type"];
       _status = json["status"];
       _privacy = json["privacy"];
-      reactsCountt = json['reacts_count'];
+      reactsCountt = json['react_counts'];
 
       if (json["media"] != null) {
         _media = [];
