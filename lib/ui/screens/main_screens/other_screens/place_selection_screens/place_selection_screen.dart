@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:spott/blocs/places_cubit/places_cubit.dart';
 import 'package:spott/models/data_models/place.dart';
+import 'package:spott/statics.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/ui_components/app_button.dart';
 import 'package:spott/ui/ui_components/error_view.dart';
 import 'package:spott/ui/ui_components/loading_screen_view.dart';
 import 'package:spott/ui/ui_components/place_image_view.dart';
 import 'package:spott/utils/constants/app_colors.dart';
-import 'package:spott/utils/helper_functions.dart';
 import 'package:spott/utils/show_snack_bar.dart';
 
 import 'add_new_place_screen/add_new_place_screen.dart';
@@ -105,7 +105,7 @@ class _PlaceSelectionScreenState extends State<PlaceSelectionScreen> {
   }
 
   Future<void> _getPlaceSuggestions() async {
-    _userPosition ??= await getUserLatLng(context);
+    _userPosition ??= StaticVars.userPosition;
     if (_userPosition != null) {
       context.read<PlacesCubit>().getPlaceSuggestions(
           lat: _userPosition!.latitude, lng: _userPosition!.longitude);

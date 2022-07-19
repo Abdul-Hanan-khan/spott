@@ -9,6 +9,7 @@ import 'package:spott/blocs/create_post_cubit/create_post_cubit.dart';
 import 'package:spott/blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart'
     hide ErrorState;
 import 'package:spott/models/data_models/place.dart';
+import 'package:spott/statics.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/ui_components/loading_screen_view.dart';
 import 'package:spott/utils/constants/app_colors.dart';
@@ -113,6 +114,7 @@ class _CreateNewPostScreenState extends State<CreateNewPostScreen> {
 
   Future<void> _getUserPosition() async {
     _userPosition = await getUserLatLng(context);
+    StaticVars.userPosition=_userPosition;
   }
 
   bool _isAllRequiredFieldsAreFilled() {
