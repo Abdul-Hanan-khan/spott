@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:spott/blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart';
+import 'package:spott/statics.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/screens/main_screens/main_screen.dart';
 import 'package:spott/utils/helper_functions.dart';
@@ -44,6 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
 
       await getUserLatLng(context).then((value) {
+        StaticVars.userPosition=value;
         if (value != null && value.longitude != null) {
           context.read<FeedCubit>().getAllData(position: value);
         } else {
