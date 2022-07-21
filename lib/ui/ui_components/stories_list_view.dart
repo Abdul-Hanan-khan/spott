@@ -141,8 +141,7 @@ class _StoryCardView extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               onStoryTap.call(story);
-              story.seenn=true;
-
+              // story.seenn=true;
             },
             child: Container(
               width: MediaQuery.of(context).size.width / 3,

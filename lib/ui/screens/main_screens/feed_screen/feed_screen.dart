@@ -4,10 +4,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:spott/blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart';
 import 'package:spott/models/data_models/post.dart';
 import 'package:spott/resources/app_data.dart';
+import 'package:spott/statics.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/ui_components/app_button.dart';
 import 'package:spott/ui/ui_components/error_view.dart';
@@ -83,16 +85,16 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
           }
         }
       },
-      buildWhen: (oldState, currentState) {
-        if (currentState is PostCardSuccessStates ||
-            currentState is PostCardLoadingStates ||
-            currentState is StoriesFetchedSuccessfully ||
-            currentState is LoadingStories) {
-          return false;
-        } else {
-          return true;
-        }
-      },
+      // buildWhen: (oldState, currentState) {
+      //   if (currentState is PostCardSuccessStates ||
+      //       currentState is PostCardLoadingStates ||
+      //       currentState is StoriesFetchedSuccessfully ||
+      //       currentState is LoadingStories) {
+      //     return false;
+      //   } else {
+      //     return true;
+      //   }
+      // },
       builder: (context, state) {
         Size size = MediaQuery.of(context).size;
         return LoadingScreenView(
@@ -187,7 +189,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
     if(!widget.isSplash){
       _getInitialData(context);
     }
-    Future.delayed(Duration(seconds: 3),(){
+    Future.delayed(Duration(seconds: 0),(){
       loadMorePost(context);
     });
     setupScrollController(context);
@@ -250,13 +252,15 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
   }
 
   Future<void> loadMorePost(BuildContext context) async {
+    Position? value=StaticVars.userPosition;
     final bool isAccepted = await checkLocationPermission();
 
     if (isAccepted) {
       setState(() {
         locationIsOn = true;
       });
-      await getUserLatLng(context).then((value) {
+
+
         if (value != null && value.longitude != null) {
           BlocProvider.of<FeedCubit>(context).getAllData(
             isFirstTimeLoading: false,
@@ -266,7 +270,9 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
         } else {
           showSnackBar(context: context, message: LocaleKeys.pleaseTurnOnYourLocation.tr());
         }
-      }).whenComplete(() {});
+
+
+
     } else {
       setState(() {
         locationIsOn = false;
@@ -296,6 +302,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
       });
 
       await getUserLatLng(context).then((value) {
+        StaticVars.userPosition=value;
         if (value != null && value.longitude != null) {
           context.read<FeedCubit>().getAllData(position: position);
         } else {
