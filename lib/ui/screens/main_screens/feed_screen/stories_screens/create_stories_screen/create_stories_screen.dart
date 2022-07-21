@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -14,6 +15,8 @@ import 'package:spott/ui/ui_components/video_widget.dart';
 import 'package:spott/utils/helper_functions.dart';
 import 'package:spott/utils/show_snack_bar.dart';
 
+import '../../../../../../statics.dart';
+import '../../../../../../utils/constants/app_colors.dart';
 import 'place_selection_button.dart';
 
 class CreateStoriesScreen extends StatefulWidget {
@@ -29,6 +32,7 @@ class CreateStoriesScreen extends StatefulWidget {
 class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
   Position? _userPosition;
   Place? _selectedPlace;
+  bool isLoading=false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +41,27 @@ class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
       child: BlocConsumer<CreateStoryCubit, CreateStoryCubitState>(
         listener: (context, state) {
           if (state is ErrorState) {
+            isLoading=false;
             showSnackBar(context: context, message: state.message);
           } else if (state is StoryCreatedSuccessfully) {
+            isLoading=false;
             showSnackBar(
                 context: context,
                 message: state.apiResponse.message ?? LocaleKeys.success.tr());
             _onStoryCreated(context);
           }
+
+          if(state is CreatingNewStory){
+            setState(() {
+              isLoading=true;
+            });
+
+          }
+
+
         },
         builder: (context, state) {
+
           return LoadingScreenView(
             isLoading: state is CreatingNewStory,
             child: Scaffold(
@@ -81,7 +97,7 @@ class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
                         ),
                         Align(
                           alignment: Alignment.bottomRight,
-                          child: Padding(
+                          child:isLoading?CircularProgressIndicator(color: Colors.white,): Padding(
                             padding:
                                 const EdgeInsets.only(right: 10, bottom: 10),
                             child: ElevatedButton(
@@ -144,7 +160,8 @@ class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
   }
 
   void _onStoryCreated(BuildContext context) async{
-    await getUserLatLng(context).then((value) {
+    Position? value=StaticVars.userPosition;
+
       if (value != null && value.longitude != null) {
         BlocProvider.of<FeedCubit>(context).getAllData(
           isFirstTimeLoading: false,
@@ -154,7 +171,7 @@ class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
       } else {
         showSnackBar(context: context, message: LocaleKeys.pleaseTurnOnYourLocation.tr());
       }
-    }).whenComplete(() {});
+
     Navigator.of(context).pop();
   }
 }
