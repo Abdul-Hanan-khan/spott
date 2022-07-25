@@ -65,7 +65,7 @@ class _PostCardViewState extends State<PostCardView> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _PostHeaderView(
-                    post: _post,
+                    index: widget.index,
                     onVisibilityChange: changePostVisibility,
                   ),
                   if (_post.type == PostType.image &&
@@ -131,14 +131,14 @@ class _PostCardViewState extends State<PostCardView> {
     Post _post = context.read<FeedCubit>().posts[widget.index];
 
     return ListTile(
-      onTap: context.read<FeedCubit>().posts[widget.index].user != null
+      onTap: _post.user != null
           ? () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ViewProfileScreen(_post.user),
-                ),
-              );
-            }
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ViewProfileScreen(_post.user),
+          ),
+        );
+      }
           : null,
       leading: InkWell(
           onTap: () {
@@ -146,27 +146,24 @@ class _PostCardViewState extends State<PostCardView> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserViewStoriesScreen(
-                        _post.placeId, _post.place!.name!, _post.id),
+                    builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
                   ));
             }
           },
           child: Container(
-            padding: EdgeInsets.all(1.5),
+            padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
-                  border: (_post.user?.storyAvailable == true)
-                      ? _post.seenn == false
-                          ? Border.all(
-                              color: Colors.green,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
-                          : Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
-                      : null,
+                  border: (_post.user?.storyyAvailable == true)
+                      ? Border.all(
+                    color: Colors.green,
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  )
+                      : Border.all(
+                    color: Colors.grey,
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  ),
                   borderRadius: BorderRadius.circular(25)),
               child: UserProfileImageView(_post.user))),
       title: Text(
@@ -179,10 +176,9 @@ class _PostCardViewState extends State<PostCardView> {
       ),
       trailing: (_post.createdAt != null)
           ? Text(
-              getStringFromTime(_post.createdAt),
-              style:
-                  TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
-            )
+        getStringFromTime(_post.createdAt),
+        style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
+      )
           : null,
     );
   }
@@ -466,7 +462,14 @@ class _PostFooterViewState extends State<_PostFooterView> {
                                 .posts
                                 .indexWhere(
                                     (element) => element.id == _post.id);
-                            context.read<FeedCubit>().posts[myIndex].reactsCountt = context.read<FeedCubit>().posts[myIndex].reactsCount! - 1;
+                            context
+                                .read<FeedCubit>()
+                                .posts[myIndex]
+                                .reactsCountt = context
+                                    .read<FeedCubit>()
+                                    .posts[myIndex]
+                                    .reactsCount! -
+                                1;
                             // _post.reactsCountt = _post.reactsCount! - 1;
                           }
                           // });
@@ -763,14 +766,14 @@ class _PostFooterViewState extends State<_PostFooterView> {
 
     if (_post.id != null) {
       if (PreferencesController.isUserSentFirstSpottRequest()) {
-        print("kashif ");
+        print("Hanan ");
         context
             .read<PostCardViewCubit>()
             .requestSpot(int.parse(_post.id.toString()))
             .then(
                 (value) => {context.read<FeedCubit>().refreshAllData(context)});
       } else {
-        print("kashif sheikh");
+        print("Abdul Hanan");
         PreferencesController.rememberUserHaveSentFirstSpott();
         showSendSpottRequestDialogBox(context,
             postId: int.parse(_post.id.toString()));
@@ -792,27 +795,30 @@ class _PostFooterViewState extends State<_PostFooterView> {
 
 class _PostHeaderView extends StatelessWidget {
   final Function(bool onTap) onVisibilityChange;
-  final Post _post;
+  int index;
 
-  const _PostHeaderView({
+  // final Post _post;
+
+  _PostHeaderView({
     Key? key,
-    required Post post,
+    required this.index,
     required this.onVisibilityChange,
-  })  : _post = post,
-        super(key: key);
+  }) : super(key: key);
+  Post _post = Post();
 
   @override
   Widget build(BuildContext context) {
+    _post = context.read<FeedCubit>().posts[index];
     final Size size = MediaQuery.of(context).size;
     return ListTile(
         onTap: _post.place != null
             ? () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PlaceDetailScreen(_post.place!),
-                  ),
-                );
-              }
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => PlaceDetailScreen(_post.place!),
+            ),
+          );
+        }
             : null,
         contentPadding: const EdgeInsets.only(left: 10),
         leading: InkWell(
@@ -822,32 +828,27 @@ class _PostHeaderView extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => UserViewStoriesScreen(
-                          _post.placeId, _post.place!.name!, _post.id),
+                      builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
                     ));
               }
             },
             child: Container(
-              margin: EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  border: _post.place?.placeStoryAvailable == true
-                      ? _post.seenn == false
-                          ? Border.all(
-                              color: Colors.green,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
-                          : Border.all(
-                              color: Colors.grey,
-                              style: BorderStyle.solid,
-                              width: 2.0,
-                            )
-                      : null,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: PlaceImageView(_post.place?.images?.firstOrNull),
-            ),
-        ),
+                    border: _post.place?.placeStoryAvailable == true
+                        ? _post.seen == false
+                        ? Border.all(
+                      color: Colors.green,
+                      style: BorderStyle.solid,
+                      width: 2.0,
+                    )
+                        : Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                      width: 2.0,
+                    )
+                        : null,
+                    borderRadius: BorderRadius.circular(8)),
+                child: PlaceImageView(_post.place?.images?.firstOrNull))),
         title: Text(_post.place?.name.toString() ?? ''),
         subtitle: Text(
           _post.place?.fullAddress ?? '',
@@ -863,55 +864,53 @@ class _PostHeaderView extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: (_post.myPost != null && _post.myPost == true)
               ? PopupMenuButton(
-                  onSelected: (PopMenuOption value) =>
-                      _onPopDeleteSelected(context, value),
-                  itemBuilder: (context) {
-                    return [
-                      const PopupMenuItem(
-                        value: PopMenuOption.deletePost,
-                        child: Text(
-                          'delete Post',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    ];
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 15),
-                    child: SvgPicture.asset(
-                      'assets/icons/more.svg',
-                      width: size.width * 0.015,
-                    ),
+            onSelected: (PopMenuOption value) => _onPopDeleteSelected(context, value),
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem(
+                  value: PopMenuOption.deletePost,
+                  child: Text(
+                    'delete Post',
+                    style: TextStyle(color: Colors.red),
                   ),
-                )
+                ),
+              ];
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 15),
+              child: SvgPicture.asset(
+                'assets/icons/more.svg',
+                width: size.width * 0.015,
+              ),
+            ),
+          )
               : isNotCurrentUser(_post.user?.id)
-                  ? PopupMenuButton(
-                      onSelected: (PopMenuOption value) =>
-                          _onPopupMenuSelection(context, value),
-                      itemBuilder: (context) {
-                        return [
-                          PopupMenuItem(
-                            value: PopMenuOption.reportPost,
-                            child: Text(LocaleKeys.reportThisPost.tr()),
-                          ),
-                          PopupMenuItem(
-                            value: PopMenuOption.blockUser,
-                            child: Text(
-                              LocaleKeys.blockUser.tr(),
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ];
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 15),
-                        child: SvgPicture.asset(
-                          'assets/icons/more.svg',
-                          width: size.width * 0.015,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
+              ? PopupMenuButton(
+            onSelected: (PopMenuOption value) => _onPopupMenuSelection(context, value),
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  value: PopMenuOption.reportPost,
+                  child: Text(LocaleKeys.reportThisPost.tr()),
+                ),
+                PopupMenuItem(
+                  value: PopMenuOption.blockUser,
+                  child: Text(
+                    LocaleKeys.blockUser.tr(),
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ];
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 15),
+              child: SvgPicture.asset(
+                'assets/icons/more.svg',
+                width: size.width * 0.015,
+              ),
+            ),
+          )
+              : const SizedBox(),
         ));
   }
 

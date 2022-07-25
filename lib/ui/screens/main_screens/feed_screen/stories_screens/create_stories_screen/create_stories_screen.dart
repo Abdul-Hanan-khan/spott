@@ -146,12 +146,16 @@ class _CreateStoriesScreenState extends State<CreateStoriesScreen> {
           context: context, message: LocaleKeys.placeNotSelectedError.tr());
     } else {
       if (_userPosition != null) {
+
         context.read<CreateStoryCubit>().createNewStory(
+
               image: widget.image,
               videoPath: widget.videoPath,
               lat: _userPosition!.latitude,
               lng: _userPosition!.longitude,
               place: _selectedPlace!,
+          context: context
+
             );
       } else {
         _getUserPosition();

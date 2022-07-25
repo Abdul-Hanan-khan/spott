@@ -4,12 +4,16 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spott/models/api_responses/create_story_api_response.dart';
 import 'package:spott/models/data_models/place.dart';
 import 'package:spott/resources/app_data.dart';
 import 'package:spott/resources/repository.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/utils/constants/api_constants.dart';
+
+import '../../feed_screen_cubits/feed_cubit/feed_cubit.dart';
 
 part 'create_story_cubit_state.dart';
 
@@ -22,6 +26,7 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
     required double lat,
     required double lng,
     required Place place,
+    required BuildContext context,
     Uint8List? image,
     String? videoPath,
   }) async {
@@ -51,7 +56,12 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
       final CreateStroyApiResponse _apiResponse =
           await _repository.createStory(AppData.accessToken!, _formData);
       if (_apiResponse.status == ApiResponse.success) {
-        emit(
+         context.read<FeedCubit>().posts.forEach((element) {
+           if(element.user!.id == AppData.currentUser!.id){
+             element.user!.storyyAvailable=true;
+           }
+         });
+         emit(
           StoryCreatedSuccessfully(_apiResponse),
         );
       } else {

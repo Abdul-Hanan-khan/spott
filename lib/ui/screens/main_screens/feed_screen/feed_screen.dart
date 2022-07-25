@@ -67,6 +67,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
 
   @override
   Widget build(BuildContext context) {
+    // List<Post> _postTemp= context.read<FeedCubit>().posts;
     print('feed screen ////////////////////////////////////////////////');
     super.build(context);
     return BlocConsumer<FeedCubit, FeedCubitState>(
@@ -79,8 +80,13 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
         } else if (state is StoriesFetchedSuccessfully) {
           _stopPullToRefreshLoader();
           if (state.apiResponse.data != null) {
+
             _stories.clear();
             _stories.addAll(state.apiResponse.data as List<List<Post>>);
+            // print(_stories[0][0].seenn);
+            // _postTemp.forEach((element) {
+            //   element.storySeenn=_stories[0][0].seenn;
+            // });
 
           }
         }

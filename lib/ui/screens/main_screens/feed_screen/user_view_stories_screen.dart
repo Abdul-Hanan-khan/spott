@@ -262,9 +262,11 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
     print("\n\n\nn\n\n");
     print(widget.postId);
     print("\n\n\nn\n\n");
+    // _post = context.read<FeedCubit>().posts[index];
     return BlocProvider(
       create: (context) =>
       PlaceStoriesCubit()..getAllPosts(id: widget.id.toString()),
+      // context.read<PlaceStoriesCubit>().getAllPosts(id: widget.id.toString()),
       child: BlocConsumer<PlaceStoriesCubit, PlaceStoriesState>(
         listener: (context, state) {
           if (state is ErrorState) {}

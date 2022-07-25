@@ -32,7 +32,7 @@ class User {
   int? _followingCount;
   int? _spotsCount;
   int? _placesCount;
-  bool? _storyAvailable;
+  bool? storyyAvailable;
   IsFollower? _isFollower;
 
   int? get id => _id;
@@ -91,7 +91,7 @@ class User {
 
   int? get placesCount => _placesCount;
 
-  bool? get storyAvailable => _storyAvailable;
+  bool? get storyAvailable => storyyAvailable;
 
   IsFollower? get isFollower => _isFollower;
 
@@ -164,7 +164,7 @@ class User {
     _followingCount = followingCount;
     _spotsCount = spotCount;
     _placesCount = placesCount;
-    _storyAvailable = storyAvailable;
+    storyyAvailable = storyAvailable;
     _isFollower = isFollower;
   }
 
@@ -209,7 +209,7 @@ class User {
       _followingCount = json["following_count"];
       _spotsCount = json["spots_count"];
       _placesCount = json["places_count"];
-      _storyAvailable = json['story_available'];
+      storyyAvailable = json['story_available'];
       if (json["is_follower"] != null) {
         _isFollower = IsFollower.fromJson(json['is_follower']);
       }
@@ -245,7 +245,7 @@ class User {
     map["following_count"] = _followingCount;
     map["spots_count"] = _spotsCount;
     map["places_count"] = _placesCount;
-    map['story_available'] = _storyAvailable;
+    map['story_available'] = storyyAvailable;
     map["is_follower"] = _isFollower;
     return map;
   }

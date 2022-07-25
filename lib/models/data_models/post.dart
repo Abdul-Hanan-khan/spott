@@ -29,6 +29,7 @@ class Post {
   dynamic _spotsCount;
   bool? _myPost;
   bool? seenn;
+  // bool? storySeenn;
   dynamic _totaldynamiceractionsCount;
   User? _user;
   Place? _place;
@@ -91,6 +92,8 @@ class Post {
   bool? get myPost => _myPost;
 
   bool? get seen => seenn;
+
+  // bool? get storySeen => storySeenn;
 
   dynamic get totaldynamiceractionsCount => _totaldynamiceractionsCount;
 
@@ -193,6 +196,8 @@ class Post {
       Place? place,
       Spot? spot,
       bool? seen,
+      // bool? storySeen,
+
       bool? isSeen,
       dynamic userCommentCount}) {
     _id = id;
@@ -225,6 +230,8 @@ class Post {
 
     _spot = spot;
     seenn = seen;
+    // storySeenn=storySeen;
+
     _userCommentCount = userCommentCount;
   }
 
@@ -268,6 +275,7 @@ class Post {
       _spotsCount = json['spots_count'];
       _myPost = json['my_post'];
       seenn = json['seen'];
+      // storySeenn=true;
       _totaldynamiceractionsCount = json['total_count'];
       _user = json["user"] != null ? User.fromJson(json["user"]) : null;
       _place = json["place_type"] != null ? Place.fromJson(json["place"]) : null;

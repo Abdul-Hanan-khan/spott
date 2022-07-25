@@ -141,7 +141,17 @@ class _StoryCardView extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               onStoryTap.call(story);
-              // story.seenn=true;
+               context.read<FeedCubit>().posts.forEach((element) {
+                 if(story.user!.id == element.user!.id){
+                   element.user!.storyyAvailable=false;
+                 }
+
+               });
+               print(context.read<FeedCubit>().posts);
+
+              // story.user!.storyyAvailable=false;
+              // print(story.user!.storyyAvailable!);
+              // story.seenn=true;cdfs
             },
             child: Container(
               width: MediaQuery.of(context).size.width / 3,
