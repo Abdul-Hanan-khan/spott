@@ -391,6 +391,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen>
                   textAlign: TextAlign.center,
                 ),
               ),
+
             ],
           ),
         ),
