@@ -60,6 +60,9 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
            if(element.user!.id == AppData.currentUser!.id){
              element.user!.storyyAvailable=true;
            }
+           if(element.place!.id == place.id){
+             element.place!.placeStoryyAvailable =true;
+           }
          });
          emit(
           StoryCreatedSuccessfully(_apiResponse),

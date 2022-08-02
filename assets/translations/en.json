@@ -211,11 +211,13 @@
   "pleaseCheckForLocalPermission": "Please check for local permission",
   "turnOnYourGpsLocation": "Turn on your GPS location",
   "noPostsAvailable": "No Posts available",
+  "placeNotAvailable": "Place not available",
   "leaveALivePostOrFollowSomeone": "Leave a live post or follow someone",
   "oops": "Oops",
   "somethingWentWrongPleaseTryAgain": "Something went wrong, please try again",
   "pleaseAlwaysAllowsSpottToKnowYourLocationsThankYou": "Please always allow spott at to know your location",
   "justTellUsYourEmailAndWe'llSendYouanEmailSoYouCanResetit.": "Just tell us your email and we'll send you an\\nemail so you can reset it.",
   "reviews": "Reviews",
+  "noSpotAddedBy": "No Spott added by",
   "justTellUsYourEmailAndSendYouAnEmailSoYouCanResetIt": "Just tell us your email and well send you an\\nemail so you can reset it."
 }

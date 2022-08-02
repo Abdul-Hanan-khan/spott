@@ -24,7 +24,7 @@ class Post {
   dynamic _views;
   DateTime? _createdAt;
   DateTime? _updatedAt;
-  dynamic _commentsCount;
+  dynamic commentssCount;
   int? reactsCountt;
   dynamic _spotsCount;
   bool? _myPost;
@@ -85,7 +85,7 @@ class Post {
 
   DateTime? get updatedAt => _updatedAt;
 
-  dynamic get commentsCount => _commentsCount;
+  dynamic get commentsCount => commentssCount;
 
   dynamic get spotsCount => _spotsCount;
 
@@ -142,10 +142,10 @@ class Post {
   }
 
   void updatedCommentCount() {
-    if (_commentsCount == null) {
-      _commentsCount = 1;
+    if (commentssCount == null) {
+      commentssCount = 1;
     } else {
-      _commentsCount = _commentsCount! + 1;
+      commentssCount = commentssCount! + 1;
     }
     if (_userCommentCount == null) {
       _userCommentCount = 1;
@@ -215,7 +215,7 @@ class Post {
     _views = views;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-    _commentsCount = commentsCount;
+    commentssCount = commentsCount;
     _spotsCount = spotsCount;
     _totaldynamiceractionsCount = totalDynamicReactionsCount;
     _user = user;
@@ -271,7 +271,7 @@ class Post {
       _views = json["views"];
       _createdAt = json["created_at"] != null ? DateTime.parse(json["created_at"]) : null;
       _updatedAt = json["updated_at"] != null ? DateTime.parse(json["updated_at"]) : null;
-      _commentsCount = json["comments_count"];
+      commentssCount = json["comments_count"];
       _spotsCount = json['spots_count'];
       _myPost = json['my_post'];
       seenn = json['seen'];

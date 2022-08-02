@@ -385,7 +385,8 @@ class _ViewProfileScreenState extends State<ViewProfileScreen>
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  'No Spott added by ${_apiResponse?.profile?.username ?? ''}',
+                  // 'No Spott added by ${_apiResponse?.profile?.username ?? ''}',
+                  LocaleKeys.noSpottAddedBy.tr()+'  ${_apiResponse?.profile?.username ?? ''}',
                   style: Theme.of(context).textTheme.headline5,
                   textAlign: TextAlign.center,
                 ),

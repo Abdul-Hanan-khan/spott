@@ -73,8 +73,8 @@ class _ExploreScreenState extends State<ExploreScreen>
                 bottom: AppTabBar(
                   _tabController,
                   labels: [
-                    LocaleKeys.topSpots.tr(),
-                    LocaleKeys.trendingPlaces.tr(),
+                    LocaleKeys.topSpots.tr().toUpperCase(),
+                    LocaleKeys.trendingPlaces.tr().toUpperCase(),
                   ],
                 ),
               ),

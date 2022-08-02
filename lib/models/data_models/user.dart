@@ -15,7 +15,7 @@ class User {
   String? _address;
   double? _lat;
   double? _lng;
-  dynamic? _resetCode;
+  dynamic _resetCode;
   ProfileType? _type;
   String? _socialLogin;
   int? _isActive;
@@ -57,7 +57,7 @@ class User {
 
   double? get lng => _lng;
 
-  dynamic? get resetCode => _resetCode;
+  dynamic get resetCode => _resetCode;
 
   ProfileType? get type => _type;
 

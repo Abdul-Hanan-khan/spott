@@ -2,13 +2,17 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:location/location.dart';
 import 'package:spott/blocs/feed_screen_cubits/comments_cubit/comments_cubit.dart';
 import 'package:spott/blocs/post_view_cubit/post_view_cubit.dart';
 import 'package:spott/models/data_models/comment.dart';
 import 'package:spott/models/data_models/post.dart';
+import 'package:spott/statics.dart';
 import 'package:spott/translations/codegen_loader.g.dart';
+import 'package:spott/ui/screens/main_screens/feed_screen/feed_screen.dart';
 import 'package:spott/ui/screens/main_screens/view_profile_screen/view_profile_screen.dart';
 import 'package:spott/ui/ui_components/app_text_field.dart';
 import 'package:spott/ui/ui_components/loading_animation.dart';
@@ -25,6 +29,7 @@ import '../../../../../blocs/feed_screen_cubits/feed_cubit/feed_cubit.dart';
 class PostViewScreen extends StatefulWidget {
   Post? post;
   int index;
+
   PostViewScreen(this.index, {Key? key, this.post}) : super(key: key);
 
   @override
@@ -33,22 +38,23 @@ class PostViewScreen extends StatefulWidget {
 
 class _PostViewScreenState extends State<PostViewScreen> {
   final TextEditingController _commentTextEditingController =
-  TextEditingController();
+      TextEditingController();
 
   Completer<void>? _refreshCompleter;
 
-
-  _popScreen(BuildContext context){
+  _popScreen(BuildContext context) {
     context.read<FeedCubit>().refreshAllData(context);
     Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    print('post id => ${context.read<FeedCubit>().posts[widget.index].id.toString()}');
+    print(
+        'post id => ${context.read<FeedCubit>().posts[widget.index].id.toString()}');
     return BlocProvider<PostViewCubit>(
-      create: (context) =>
-      PostViewCubit()..getPostView(int.parse(context.read<FeedCubit>().posts[widget.index].id.toString())),
+      create: (context) => PostViewCubit()
+        ..getPostView(int.parse(
+            context.read<FeedCubit>().posts[widget.index].id.toString())),
       child: BlocConsumer<PostViewCubit, PostViewState>(
         listener: (context, state) {
           if (state is PostViewFailedState) {
@@ -57,7 +63,8 @@ class _PostViewScreenState extends State<PostViewScreen> {
                 context: context,
                 message: state.viewPostApiModel.message.toString());
           } else if (state is PostViewSuccessState) {
-            context.read<FeedCubit>().posts[widget.index] = state.viewPostApiModel.data!;
+            context.read<FeedCubit>().posts[widget.index] =
+                state.viewPostApiModel.data!;
             stopPullToRefreshLoader();
           } else if (state is PostCommentsFetched) {
             stopPullToRefreshLoader();
@@ -69,12 +76,11 @@ class _PostViewScreenState extends State<PostViewScreen> {
             child: Scaffold(
               backgroundColor: AppColors.secondaryBackGroundColor,
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 title: Text(
                   LocaleKeys.details.tr(),
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
               body: Column(
@@ -99,9 +105,9 @@ class _PostViewScreenState extends State<PostViewScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount:
-                            context.read<PostViewCubit>().comments.length,
+                                context.read<PostViewCubit>().comments.length,
                             separatorBuilder: (context, index) =>
-                            const SizedBox(
+                                const SizedBox(
                               height: 20,
                             ),
                             itemBuilder: (context, index) => _CommentView(
@@ -128,7 +134,7 @@ class _PostViewScreenState extends State<PostViewScreen> {
                         IconButton(
                           onPressed: state is AddingNewComment
                               ? null
-                              : () => _onAddNewCommentPressed(context),
+                              : () => _onAddNewCommentPressed(context,widget.index),
                           icon: state is AddingNewComment
                               ? const LoadingAnimation()
                               : const Icon(Icons.send),
@@ -165,14 +171,69 @@ class _PostViewScreenState extends State<PostViewScreen> {
     );
   }
 
-  void _onAddNewCommentPressed(BuildContext context) {
+  void _onAddNewCommentPressed(BuildContext context,int index) {
+
     if (_commentTextEditingController.text.isNotEmpty) {
+      // Post _post = context.read<FeedCubit>().posts[widget.index];
+      // _post.commentssCount ++;
+      // print( _post.commentssCount ++);
+      // _post.updatedCommentCount();
       context.read<PostViewCubit>().addNewComment(
-          int.parse(context.read<FeedCubit>().posts[widget.index].id.toString()),
+          int.parse(
+              context.read<FeedCubit>().posts[widget.index].id.toString()),
           _commentTextEditingController.text);
+      context.read<FeedCubit>().getAllData(position: StaticVars.userPosition,context: context);
       _commentTextEditingController.clear();
     }
   }
+
+
+
+  // Future<void> loadMorePost(BuildContext context) async {
+  //   Position? value=StaticVars.userPosition;
+  //   final bool isAccepted = await checkLocationPermission();
+  //
+  //   if (isAccepted) {
+  //
+  //     if (value != null && value.longitude != null) {
+  //       BlocProvider.of<FeedCubit>(context).getAllData(
+  //         isFirstTimeLoading: false,
+  //         context: context,
+  //         position: value,
+  //       );
+  //     } else {
+  //       showSnackBar(context: context, message: LocaleKeys.pleaseTurnOnYourLocation.tr());
+  //     }
+  //   }
+  // }
+
+  // Future<bool> checkLocationPermission() async {
+  //   Location location = new Location();
+  //
+  //   bool _serviceEnabled;
+  //   PermissionStatus _permissionGranted;
+  //   LocationData _locationData;
+  //   _serviceEnabled = await location.serviceEnabled();
+  //
+  //   if (_serviceEnabled) {
+  //     return true;
+  //   } else {
+  //     _permissionGranted = await location.hasPermission();
+  //     if (_permissionGranted == PermissionStatus.denied) {
+  //       _permissionGranted = await location.requestPermission();
+  //       if (_permissionGranted != PermissionStatus.granted) {
+  //         return false;
+  //       } else {
+  //         return true;
+  //       }
+  //     } else {
+  //       return true;
+  //     }
+  //   }
+  // }
+
+
+
 
   Future<void> _onRefresh(BuildContext context) async {
     context.read<PostViewCubit>().getAllComments(

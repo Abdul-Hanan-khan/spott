@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spott/blocs/authentication_cubits/reset_password_cubit/reset_password_cubit.dart';
 import 'package:spott/blocs/explore_screen_cubit/tabs/top_places_cubit/top_places_cubit.dart';
 import 'package:spott/resources/app_data.dart';
+import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/ui_components/loading_screen_view.dart';
 import 'package:spott/ui/ui_components/place_card_view.dart';
 import 'package:spott/ui/ui_components/post_card_view.dart';
@@ -84,7 +86,7 @@ class _TopPlacesScreenState extends State<TopPlacesScreen> {
                     : (state is TopPlacesDataFetchedSuccessfully)
                         ? context.read<TopPlacesCubit>().places.length == 0 || (context.read<TopPlacesCubit>().places.length ==null)
                             ? Center(
-                                child: Text("Not available",style: TextStyle(
+                                child: Text(LocaleKeys.placeNotAvailable.tr(),style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontSize: size.width*0.04,

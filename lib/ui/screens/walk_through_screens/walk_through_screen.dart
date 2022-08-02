@@ -19,11 +19,11 @@ class WalkThroughPage extends StatelessWidget {
 
   const WalkThroughPage(
       {required this.image,
-      this.tile,
-      this.description,
-      this.customTitle,
-      Key? key,
-      this.isSVG})
+        this.tile,
+        this.description,
+        this.customTitle,
+        Key? key,
+        this.isSVG})
       : super(key: key);
 
   @override
@@ -38,11 +38,13 @@ class WalkThroughPage extends StatelessWidget {
             width: double.infinity,
           ),
         if (isSVG == false)
-          Image.asset(
-            image,
-            fit: BoxFit.fill,
-            height: MediaQuery.of(context).size.height * 0.93,
-            width: double.infinity,
+          Expanded(
+            child: Image.asset(
+              image,
+              fit: BoxFit.fill,
+              // height: MediaQuery.of(context).size.height * 0.9,
+              width: double.infinity,
+            ),
           ),
         Padding(
           padding: EdgeInsets.symmetric(
@@ -93,36 +95,35 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   final ValueNotifier<double> notifier = ValueNotifier(0);
   late List<Widget> _pages;
 
-  final Duration _pageAnimationDuration = const Duration(milliseconds: 10);
+  final Duration _pageAnimationDuration = const Duration(milliseconds: 300);
 
   int _currentPage = 0;
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: [
-
-            Container(
-              height:MediaQuery.of(context).size.height * 0.93,
-              child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: _pages.length,
-                  onPageChanged: _onPageChanged,
-                  itemBuilder: (context, index) => _pages[index]),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.07,
-              child: Row(
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                  child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: _pages.length,
+                      onPageChanged: _onPageChanged,
+                      itemBuilder: (context, index) => _pages[index])),
+              const Divider(
+                height: 0,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
                     onTap: _onBackButtonPressed,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.height / 50,
-                          vertical: MediaQuery.of(context).size.height / 50),
+                          vertical: MediaQuery.of(context).size.height / 55,
+                          horizontal: MediaQuery.of(context).size.height / 55,
+                      ),
                       child: Center(
                         child: Text(
                           LocaleKeys.back.tr(),
@@ -142,8 +143,9 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                     onTap: _onNextButtonPressed,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.height / 50,
-                          vertical: MediaQuery.of(context).size.height / 50),
+                          vertical: MediaQuery.of(context).size.height / 50,
+                          horizontal: MediaQuery.of(context).size.height / 50,
+                      ),
                       child: Center(
                         child: Text(
                           LocaleKeys.next.tr(),
@@ -152,10 +154,9 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                     ),
                   ),
                 ],
-              ),
-            ),
-
-          ],
+              )
+            ],
+          ),
         ));
   }
 
@@ -189,32 +190,129 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
     _notificationsPermissionStatus = await Permission.notification.status;
   }
 
+  // List<Widget> _generatePages() => [
+  //   WalkThroughPage(
+  //     isSVG: true,
+  //     image: 'assets/images/wth_1.svg',
+  //     tile: LocaleKeys.theOnlyAppThatConnectsYouWithPeopleAroundYou.tr(),
+  //     description: LocaleKeys
+  //         .theOnlyAppThatConnectsYouWithPeopleAroundYouThisAppThanksToItsGeoLocationFunctionalityFavoursTheInteractionBetweenPeopleBusinessesEventsRetailOrPlacesOfInterestInASetRadius
+  //         .tr(),
+  //   ),
+  //   WalkThroughPage(
+  //     isSVG: true,
+  //     image: 'assets/images/wth_2.svg',
+  //     tile: LocaleKeys
+  //         .getRealTimeNotificationsAboutAnyPostLeftAroundYouAndComunicateLiveWithPeopleYouSee
+  //         .tr(),
+  //     description: LocaleKeys
+  //         .thisAppEnhancesTheExperienceOfAnyPreviousSocialNetworkEnablingYouARealTimeCommunicationAndLiveConnectionWithRealPeopleAndPlacesAroundYou
+  //         .tr(),
+  //   ),
+  //   WalkThroughPage(
+  //     isSVG: true,
+  //     image: 'assets/images/wth_3.svg',
+  //     tile: LocaleKeys.usersCanFollowPlacesAsWellAsPeople.tr(),
+  //     description: LocaleKeys
+  //         .inThisAppYouHaveTheFreedomToFollowWhatInterestsYouThereforeAsWellAsYourNewRelevantSpottFollowersYouCanBeInterestedInWhatIsHappeningInAParticularPlaceOrLocationItCanBeAnyPlaceInTheWorld
+  //         .tr(),
+  //   ),
+  //   WalkThroughPage(
+  //     isSVG: false,
+  //     image: 'assets/images/wth_4.gif',
+  //     customTitle: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Text(
+  //           LocaleKeys.becomeAVip.tr(),
+  //         ),
+  //         RichText(
+  //           text: TextSpan(
+  //             text: LocaleKeys.gain.tr(),
+  //             style: const TextStyle(color: Colors.black),
+  //             children: <TextSpan>[
+  //               TextSpan(
+  //                   text: LocaleKeys.spotted.tr(),
+  //                   style: const TextStyle(color: AppColors.purple)),
+  //               TextSpan(
+  //                 text: LocaleKeys.points.tr(),
+  //                 style: const TextStyle(color: Colors.black),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //     description: LocaleKeys
+  //         .thisAppIsAlsoFunPeopleGainPopularityByInteractingWithOthersSpottingAndGetSpottedIsIndeedAFunnyWayToBecameMoreNoticeableToOthersAndEnhanceYourStatusInTheApp
+  //         .tr(),
+  //   ),
+  //   WalkThroughPage(
+  //     isSVG: false,
+  //     image: 'assets/images/wth_5.gif',
+  //     customTitle: Column(
+  //       children: [
+  //         Text(
+  //           LocaleKeys.weAtSpottTakeTourDataSafetyAndSecurityVerySeriously
+  //               .tr(),
+  //           textAlign: TextAlign.center,
+  //         ),
+  //         const SizedBox(
+  //           height: 10,
+  //         ),
+  //         Text(
+  //           LocaleKeys
+  //               .weRequireYourPositionToProvideYouWithOurServicesHoweverWeWillNeverShareItWithAnyOtherUser
+  //               .tr(),
+  //           textAlign: TextAlign.center,
+  //         ),
+  //       ],
+  //     ),
+  //     tile: LocaleKeys.pleaseAlwaysAllowsSpottToKnowYourLocationsThankYou
+  //         .tr(),
+  //     description: LocaleKeys
+  //         .referToOurFullTermsAndConditionsOrOurPrivacyPolicyForAllOtherPolicies
+  //         .tr(),
+  //   ),
+  //   WalkThroughPage(
+  //     isSVG: false,
+  //     image: 'assets/images/wth_6.gif',
+  //     customTitle: Text(
+  //       LocaleKeys.allowPushNotifications.tr(),
+  //       style: const TextStyle(fontSize: 20),
+  //     ),
+  //     tile: LocaleKeys
+  //         .enablePushNotificationsToLetSendYouPersonalNotificationsAndRealtimeUpdates
+  //         .tr(),
+  //   ),
+  // ];
+
   List<Widget> _generatePages() => [
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/one.jpg',
-        ),
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/two.jpg',
-        ),
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/three.jpg',
-        ),
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/four.jpg',
-        ),
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/five.gif',
-        ),
-        WalkThroughPage(
-          isSVG: false,
-          image: 'assets/images/six.jpg',
-        ),
-      ];
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/one.jpg',
+    ),
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/two.jpg',
+    ),
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/three.jpg',
+    ),
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/four.jpg',
+    ),
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/five.gif',
+    ),
+    WalkThroughPage(
+      isSVG: false,
+      image: 'assets/images/six.jpg',
+    ),
+  ];
 
   void _moveToNextWalkThroughPage() {
     _currentPage += 1;
@@ -224,17 +322,12 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   }
 
   void _navigateToLoginScreen() {
-    _askForLocationPermission((){
-      setState(() {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ),
-        );
-      });
-    });
-
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginScreen(),
+      ),
+    );
   }
 
   void _onBackButtonPressed() {
@@ -247,10 +340,9 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   }
 
   void _onNextButtonPressed() {
-    // if (_currentPage == 6) {
-    //   _askForLocationPermission(_moveToNextWalkThroughPage);
-    // } else
-      if (_currentPage < _pages.length - 1) {
+    if (_currentPage == 4) {
+      _askForLocationPermission(_moveToNextWalkThroughPage);
+    } else if (_currentPage < _pages.length - 1) {
       _moveToNextWalkThroughPage();
     } else {
       //!last next button pressed
@@ -272,15 +364,15 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   }
 
   void _onPageChanged(int _page) {
-    // if (_page == 5) {
-    //   _askForLocationPermission(() {
-    //     setState(() {
-    //       _currentPage = _page;
-    //     });
-    //   });
+    if (_page == 5) {
+      _askForLocationPermission(() {
+        setState(() {
+          _currentPage = _page;
+        });
+      });
       if (_currentPage != _page) {
         _pageController.jumpToPage(_currentPage);
-      // }
+      }
     } else {
       setState(() {
         _currentPage = _page;

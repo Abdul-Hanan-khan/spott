@@ -213,6 +213,7 @@ abstract class  LocaleKeys {
   static const pleaseCheckForLocalPermission = 'pleaseCheckForLocalPermission';
   static const turnOnYourGpsLocation = 'turnOnYourGpsLocation';
   static const noPostsAvailable = 'noPostsAvailable';
+  static const placeNotAvailable = 'placeNotAvailable';
   static const leaveALivePostOrFollowSomeone = 'leaveALivePostOrFollowSomeone';
   static const oops = 'oops';
   static const somethingWentWrongPleaseTryAgain = 'somethingWentWrongPleaseTryAgain';

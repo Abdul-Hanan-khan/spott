@@ -64,7 +64,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
       FeedScreen(
         widget.isSplash,
         _openNewSpotScreen,
-        isFirstTimeLoading: isFirstTimeLoading ?? true,
+        isFirstTimeLoading: isFirstTimeLoading ?? true
       ),
       const ExploreScreen(),
       CreateNewPostScreen(_openFeedScreen),

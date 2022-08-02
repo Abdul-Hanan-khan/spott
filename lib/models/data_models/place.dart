@@ -35,7 +35,7 @@ class Place {
   dynamic _averageRating;
   int? _followCount;
   int? _spotCount;
-  bool? _placeStoryAvailable;
+  bool? placeStoryyAvailable;
   List<Ratings>? _ratings;
   List<List<Post>>? _groupStories;
   List<Post>? _posts;
@@ -70,7 +70,7 @@ class Place {
   dynamic get averageRating => _averageRating;
   int? get followCount => _followCount;
   int? get spotCount => _spotCount;
-  bool? get placeStoryAvailable => _placeStoryAvailable;
+  bool? get placeStoryAvailable => placeStoryyAvailable;
   List<Ratings>? get ratings => _ratings;
   List<List<Post>>? get groupStories => _groupStories;
   List<Post>? get posts => _posts;
@@ -139,7 +139,7 @@ class Place {
     _averageRating = averageRating;
     _followCount = followCount;
     _spotCount = spotCount;
-    _placeStoryAvailable = placeStoryAvailable;
+    placeStoryyAvailable = placeStoryAvailable;
     _ratings = ratings;
     _groupStories = groupStories;
     _posts = posts;
@@ -196,7 +196,7 @@ class Place {
           : null;
       _followCount = json["follow-count"];
       _spotCount = json["spots_count"];
-      _placeStoryAvailable = json['place_story_available'];
+      placeStoryyAvailable = json['place_story_available'];
       if (json["ratings"] != null) {
         _ratings = [];
         json["ratings"].forEach((v) {
@@ -268,7 +268,7 @@ class Place {
     map["average-rating"] = _averageRating;
     map["follow-count"] = _followCount;
     map["spot-count"] = _spotCount;
-    map['place_story_available'] = _placeStoryAvailable;
+    map['place_story_available'] = placeStoryyAvailable;
     map["ratings"] = _ratings;
     map["followers"] = _followers;
     return map;

@@ -133,37 +133,38 @@ class _PostCardViewState extends State<PostCardView> {
     return ListTile(
       onTap: _post.user != null
           ? () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => ViewProfileScreen(_post.user),
-          ),
-        );
-      }
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ViewProfileScreen(_post.user),
+                ),
+              );
+            }
           : null,
       leading: InkWell(
           onTap: () {
-            if (_post.user?.storyAvailable == true) {
+            if (_post.user?.storyyAvailable == true) {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
+                    builder: (context) => UserViewStoriesScreen(
+                        _post.placeId, _post.place!.name!, _post.id),
                   ));
             }
           },
           child: Container(
-            padding: EdgeInsets.all(2),
+              padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: (_post.user?.storyyAvailable == true)
-                      ? Border.all(
-                    color: Colors.green,
-                    style: BorderStyle.solid,
-                    width: 2.0,
-                  )
+                      ?_post.seen == false? Border.all(
+                          color: Color(0xff33cc66),
+                          style: BorderStyle.solid,
+                          width: 2.0,
+                        )
                       : Border.all(
-                    color: Colors.grey,
-                    style: BorderStyle.solid,
-                    width: 2.0,
-                  ),
+                          color: Colors.grey,
+                          style: BorderStyle.solid,
+                          width: 2.0,
+                        ):null,
                   borderRadius: BorderRadius.circular(25)),
               child: UserProfileImageView(_post.user))),
       title: Text(
@@ -176,9 +177,10 @@ class _PostCardViewState extends State<PostCardView> {
       ),
       trailing: (_post.createdAt != null)
           ? Text(
-        getStringFromTime(_post.createdAt),
-        style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
-      )
+              getStringFromTime(_post.createdAt),
+              style:
+                  TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
+            )
           : null,
     );
   }
@@ -813,39 +815,40 @@ class _PostHeaderView extends StatelessWidget {
     return ListTile(
         onTap: _post.place != null
             ? () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => PlaceDetailScreen(_post.place!),
-            ),
-          );
-        }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PlaceDetailScreen(_post.place!),
+                  ),
+                );
+              }
             : null,
         contentPadding: const EdgeInsets.only(left: 10),
         leading: InkWell(
             onTap: () {
               print(_post.placeId);
-              if (_post.place?.placeStoryAvailable == true) {
+              if (_post.place?.placeStoryyAvailable == true) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => UserViewStoriesScreen(_post.placeId, _post.place!.name!, _post.id),
+                      builder: (context) => UserViewStoriesScreen(
+                          _post.placeId, _post.place!.name!, _post.id),
                     ));
               }
             },
             child: Container(
                 decoration: BoxDecoration(
-                    border: _post.place?.placeStoryAvailable == true
+                    border: _post.place?.placeStoryyAvailable == true
                         ? _post.seen == false
-                        ? Border.all(
-                      color: Colors.green,
-                      style: BorderStyle.solid,
-                      width: 2.0,
-                    )
-                        : Border.all(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 2.0,
-                    )
+                            ? Border.all(
+                                color: Color(0xff33cc66),
+                                style: BorderStyle.solid,
+                                width: 2.0,
+                              )
+                            : Border.all(
+                                color: Colors.grey,
+                                style: BorderStyle.solid,
+                                width: 2.0,
+                              )
                         : null,
                     borderRadius: BorderRadius.circular(8)),
                 child: PlaceImageView(_post.place?.images?.firstOrNull))),
@@ -864,53 +867,55 @@ class _PostHeaderView extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: (_post.myPost != null && _post.myPost == true)
               ? PopupMenuButton(
-            onSelected: (PopMenuOption value) => _onPopDeleteSelected(context, value),
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem(
-                  value: PopMenuOption.deletePost,
-                  child: Text(
-                    'delete Post',
-                    style: TextStyle(color: Colors.red),
+                  onSelected: (PopMenuOption value) =>
+                      _onPopDeleteSelected(context, value),
+                  itemBuilder: (context) {
+                    return [
+                      const PopupMenuItem(
+                        value: PopMenuOption.deletePost,
+                        child: Text(
+                          'delete Post',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ];
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 15),
+                    child: SvgPicture.asset(
+                      'assets/icons/more.svg',
+                      width: size.width * 0.015,
+                    ),
                   ),
-                ),
-              ];
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: SvgPicture.asset(
-                'assets/icons/more.svg',
-                width: size.width * 0.015,
-              ),
-            ),
-          )
+                )
               : isNotCurrentUser(_post.user?.id)
-              ? PopupMenuButton(
-            onSelected: (PopMenuOption value) => _onPopupMenuSelection(context, value),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  value: PopMenuOption.reportPost,
-                  child: Text(LocaleKeys.reportThisPost.tr()),
-                ),
-                PopupMenuItem(
-                  value: PopMenuOption.blockUser,
-                  child: Text(
-                    LocaleKeys.blockUser.tr(),
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-              ];
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: SvgPicture.asset(
-                'assets/icons/more.svg',
-                width: size.width * 0.015,
-              ),
-            ),
-          )
-              : const SizedBox(),
+                  ? PopupMenuButton(
+                      onSelected: (PopMenuOption value) =>
+                          _onPopupMenuSelection(context, value),
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            value: PopMenuOption.reportPost,
+                            child: Text(LocaleKeys.reportThisPost.tr()),
+                          ),
+                          PopupMenuItem(
+                            value: PopMenuOption.blockUser,
+                            child: Text(
+                              LocaleKeys.blockUser.tr(),
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ];
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 15),
+                        child: SvgPicture.asset(
+                          'assets/icons/more.svg',
+                          width: size.width * 0.015,
+                        ),
+                      ),
+                    )
+                  : const SizedBox(),
         ));
   }
 
