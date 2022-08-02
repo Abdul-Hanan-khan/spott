@@ -75,12 +75,13 @@ class _PostCardViewState extends State<PostCardView> {
                         openDetailViewScreen(context);
                       },
                       child: Container(
+                        height: 400,
                         constraints: const BoxConstraints(
                           maxHeight: 600,
                         ),
                         child: CachedNetworkImage(
                           imageUrl: _post.media?.first ?? '',
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.cover,
                           placeholder: (context, url) => const SizedBox(
                             height: 150,
                             child: LoadingAnimation(),
