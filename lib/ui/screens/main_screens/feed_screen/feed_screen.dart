@@ -123,7 +123,7 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
                             return Stack(
                               // overflow: Overflow.visible,
                               children: [
-                                SvgPicture.asset('assets/icons/notifications.svg',color: Colors.orange,),
+                                SvgPicture.asset('assets/icons/message.svg'),
                                 Positioned(
                                   left: 12,
                                   bottom: 11,
@@ -136,13 +136,13 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
                               ],
                             );
                           } else {
-                            return SvgPicture.asset('assets/icons/notifications.svg',color: Colors.orange);
+                            return SvgPicture.asset('assets/icons/message.svg');
                           }
                         } else {
-                          return SvgPicture.asset('assets/icons/notifications.svg',color: Colors.orange);
+                          return SvgPicture.asset('assets/icons/message.svg');
                         }
                       } catch (e) {
-                        return SvgPicture.asset('assets/icons/notifications.svg',color: Colors.orange);
+                        return SvgPicture.asset('assets/icons/message.svg');
                       }
                     },
                   ),
