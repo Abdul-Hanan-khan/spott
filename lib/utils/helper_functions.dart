@@ -15,6 +15,16 @@ Future<List<Address>> getCurrentAddress(double _lat, double _lng) =>
 
 String getStringFromTime(DateTime? time) {
   if (time != null) {
+    var timeagooo=timeago.format(time, locale: 'en_short');
+
+    var postTime= timeagooo.replaceAll(RegExp(r'[^0-9]'), '');
+    var postSymbol= timeagooo.replaceAll(RegExp(r'[^a-z]'), '');
+
+    print(postTime);
+    print(postSymbol);
+
+
+    print(timeagooo);
     return timeago.format(time, locale: 'en_short');
   } else {
     return '';

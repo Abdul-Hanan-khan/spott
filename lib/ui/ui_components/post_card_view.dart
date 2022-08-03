@@ -722,16 +722,21 @@ class _PostFooterViewState extends State<_PostFooterView> {
   }
 
   void _onCommentsPressed(BuildContext context) {
-    Post _post = context.read<FeedCubit>().posts[widget.index];
-
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => PostViewScreen(
-          widget.index,
-          post: _post,
-        ),
+        builder: (context) => CommentsScreen(widget.index),
       ),
     );
+    // Post _post = context.read<FeedCubit>().posts[widget.index];
+    //
+    // Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     builder: (context) => PostViewScreen(
+    //       widget.index,
+    //       post: _post,
+    //     ),
+    //   ),
+    // );
   }
 
   void _onReactButtonPressed(BuildContext context, int reactKey, Post post) {
