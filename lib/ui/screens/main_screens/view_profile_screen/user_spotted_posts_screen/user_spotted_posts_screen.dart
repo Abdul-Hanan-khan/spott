@@ -7,6 +7,7 @@ import 'package:spott/translations/codegen_loader.g.dart';
 import 'package:spott/ui/ui_components/loading_screen_view.dart';
 import 'package:spott/ui/ui_components/post_card_view.dart';
 import 'package:spott/utils/show_snack_bar.dart';
+import 'package:spott/utils/constants/app_colors.dart';
 
 class UserSpottedPostsScreen extends StatelessWidget {
   final User? _user;
@@ -37,6 +38,7 @@ class UserSpottedPostsScreen extends StatelessWidget {
                   color: Colors.black,
                 )),
               ),
+                backgroundColor: AppColors.secondaryBackGroundColor,
               body: state is! PostsFetchedSuccessfully
                   ? const SizedBox()
                   : ListView.separated(

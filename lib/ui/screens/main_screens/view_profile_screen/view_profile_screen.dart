@@ -516,7 +516,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen>
               child: Column(
                 children: [
                   Text(
-                    LocaleKeys.follower.tr(),
+                    LocaleKeys.follower.tr().toUpperCase(),
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1
@@ -537,7 +537,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen>
               child: Column(
                 children: [
                   Text(
-                    LocaleKeys.spotted.tr(),
+                    LocaleKeys.spotted.tr().toUpperCase(),
                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppColors.purple,
@@ -556,7 +556,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen>
               child: Column(
                 children: [
                   Text(
-                    LocaleKeys.following.tr(),
+                    LocaleKeys.following.tr().toUpperCase(),
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1
