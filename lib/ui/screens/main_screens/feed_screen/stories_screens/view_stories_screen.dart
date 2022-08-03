@@ -34,6 +34,7 @@ class ViewStoriesScreen extends StatefulWidget {
 class _FooterView extends StatelessWidget {
   final Post? _currentStory;
 
+
   const _FooterView(
     this._currentStory, {
     Key? key,
@@ -41,6 +42,8 @@ class _FooterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var timeStamp=  getStringFromTime(_currentStory!.createdAt);
+
     final Size _screenSize = MediaQuery.of(context).size;
     return Align(
       alignment: Alignment.bottomCenter,
@@ -73,7 +76,7 @@ class _FooterView extends StatelessWidget {
             ),
             if (_currentStory?.createdAt != null)
               Text(
-                getStringFromTime(_currentStory!.createdAt),
+            timeStamp['postTime'].toString()+timeStamp['postSymbol'].toString().tr()
               ),
             const Spacer(),
             if (isNotCurrentUser(_currentStory?.user?.id))

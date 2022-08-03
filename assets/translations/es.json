@@ -218,5 +218,8 @@
   "reviews": "Reviews",
 
   "justTellUsYourEmailAndSendYouAnEmailSoYouCanResetIt": "Sólo díganos su correo electrónico y le enviaremos un \\nemail para que pueda restablecerlo.",
-  "placeNotAvailable": "Lugar no disponible"
+  "placeNotAvailable": "Lugar no disponible",
+  "d": "g",
+  "mo": "m",
+  "sec": "s"
 }

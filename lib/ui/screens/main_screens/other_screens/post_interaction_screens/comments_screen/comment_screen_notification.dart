@@ -191,6 +191,8 @@ class _CommentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var timeStamp= getStringFromTime(_comment.createdAt);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -222,7 +224,7 @@ class _CommentView extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      getStringFromTime(_comment.createdAt),
+    timeStamp['postTime'].toString()+timeStamp['postSymbol'].toString().tr(),
                       style: TextStyle(
                           fontSize: 12, color: Theme.of(context).hintColor),
                     ),

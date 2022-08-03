@@ -92,6 +92,8 @@ class PostCardViewDetail extends StatelessWidget {
 
   Widget _buildUserProfile(BuildContext context) {
     Post _post = context.read<FeedCubit>().posts[index];
+    var timeStamp=getStringFromTime(_post.createdAt);
+
     return ListTile(
       onTap: _post.user != null
           ? () {
@@ -112,8 +114,7 @@ class PostCardViewDetail extends StatelessWidget {
         ),
       ),
       trailing: (_post.createdAt != null)
-          ? Text(
-              getStringFromTime(_post.createdAt),
+          ? Text(timeStamp['postTime'].toString()+timeStamp['postSymbol'].toString().tr(),
               style:
                   TextStyle(fontSize: 12, color: Theme.of(context).hintColor),
             )

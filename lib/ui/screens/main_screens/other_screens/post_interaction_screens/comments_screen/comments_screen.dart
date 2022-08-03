@@ -220,7 +220,9 @@ class _CommentViewState extends State<_CommentView> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    var timeStamp = getStringFromTime(widget._comment.createdAt);
+
+        Size size = MediaQuery.of(context).size;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -289,8 +291,7 @@ class _CommentViewState extends State<_CommentView> {
                 if (widget._comment.createdAt != null)
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      getStringFromTime(widget._comment.createdAt),
+                    child: Text(timeStamp['postTime'].toString()+timeStamp['postSymbol'].toString().tr(),
                       style: TextStyle(
                           fontSize: 12, color: Theme.of(context).hintColor),
                     ),

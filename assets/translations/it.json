@@ -212,5 +212,8 @@
   "justTellUsYourEmailAndWe'llSendYouanEmailSoYouCanResetit.": "Inserisci l'email con cui ti sei iscritto. Ti invieremo un link per reimpostare la password.",
   "reviews": "Valutazioni",
   "justTellUsYourEmailAndSendYouAnEmailSoYouCanResetIt": "inserisci la tua e-mail e ti invieremo una e-mail in modo che tu possa reimpostarla.",
-  "placeNotAvailable": "\nPosto non disponibile"
+  "placeNotAvailable": "\nPosto non disponibile",
+  "d": "g",
+  "mo": "m",
+  "sec": "s"
 }

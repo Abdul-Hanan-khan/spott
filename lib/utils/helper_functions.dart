@@ -13,21 +13,27 @@ import 'package:url_launcher/url_launcher.dart';
 Future<List<Address>> getCurrentAddress(double _lat, double _lng) =>
     Geocoder.local.findAddressesFromCoordinates(Coordinates(_lat, _lng));
 
-String getStringFromTime(DateTime? time) {
+Map<String,dynamic> getStringFromTime(DateTime? time) {
   if (time != null) {
     var timeagooo=timeago.format(time, locale: 'en_short');
 
     var postTime= timeagooo.replaceAll(RegExp(r'[^0-9]'), '');
-    var postSymbol= timeagooo.replaceAll(RegExp(r'[^a-z]'), '');
+    var postTimeSymbol= timeagooo.replaceAll(RegExp(r'[^a-z]'), '');
 
     print(postTime);
-    print(postSymbol);
+    print(postTimeSymbol);
 
+    Map<String,dynamic> timeStamp=({
+      'postTime': postTime,
+      'postSymbol':postTimeSymbol
+    });
+
+print(timeStamp);
 
     print(timeagooo);
-    return timeago.format(time, locale: 'en_short');
+    return timeStamp;
   } else {
-    return '';
+    return ({});
   }
 }
 
