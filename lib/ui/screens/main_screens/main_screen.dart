@@ -52,6 +52,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     FireStoreDatabase().changeState(AppData.currentUser!.id.toString(), 0);
   }
 
+
   @override
   void initState() {
     getUserLatLng(context).then((value) {
