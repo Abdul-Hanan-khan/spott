@@ -52,6 +52,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     FireStoreDatabase().changeState(AppData.currentUser!.id.toString(), 0);
   }
 
+
   @override
   void initState() {
     getUserLatLng(context).then((value) {
@@ -241,7 +242,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
             image:
                 "assets/icons/spot${_currentIndex == 2 ? '_selected' : ''}.svg"),
         Stack(
-          alignment: Alignment.center,
+          alignment: Alignment.topRight,
           children: [
             _buildNotificationBarIcon(
               label: "Notifications",
@@ -251,8 +252,8 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
               if (_notification.length != 0 &&
                   _notification[i].status == 'unread')
                 Container(
-                  height: 10,
-                  width: 10,
+                  height: 11,
+                  width: 11,
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     color: Colors
