@@ -32,9 +32,12 @@ class _PlaceSelectionButtonState extends State<PlaceSelectionButton> {
         }
       },
       child: ListTile(
-        leading: SvgPicture.asset(
-          'assets/icons/location.svg',
-          color: _isPlaceSelected ? null : Colors.black,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 7,right: 7),
+          child: SvgPicture.asset(
+            'assets/icons/location.svg',
+            color: _isPlaceSelected ? null : Colors.black,
+          ),
         ),
         title: Text(
           _isPlaceSelected
