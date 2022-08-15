@@ -426,10 +426,9 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
                         try {
                           msg = messageTextController.text;
                           print(messageTextController.text);
-                          if (messageTextController.text
-                                  .toString()
-                                  .isNotEmpty &&
+                          if (messageTextController.text.toString().isNotEmpty &&
                               image == null) {
+                            /// send text
                             FirebaseFirestore.instance
                                 .collection('messages')
                                 //sender
@@ -454,8 +453,7 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
                                 .get()
                                 .then((value) async {
                               if (value.get('userState') == 1) {
-                                print(
-                                    "Current user id => ${value.get('userState')}");
+                                print("Current user id => ${value.get('userState')}");
                                 await FirebaseFirestore.instance
                                     .collection('messages')
                                     //sender
@@ -585,7 +583,13 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
                                 widget.receiverId.toString(), context);
                             FireStoreDatabase().setNotificationBubble(
                                 widget.receiverId.toString(), 1);
-                          } else if (image != null) {
+                          }
+
+
+
+                          else if
+                          (image != null) {
+                            /// sending image
                             print("called...........");
                             setState(() {
                               fileIsUploading = true;
