@@ -596,9 +596,7 @@ class _ChatScreenWithUserState extends State<ChatScreenWithUser>
                                 .ref()
                                 .child(basename(image!.path));
 
-                            obj
-                                .putFile(File(image!.path))
-                                .whenComplete(() async {
+                            obj.putFile(File(image!.path)).whenComplete(() async {
                               obj.getDownloadURL().then((value) async {
                                 FirebaseFirestore.instance
                                     .collection('users')

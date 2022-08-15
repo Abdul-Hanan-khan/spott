@@ -20,6 +20,7 @@ import 'package:spott/utils/constants/app_colors.dart';
 import 'package:spott/utils/helper_functions.dart';
 import 'package:spott/utils/show_snack_bar.dart';
 
+import '../../../../ui_components/place_details_card_view.dart';
 import 'components/all_rating_screen.dart';
 import 'components/dialog_box.dart';
 import 'components/spotted_list_view_screen.dart';
@@ -398,7 +399,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> with SingleTicker
             padding: const EdgeInsets.only(top: 10),
             itemCount: _place!.posts!.length,
             itemBuilder: (context, index) =>
-                PostCardView(index),
+                PlaceDetailsPostCardView(index,post: _place!.posts![index]),
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
