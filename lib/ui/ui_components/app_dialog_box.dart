@@ -38,7 +38,7 @@ class AppDialogBox extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: SvgPicture.asset(image!),
                 ),
-      title,
+              title,
               const SizedBox(
                 height: 20,
               ),
