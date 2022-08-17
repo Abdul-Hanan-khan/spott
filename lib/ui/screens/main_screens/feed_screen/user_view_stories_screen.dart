@@ -19,7 +19,8 @@ import 'package:story_view/story_view.dart';
 import '../../../../utils/show_snack_bar.dart';
 
 class UserViewStoriesScreen extends StatefulWidget {
-  const UserViewStoriesScreen(this.id, this.name, this.postId,{Key? key}) : super(key: key);
+  const UserViewStoriesScreen(this.id, this.name, this.postId, {Key? key})
+      : super(key: key);
 
   final String id;
   final String name;
@@ -33,13 +34,14 @@ class _FooterView extends StatelessWidget {
   final Stories? _currentStory;
 
   const _FooterView(
-      this._currentStory, {
-        Key? key,
-      }) : super(key: key);
+    this._currentStory, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var timeStamp= getStringFromTime(DateTime.tryParse(_currentStory!.createdAt!));
+    var timeStamp =
+        getStringFromTime(DateTime.tryParse(_currentStory!.createdAt!));
 
     final Size _screenSize = MediaQuery.of(context).size;
     return Align(
@@ -74,9 +76,8 @@ class _FooterView extends StatelessWidget {
               width: 10,
             ),
             if (_currentStory?.createdAt != null)
-              Text(
-                  timeStamp['postTime'].toString()+timeStamp['postSymbol'].toString().tr()),
-
+              Text(timeStamp['postTime'].toString() +
+                  timeStamp['postSymbol'].toString().tr()),
             const Spacer(),
             if (isNotCurrentUser(_currentStory?.user?.id))
               Row(
@@ -90,7 +91,7 @@ class _FooterView extends StatelessWidget {
                               ? 'assets/icons/eye_accepted.svg'
                               : 'assets/icons/eye.svg',
                           color:
-                          _currentStory?.spot == null ? Colors.black : null,
+                              _currentStory?.spot == null ? Colors.black : null,
                           height: 20,
                         ),
                       );
@@ -177,10 +178,10 @@ class _HeaderView extends StatelessWidget {
 
   const _HeaderView(
       {required this.stories,
-        required this.controller,
-        required this.currentPost,
-        required this.name,
-        Key? key})
+      required this.controller,
+      required this.currentPost,
+      required this.name,
+      Key? key})
       : super(key: key);
 
   @override
@@ -222,10 +223,7 @@ class _HeaderView extends StatelessWidget {
                                   : null)),
                       Text(
                         story.address ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2
-                            ?.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             fontSize: 12,
                             color: _isShowing
                                 ? Theme.of(context).primaryColor
@@ -248,7 +246,7 @@ class _HeaderView extends StatelessWidget {
 
 class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
   bool _isFirstTimeRunning =
-  true; //! to check if the stories is running for the first time or user came form 2nd story to 1 first story (this use to fix issue in plugin)
+      true; //! to check if the stories is running for the first time or user came form 2nd story to 1 first story (this use to fix issue in plugin)
   final StoryController _storiesController = StoryController();
   final PageController _headerPageController = PageController(
     viewportFraction: 0.5,
@@ -258,8 +256,21 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
   Stories? _currentStory;
 
 
+
+
+  void _markStoryAsSeen(Post story) {
+    if (!(story.seenn ?? false)) {
+      context
+          .read<ViewStoriesCubit>()
+          .markStoryAsSeen(int.parse(story.id.toString()));
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+
 
     print("\n\n\nn\n\n");
     print(widget.postId);
@@ -267,7 +278,8 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
     // _post = context.read<FeedCubit>().posts[index];
     return BlocProvider(
       create: (context) =>
-      PlaceStoriesCubit()..getAllPosts(id: widget.id.toString()),
+          PlaceStoriesCubit()..getAllPosts(id: widget.id.toString()),
+
       // context.read<PlaceStoriesCubit>().getAllPosts(id: widget.id.toString()),
       child: BlocConsumer<PlaceStoriesCubit, PlaceStoriesState>(
         listener: (context, state) {
@@ -275,13 +287,34 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
           if (state is FetchedUserPostsSuccessfully) {
             allStories.clear();
             allStories.addAll(state.stories!);
-            if(allStories.isEmpty){
+            if (allStories.isEmpty) {
               Navigator.pop(context);
+            } else {
+
+
+
+              int index = context
+                  .read<FeedCubit>()
+                  .posts
+                  .indexWhere((element) => element.id == widget.postId);
+
+              if (index != -1) {
+                Post story = context.read<FeedCubit>().posts[index];
+                _markStoryAsSeen(story);
+                context.read<FeedCubit>().posts.forEach((element) {
+                  if (story.user!.id == element.user!.id) {
+                    element.user!.storyyAvailable = false;
+                  }
+                  if (story.place!.id == element.place!.id) {
+                    element.place!.placeStoryyAvailable = false;
+                  }
+                });
+              }
+
+
             }
             _currentStory = allStories.first;
             print(_currentStory?.media?.first);
-
-
 
             for (final story in allStories) {
               if (story.type == "image") {
@@ -322,17 +355,17 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
                   Expanded(
                     child: (_storyItems.isNotEmpty)
                         ? StoryView(
-                      storyItems: _storyItems,
-                      controller: _storiesController,
-                      indicatorColor: Theme.of(context).primaryColor,
-                      onComplete: _closeScreen,
-                      onVerticalSwipeComplete: (v) {
-                        if (v == Direction.down) {
-                          _closeScreen();
-                        }
-                      },
-                      onStoryShow: _onStoryShow,
-                    )
+                            storyItems: _storyItems,
+                            controller: _storiesController,
+                            indicatorColor: Theme.of(context).primaryColor,
+                            onComplete: _closeScreen,
+                            onVerticalSwipeComplete: (v) {
+                              if (v == Direction.down) {
+                                _closeScreen();
+                              }
+                            },
+                            onStoryShow: _onStoryShow,
+                          )
                         : const SizedBox(),
                   ),
                   _FooterView(_currentStory),
@@ -356,8 +389,7 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
     super.initState();
   }
 
-  void _closeScreen() async{
-
+  void _closeScreen() async {
     await getUserLatLng(context).then((value) {
       if (value != null && value.longitude != null) {
         BlocProvider.of<FeedCubit>(context).getAllData(
@@ -366,7 +398,9 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
           position: value,
         );
       } else {
-        showSnackBar(context: context, message: LocaleKeys.pleaseTurnOnYourLocation.tr());
+        showSnackBar(
+            context: context,
+            message: LocaleKeys.pleaseTurnOnYourLocation.tr());
       }
     }).whenComplete(() {});
     Navigator.of(context).pop();
@@ -377,13 +411,11 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
   //   context.read<ViewStoriesCubit>().markStoryAsSeen(int.parse(story.id.toString()));
   // }
 
-  void _onStoryShow(StoryItem _currentStoryItem) async{
+  void _onStoryShow(StoryItem _currentStoryItem) async {
     final Stories _story = allStories.elementAt(
       _storyItems.indexOf(_currentStoryItem),
     );
-    await context
-        .read<ViewStoriesCubit>()
-        .markPostAsSeen(widget.postId);
+    await context.read<ViewStoriesCubit>().markPostAsSeen(widget.postId);
     if (!_isFirstTimeRunning) {
       setState(() {
         _currentStory = _story;
@@ -392,7 +424,6 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
           _storyItems.indexOf(_currentStoryItem),
           duration: const Duration(milliseconds: 300),
           curve: Curves.linear);
-
     } else {
       _isFirstTimeRunning = false;
     }
