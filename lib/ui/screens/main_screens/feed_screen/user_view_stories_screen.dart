@@ -255,23 +255,32 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
   final List<Stories> allStories = [];
   Stories? _currentStory;
 
-
-
-
   void _markStoryAsSeen(Post story) {
-    if (!(story.seenn ?? false)) {
-      context
-          .read<ViewStoriesCubit>()
-          .markStoryAsSeen(int.parse(story.id.toString()));
-    }
+    context
+        .read<ViewStoriesCubit>()
+        .markStoryAsSeen(int.parse(story.id.toString()));
+    // if (!(story.seenn ?? false)) {
+    //   context
+    //       .read<ViewStoriesCubit>()
+    //       .markStoryAsSeen(int.parse(story.id.toString()));
+    // }
   }
 
+  void _markStoryAsSeen1111(String id) {
+
+
+
+
+    context.read<ViewStoriesCubit>().markStoryAsSeen(int.parse(id.toString()));
+    // if (!(story.seenn ?? false)) {
+    //   context
+    //       .read<ViewStoriesCubit>()
+    //       .markStoryAsSeen(int.parse(story.id.toString()));
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-
-
     print("\n\n\nn\n\n");
     print(widget.postId);
     print("\n\n\nn\n\n");
@@ -290,9 +299,6 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
             if (allStories.isEmpty) {
               Navigator.pop(context);
             } else {
-
-
-
               int index = context
                   .read<FeedCubit>()
                   .posts
@@ -300,18 +306,16 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
 
               if (index != -1) {
                 Post story = context.read<FeedCubit>().posts[index];
-                _markStoryAsSeen(story);
+                // _markStoryAsSeen(story);
                 context.read<FeedCubit>().posts.forEach((element) {
                   if (story.user!.id == element.user!.id) {
                     element.user!.storyyAvailable = false;
                   }
                   if (story.place!.id == element.place!.id) {
-                    element.place!.placeStoryyAvailable = false;
+                    element.place!.placeStoryySeen = true;
                   }
                 });
               }
-
-
             }
             _currentStory = allStories.first;
             print(_currentStory?.media?.first);
@@ -412,10 +416,19 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
   // }
 
   void _onStoryShow(StoryItem _currentStoryItem) async {
-    final Stories _story = allStories.elementAt(
+    var _story = allStories.elementAt(
       _storyItems.indexOf(_currentStoryItem),
     );
-    await context.read<ViewStoriesCubit>().markPostAsSeen(widget.postId);
+
+      if (!(_story.seen ?? false)) {
+        context
+            .read<ViewStoriesCubit>()
+            .markStoryAsSeen(int.parse(_story.id.toString()));
+      }
+
+      // _markStoryAsSeen1111(_story.id.toString());
+
+      await context.read<ViewStoriesCubit>().markPostAsSeen(widget.postId);
     if (!_isFirstTimeRunning) {
       setState(() {
         _currentStory = _story;

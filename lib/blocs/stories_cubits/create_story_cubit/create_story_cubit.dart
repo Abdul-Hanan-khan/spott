@@ -59,10 +59,24 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
          context.read<FeedCubit>().posts.forEach((element) {
            if(element.user!.id == AppData.currentUser!.id){
              element.user!.storyyAvailable=true;
+
            }
-           if(element.place!.id == place.id){
-             element.place!.placeStoryyAvailable =true;
+           print(place.lat);
+           print(element.place!.lat);
+
+           print(element.place!.lng);
+           print(place.lng);
+
+           // element.place!.placeStoryySeen = false;
+           if((element.place!.lat == place.lat) && (element.place!.lng == place.lng) ){
+               element.place!.placeStoryyAvailable =true;
+               element.place!.placeStoryySeen = false;
            }
+
+           // if(element.place!.id == place.id){
+           //   element.place!.placeStoryyAvailable =true;
+           //   element.place!.placeStoryySeen = false;
+           // }
          });
          emit(
           StoryCreatedSuccessfully(_apiResponse),

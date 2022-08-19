@@ -845,7 +845,7 @@ class _PostHeaderView extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                     border: _post!.place?.placeStoryyAvailable == true
-                        ? _post!.seenn == false
+                        ? _post!.place!.placeStoryySeen == false
                             ? Border.all(
                                 color: Color(0xff33cc66),
                                 style: BorderStyle.solid,
