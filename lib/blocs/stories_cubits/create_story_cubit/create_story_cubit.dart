@@ -59,6 +59,7 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
          context.read<FeedCubit>().posts.forEach((element) {
            if(element.user!.id == AppData.currentUser!.id){
              element.user!.storyyAvailable=true;
+             element.user!.storyySeen=false;
 
            }
            print(place.lat);
@@ -71,6 +72,7 @@ class CreateStoryCubit extends Cubit<CreateStoryCubitState> {
            if((element.place!.lat == place.lat) && (element.place!.lng == place.lng) ){
                element.place!.placeStoryyAvailable =true;
                element.place!.placeStoryySeen = false;
+
            }
 
            // if(element.place!.id == place.id){

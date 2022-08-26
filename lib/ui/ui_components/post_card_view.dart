@@ -158,7 +158,7 @@ class _PostCardViewState extends State<PostCardView> {
               padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: (_post.user?.storyyAvailable == true)
-                      ?_post.seen == false? Border.all(
+                      ?_post.user!.storyySeen == false? Border.all(
                           color: Color(0xff33cc66),
                           style: BorderStyle.solid,
                           width: 2.0,

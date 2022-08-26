@@ -15,6 +15,7 @@ import 'package:spott/models/api_responses/request_spot_api_response.dart';
 import 'package:spott/utils/constants/api_constants.dart';
 import 'package:http/http.dart' as http;
 
+
 class PostsApiProvider {
   Future<AddPostApiResponse> addNewPost(String token, FormData data) async {
     try {

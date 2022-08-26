@@ -420,11 +420,11 @@ class _UserViewStoriesScreenState extends State<UserViewStoriesScreen> {
       _storyItems.indexOf(_currentStoryItem),
     );
 
-      if (!(_story.seen ?? false)) {
+      // if (!(_story.seen ?? false)) {
         context
             .read<ViewStoriesCubit>()
             .markStoryAsSeen(int.parse(_story.id.toString()));
-      }
+      // }
 
       // _markStoryAsSeen1111(_story.id.toString());
 
