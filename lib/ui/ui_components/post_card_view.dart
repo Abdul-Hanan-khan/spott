@@ -158,7 +158,7 @@ class _PostCardViewState extends State<PostCardView> {
               padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
                   border: (_post.user?.storyyAvailable == true)
-                      ?_post.seen == false? Border.all(
+                      ?_post.user!.storyySeen == false? Border.all(
                           color: Color(0xff33cc66),
                           style: BorderStyle.solid,
                           width: 2.0,
@@ -813,18 +813,18 @@ class _PostHeaderView extends StatelessWidget {
     required this.index,
     required this.onVisibilityChange,
   }) : super(key: key);
-  Post _post = Post();
+  Post? _post ;
 
   @override
   Widget build(BuildContext context) {
     _post = context.read<FeedCubit>().posts[index];
     final Size size = MediaQuery.of(context).size;
     return ListTile(
-        onTap: _post.place != null
+        onTap: _post!.place != null
             ? () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => PlaceDetailScreen(_post.place!),
+                    builder: (context) => PlaceDetailScreen(_post!.place!),
                   ),
                 );
               }
@@ -832,20 +832,20 @@ class _PostHeaderView extends StatelessWidget {
         contentPadding: const EdgeInsets.only(left: 10),
         leading: InkWell(
             onTap: () {
-              print(_post.placeId);
-              if (_post.place?.placeStoryyAvailable == true) {
+              print(_post!.placeId);
+              if (_post!.place?.placeStoryyAvailable == true) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => UserViewStoriesScreen(
-                          _post.placeId, _post.place!.name!, _post.id),
+                          _post!.placeId, _post!.place!.name!, _post!.id),
                     ));
               }
             },
             child: Container(
                 decoration: BoxDecoration(
-                    border: _post.place?.placeStoryyAvailable == true
-                        ? _post.seen == false
+                    border: _post!.place?.placeStoryyAvailable == true
+                        ? _post!.place!.placeStoryySeen == false
                             ? Border.all(
                                 color: Color(0xff33cc66),
                                 style: BorderStyle.solid,
@@ -858,10 +858,10 @@ class _PostHeaderView extends StatelessWidget {
                               )
                         : null,
                     borderRadius: BorderRadius.circular(8)),
-                child: PlaceImageView(_post.place?.images?.firstOrNull))),
-        title: Text(_post.place?.name.toString() ?? ''),
+                child: PlaceImageView(_post!.place?.images?.firstOrNull))),
+        title: Text(_post!.place?.name.toString() ?? ''),
         subtitle: Text(
-          _post.place?.fullAddress ?? '',
+          _post!.place?.fullAddress ?? '',
           style: const TextStyle(
             fontSize: 12,
           ),
@@ -872,7 +872,7 @@ class _PostHeaderView extends StatelessWidget {
           width: size.width * 0.15,
           height: size.height * 0.04,
           alignment: Alignment.centerRight,
-          child: (_post.myPost != null && _post.myPost == true)
+          child: (_post!.myPost != null && _post!.myPost == true)
               ? PopupMenuButton(
                   onSelected: (PopMenuOption value) =>
                       _onPopDeleteSelected(context, value),
@@ -895,7 +895,7 @@ class _PostHeaderView extends StatelessWidget {
                     ),
                   ),
                 )
-              : isNotCurrentUser(_post.user?.id)
+              : isNotCurrentUser(_post!.user?.id)
                   ? PopupMenuButton(
                       onSelected: (PopMenuOption value) =>
                           _onPopupMenuSelection(context, value),
@@ -931,12 +931,12 @@ class _PostHeaderView extends StatelessWidget {
       case PopMenuOption.reportPost:
         context
             .read<PostCardViewCubit>()
-            .reportPost(int.parse(_post.id.toString()));
+            .reportPost(int.parse(_post!.id.toString()));
         break;
       case PopMenuOption.blockUser:
         context
             .read<PostCardViewCubit>()
-            .blockUser(int.parse(_post.id.toString()), _post.user?.id);
+            .blockUser(int.parse(_post!.id.toString()), _post!.user?.id);
         break;
       case PopMenuOption.deletePost:
         // TODO: Handle this case.
@@ -961,7 +961,7 @@ class _PostHeaderView extends StatelessWidget {
   deletePost(BuildContext context) async {
     context
         .read<PostCardViewCubit>()
-        .deletePost(int.parse(_post.id.toString()), context)
+        .deletePost(int.parse(_post!.id.toString()), context)
         .then((value) {
       print("Deleted");
       onVisibilityChange(value);

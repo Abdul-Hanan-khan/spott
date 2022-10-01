@@ -199,6 +199,12 @@ class _FeedScreenState extends State<FeedScreen> with AutomaticKeepAliveClientMi
       loadMorePost(context);
     });
     setupScrollController(context);
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(AppData.currentUser!.id.toString())
+        .set({'userState': 0, 'isNewMessage': 0});
+
+
     // checkUser();
   }
 

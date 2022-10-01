@@ -36,6 +36,8 @@ class Place {
   int? _followCount;
   int? _spotCount;
   bool? placeStoryyAvailable;
+  bool? placeStoryySeen;
+
   List<Ratings>? _ratings;
   List<List<Post>>? _groupStories;
   List<Post>? _posts;
@@ -71,6 +73,7 @@ class Place {
   int? get followCount => _followCount;
   int? get spotCount => _spotCount;
   bool? get placeStoryAvailable => placeStoryyAvailable;
+  bool? get placeStorySeen => placeStoryySeen;
   List<Ratings>? get ratings => _ratings;
   List<List<Post>>? get groupStories => _groupStories;
   List<Post>? get posts => _posts;
@@ -106,6 +109,7 @@ class Place {
       int? followCount,
       int? spotCount,
         bool? placeStoryAvailable,
+        bool? placeStorySeen,
       List<Ratings>? ratings,
       List<List<Post>>? groupStories,
       List<Post>? posts,
@@ -140,6 +144,7 @@ class Place {
     _followCount = followCount;
     _spotCount = spotCount;
     placeStoryyAvailable = placeStoryAvailable;
+    placeStoryySeen = placeStorySeen;
     _ratings = ratings;
     _groupStories = groupStories;
     _posts = posts;
@@ -197,6 +202,7 @@ class Place {
       _followCount = json["follow-count"];
       _spotCount = json["spots_count"];
       placeStoryyAvailable = json['place_story_available'];
+      placeStoryySeen = json['stories_seen'];
       if (json["ratings"] != null) {
         _ratings = [];
         json["ratings"].forEach((v) {
