@@ -1,4 +1,4 @@
-enum MediaType { image, video }
+enum MediaType { image, video,camera }
 
 enum FollowRequestUpdateStatus { reject, accept }
 

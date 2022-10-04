@@ -30,6 +30,7 @@ abstract class  LocaleKeys {
   static const addNewPlace = 'addNewPlace';
   static const yourCurrentAddress = 'yourCurrentAddress';
   static const name = 'name';
+  static const camera = 'camera';
   static const category = 'category';
   static const points = 'points';
   static const image = 'image';

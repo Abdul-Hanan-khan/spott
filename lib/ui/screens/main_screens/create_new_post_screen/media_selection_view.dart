@@ -95,6 +95,18 @@ class _MediaSelectionViewState extends State<MediaSelectionView> {
                 Navigator.of(context).pop(MediaType.video);
               },
             ),
+            Container(height: 1,width: 200,),
+             Divider(
+              height: 0, color: Colors.grey.shade300,
+            ),
+            ListTile(
+              dense: true,
+              leading: Icon(Icons.camera, color: Theme.of(context).primaryColor),
+              title: Text(LocaleKeys.camera.tr()),
+              onTap: () {
+                Navigator.of(context).pop(MediaType.camera);
+              },
+            ),
           ],
         ),
       ),
@@ -103,6 +115,8 @@ class _MediaSelectionViewState extends State<MediaSelectionView> {
       _pickImage();
     } else if (_mediaType == MediaType.video) {
       _pickVideo();
+    }else if(_mediaType == MediaType.camera){
+      _pickImageFromCam();
     }
   }
 
@@ -113,6 +127,17 @@ class _MediaSelectionViewState extends State<MediaSelectionView> {
       _pickedVideo = null;
       setState(() {});
       widget.onMediaSelection.call(_pickedImage, MediaType.image);
+    } else {
+      debugPrint('No image selected.');
+    }
+  }
+  Future _pickImageFromCam() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      _pickedImage = await pickedFile.readAsBytes();
+      _pickedVideo = null;
+      setState(() {});
+      widget.onMediaSelection.call(_pickedImage, MediaType.camera);
     } else {
       debugPrint('No image selected.');
     }
